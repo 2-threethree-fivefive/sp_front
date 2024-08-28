@@ -1,7 +1,7 @@
-import React from 'react'
+import React from 'react';
 
 function LogInForm() {
-  return <></>
+  return <></>;
 }
 
-export default LogInForm
+export default LogInForm;

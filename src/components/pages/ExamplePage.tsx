@@ -1,7 +1,7 @@
-import React from 'react'
+import React from 'react';
 
 function ExamplePage() {
-  return <></>
+  return <></>;
 }
 
-export default ExamplePage
+export default ExamplePage;
