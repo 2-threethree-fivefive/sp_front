@@ -1,4 +1,4 @@
-import { eventListDataType } from '@/types/domainTypes'
+import { eventListDataType } from '@/types/domainTypes';
 
 export const eventDatas: eventListDataType = {
   eventListCnt: 10,
@@ -69,4 +69,4 @@ export const eventDatas: eventListDataType = {
       badgeList: ['쿠폰', '세일', '특가'],
     },
   ],
-}
+};

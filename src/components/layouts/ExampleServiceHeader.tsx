@@ -1,7 +1,7 @@
-import React from 'react'
+import React from 'react';
 
 function ExampleServiceHeader() {
-  return <></>
+  return <></>;
 }
 
-export default ExampleServiceHeader
+export default ExampleServiceHeader;
