@@ -3,6 +3,20 @@
 @tailwind utilities;
 
 @layer base {
+  @font-face {
+    font-family: 'NanumSquare';
+    src: url(https://hangeul.pstatic.net/hangeul_static/webfont/NanumSquare/NanumSquareR.eot);
+    src:
+      url(https://hangeul.pstatic.net/hangeul_static/webfont/NanumSquare/NanumSquareR.eot?#iefix)
+        format('embedded-opentype'),
+      url(https://hangeul.pstatic.net/hangeul_static/webfont/NanumSquare/NanumSquareR.woff)
+        format('woff'),
+      url(https://hangeul.pstatic.net/hangeul_static/webfont/NanumSquare/NanumSquareR.ttf)
+        format('truetype');
+  }
+}
+
+@layer base {
   :root {
     --background: 0 0% 100%;
     --foreground: 222.2 84% 4.9%;
@@ -62,6 +76,9 @@
 @layer base {
   * {
     @apply border-border;
+  }
+  html {
+    @apply font-NanumSquare;
   }
   body {
     @apply bg-background text-foreground;
