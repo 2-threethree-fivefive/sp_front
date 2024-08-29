@@ -5,6 +5,7 @@ import { Button } from '../ui/button'
 import SignInInput from '../sign-in/SignInInput'
 import SignInHeader from '../sign-in/SignInHeader'
 import SignInLinkList from '../sign-in/SignInLinkList'
+import { Layout } from '../ui/layout'
 
 function SignInForm() {
   const [id, setId] = useState('')
@@ -14,10 +15,9 @@ function SignInForm() {
   const clearPassword = () => setPassword('')
 
   return (
-    <div className="flex flex-col justify-between h-screen bg-white">
+    <Layout variant="signIn">
       <form className="w-full max-w-md p-6 rounded-lg mx-auto mt-10 text-black">
         <SignInHeader />
-
         <SignInInput
           signInInput={{
             text: '아이디',
@@ -44,7 +44,7 @@ function SignInForm() {
           로그인하기
         </Button>
       </form>
-    </div>
+    </Layout>
   )
 }
 
