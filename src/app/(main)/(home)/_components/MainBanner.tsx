@@ -6,15 +6,18 @@ import 'swiper/css/navigation'
 
 import { Autoplay, Pagination, Navigation } from 'swiper/modules'
 
-import { eventThumbnailData } from '@/datas/eventDatas'
-import { eventListDataType, eventThumbnailDataType } from '@/types/eventType'
+import { eventThumbnailData } from '@/datas/main/eventDatas'
+import {
+  eventListDataType,
+  eventThumbnailDataType,
+} from '@/types/main/eventType'
 import Image from 'next/image'
 import Link from 'next/link'
 import React, { useState } from 'react'
 
 function MainBanner({ eventBanner }: { eventBanner: eventThumbnailDataType }) {
   return (
-    <div className="pt-28">
+    <div className="mt-[120px] w-full">
       <Swiper
         spaceBetween={0}
         loop={true}
@@ -37,7 +40,7 @@ function MainBanner({ eventBanner }: { eventBanner: eventThumbnailDataType }) {
                   width={0}
                   height={0}
                   sizes="100vw"
-                  style={{ width: '100%', height: '100%' }}
+                  style={{ width: '100%', height: 'auto' }}
                 />
               </Link>
             </SwiperSlide>

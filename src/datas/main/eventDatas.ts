@@ -1,4 +1,4 @@
-import { eventThumbnailDataType } from '@/types/eventType'
+import { eventThumbnailDataType } from '@/types/main/eventType'
 
 export const eventThumbnailData: eventThumbnailDataType = {
   eventTotalCnt: 3,

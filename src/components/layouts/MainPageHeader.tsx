@@ -7,7 +7,7 @@ import Link from 'next/link'
 
 function MainPageHeader() {
   return (
-    <header className="fixed top-0 left-0 z-50 w-full flex justify-between px-3 items-center h-16 bg-starbucks-green">
+    <header className="fixed top-0 left-0 z-50 w-full flex justify-between px-4 items-center h-16 bg-starbucks-green">
       <div className="flex items-center gap-3">
         <CategoryIcon />
         <Link href={'/'}>

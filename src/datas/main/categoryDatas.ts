@@ -1,7 +1,7 @@
-import { mainCategoryDataType } from '@/types/categoryType'
+import { mainCategoryDataType } from '@/types/main/categoryType'
 
 // 전체 카테고리 조회 데이터
-export const mainCategoryList: mainCategoryDataType[] = [
+export const mainCategoryListData: mainCategoryDataType[] = [
   {
     id: 1,
     mainCategoryName: '텀블러/보온병',
