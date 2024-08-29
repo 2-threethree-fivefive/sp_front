@@ -77,6 +77,9 @@
   * {
     @apply border-border;
   }
+  html {
+    @apply font-NanumSquare;
+  }
   body {
     @apply bg-background text-foreground;
   }

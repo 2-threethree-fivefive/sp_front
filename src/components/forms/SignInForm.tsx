@@ -16,6 +16,7 @@ function SignInForm() {
 
   return (
     <Layout variant="signIn">
+      {/* Form도 shadcn써서 바꾸기 */}
       <form className="w-full max-w-md p-6 rounded-lg mx-auto mt-10 text-black">
         <SignInHeader />
         <SignInInput

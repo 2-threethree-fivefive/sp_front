@@ -8,7 +8,7 @@ const divVariants = cva('font-NanumSquare', {
     variant: {
       default: 'bg-primary text-primary-foreground hover:bg-primary/90',
       signIn: 'flex flex-col justify-between h-screen bg-white',
-      main: '',
+      main: 'w-full',
     },
   },
   defaultVariants: {
