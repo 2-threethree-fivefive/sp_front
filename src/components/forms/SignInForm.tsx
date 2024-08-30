@@ -1,52 +1,48 @@
-'use client'
+'use client';
 
-import { useState } from 'react'
-import { Button } from '../ui/button'
-import SignInInput from '../sign-in/SignInInput'
-import SignInHeader from '../sign-in/SignInHeader'
-import SignInLinkList from '../sign-in/SignInLinkList'
-import { Layout } from '../ui/layout'
+import { useState } from 'react';
+import { Button } from '../ui/button';
+import SignInInput from '../sign-in/SignInInput';
+import SignInHeader from '../sign-in/SignInHeader';
+import SignInLinkList from '../sign-in/SignInLinkList';
 
 function SignInForm() {
-  const [id, setId] = useState('')
-  const [password, setPassword] = useState('')
+  const [id, setId] = useState('');
+  const [password, setPassword] = useState('');
 
-  const clearId = () => setId('')
-  const clearPassword = () => setPassword('')
+  const clearId = () => setId('');
+  const clearPassword = () => setPassword('');
 
   return (
-    <Layout variant="signIn">
-      {/* Form도 shadcn써서 바꾸기 */}
-      <form className="w-full max-w-md p-6 rounded-lg mx-auto mt-10 text-black">
-        <SignInHeader />
-        <SignInInput
-          signInInput={{
-            text: '아이디',
-            value: id,
-            name: 'id',
-            setValue: setId,
-            clearValue: clearId,
-          }}
-        />
+    <form className="w-full max-w-md p-6 rounded-lg mx-auto mt-10 text-black">
+      <SignInHeader />
+      <SignInInput
+        signInInput={{
+          text: '아이디',
+          value: id,
+          name: 'id',
+          setValue: setId,
+          clearValue: clearId,
+        }}
+      />
 
-        <SignInInput
-          signInInput={{
-            text: '비밀번호',
-            value: password,
-            name: 'password',
-            setValue: setPassword,
-            clearValue: clearPassword,
-          }}
-        />
+      <SignInInput
+        signInInput={{
+          text: '비밀번호',
+          value: password,
+          name: 'password',
+          setValue: setPassword,
+          clearValue: clearPassword,
+        }}
+      />
 
-        <SignInLinkList />
+      <SignInLinkList />
 
-        <Button size={'submit'} type="submit">
-          로그인하기
-        </Button>
-      </form>
-    </Layout>
-  )
+      <Button size={'submit'} type="submit">
+        로그인하기
+      </Button>
+    </form>
+  );
 }
 
-export default SignInForm
+export default SignInForm;

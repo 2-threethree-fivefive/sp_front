@@ -1,11 +1,10 @@
-
-import SignInForm from '@/components/forms/SignInForm'
-import React from 'react'
+import SignInPage from '@/components/pages/auth/SignInPage';
+import React from 'react';
 
 export default function Page() {
   return (
     <>
-      <SignInForm />
+      <SignInPage />
     </>
-  )
+  );
 }
