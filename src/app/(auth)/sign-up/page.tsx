@@ -1,5 +1,10 @@
-import React from 'react'
+import SignUpIntroPage from '@/components/pages/auth/SignUpIntroPage';
+import React from 'react';
 
 export default function Page() {
-  return <></>
+  return (
+    <>
+      <SignUpIntroPage />
+    </>
+  );
 }
