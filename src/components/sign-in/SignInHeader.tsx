@@ -1,4 +1,4 @@
-import Image from 'next/image'
+import Image from 'next/image';
 
 const SignInHeader = () => {
   return (
@@ -19,7 +19,7 @@ const SignInHeader = () => {
         회원 서비스 이용을 위해 로그인 해주세요.
       </p>
     </div>
-  )
-}
+  );
+};
 
-export default SignInHeader
+export default SignInHeader;

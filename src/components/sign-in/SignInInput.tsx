@@ -1,5 +1,5 @@
-import React from 'react'
-import { SignInInputType } from '@/types/sign-in/SignInInputType'
+import React from 'react';
+import { SignInInputType } from '@/types/sign-in/SignInInputType';
 
 function SignInInput({ signInInput }: { signInInput: SignInInputType }) {
   return (
@@ -14,10 +14,10 @@ function SignInInput({ signInInput }: { signInInput: SignInInputType }) {
         onFocus={(e) => e.target.classList.add('border-green-500')}
         onBlur={(e) => {
           if (!signInInput.value) {
-            e.target.classList.remove('border-green-500')
+            e.target.classList.remove('border-green-500');
           }
         }}
-        className={`w-full py-2 px-0 border-b-2 focus:outline-none`}
+        className={'w-full py-2 px-0 border-b-2 focus:outline-none'}
       />
       <label
         className={`absolute left-0 transition-all ${signInInput.value ? 'top-[-10px] text-green-500 text-sm' : 'top-2 text-gray-500'}`}
@@ -34,7 +34,7 @@ function SignInInput({ signInInput }: { signInInput: SignInInputType }) {
         </button>
       )}
     </div>
-  )
+  );
 }
 
-export default SignInInput
+export default SignInInput;
