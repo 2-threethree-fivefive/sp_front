@@ -13,7 +13,7 @@ function BottomNavbar() {
         <span className="pt-[4] text-xs">홈</span>
       </Link>
       <Link href={'/wishlish'} className="flex flex-col items-center">
-        <EmptyHeartIcon />
+        <EmptyHeartIcon width="24" height="24" />
         <span className="pt-[4] text-xs">찜목록</span>
       </Link>
       <Link href={'/mypage'} className="flex flex-col items-center">

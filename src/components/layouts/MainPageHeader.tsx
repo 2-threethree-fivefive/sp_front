@@ -15,9 +15,7 @@ function MainPageHeader() {
         </Link>
       </div>
       <div className="flex gap-3">
-        <Link href={'/search'}>
-          <SearchIcon />
-        </Link>
+        <SearchIcon />
         <Link href={'/cart'}>
           <CartWhiteIcon />
         </Link>

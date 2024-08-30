@@ -1,13 +1,29 @@
 import { productsByEventDatas } from '@/datas/main/productDatas'
 import { productByEventType } from '@/types/main/productType'
+import Image from 'next/image'
+import Link from 'next/link'
 import React from 'react'
+import Product from './Product'
 
 async function ProductsByEvent({
   eventItem,
 }: {
   eventItem: productByEventType
 }) {
-  return <div>{eventItem.eventName}</div>
+  //todo 하트 아이콘 사용자에 따라
+
+  return (
+    <section className="w-full pt-10 px-4">
+      <h1 className="text-2xl font-bold">{eventItem.eventName}</h1>
+      <div className="pt-4 overflow-x-auto flex">
+        {eventItem.productList.map((product) => {
+          return (
+            <Product key={product.productId} product={product} width={36} />
+          )
+        })}
+      </div>
+    </section>
+  )
 }
 
 export default ProductsByEvent

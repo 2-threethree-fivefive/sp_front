@@ -17,7 +17,7 @@ import React, { useState } from 'react'
 
 function MainBanner({ eventBanner }: { eventBanner: eventThumbnailDataType }) {
   return (
-    <div className="mt-[120px] w-full">
+    <div className="w-full">
       <Swiper
         spaceBetween={0}
         loop={true}
