@@ -11,7 +11,7 @@ const signInLinkData: SignInLinkType[] = [
     text: '비밀번호 찾기',
   },
   {
-    url: '/sign-up',
+    url: '/sign-up/intro',
     text: '회원가입',
   },
 ];
