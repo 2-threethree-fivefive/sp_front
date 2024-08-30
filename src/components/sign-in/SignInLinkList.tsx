@@ -1,5 +1,5 @@
-import SignInLink from './SignInLink'
-import { SignInLinkType } from '@/types/sign-in/SignInLinkType'
+import SignInLink from './SignInLink';
+import { SignInLinkType } from '@/types/sign-in/SignInLinkType';
 
 const signInLinkData: SignInLinkType[] = [
   {
@@ -14,7 +14,7 @@ const signInLinkData: SignInLinkType[] = [
     url: '/sign-up',
     text: '회원가입',
   },
-]
+];
 
 const SignInLinkList = () => {
   return (
@@ -25,7 +25,7 @@ const SignInLinkList = () => {
         </li>
       ))}
     </ul>
-  )
-}
+  );
+};
 
-export default SignInLinkList
+export default SignInLinkList;

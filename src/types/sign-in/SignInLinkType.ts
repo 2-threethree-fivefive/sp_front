@@ -1,4 +1,4 @@
 export interface SignInLinkType {
-  url: string
-  text: string
+  url: string;
+  text: string;
 }

@@ -1,25 +1,27 @@
-import * as React from 'react'
-import { cva, type VariantProps } from 'class-variance-authority'
+import * as React from 'react';
+import { cva, type VariantProps } from 'class-variance-authority';
 
-import { cn } from '@/lib/utils'
+import { cn } from '@/lib/utils';
 
 const divVariants = cva('font-NanumSquare', {
   variants: {
     variant: {
       default: 'bg-primary text-primary-foreground hover:bg-primary/90',
       signIn: 'flex flex-col justify-between h-screen bg-white',
+      signUp:
+        'flex flex-col h-screen bg-white w-full max-w-md p-6 rounded-lg mx-auto mt-10 text-black',
       main: 'w-full',
     },
   },
   defaultVariants: {
     variant: 'default',
   },
-})
+});
 
 export interface DivProps
   extends React.HTMLAttributes<HTMLDivElement>,
     VariantProps<typeof divVariants> {
-  asChild?: boolean
+  asChild?: boolean;
 }
 
 const Layout = React.forwardRef<HTMLDivElement, DivProps>(
@@ -30,9 +32,9 @@ const Layout = React.forwardRef<HTMLDivElement, DivProps>(
         ref={ref}
         {...props}
       />
-    )
-  },
-)
-Layout.displayName = 'Layout'
+    );
+  }
+);
+Layout.displayName = 'Layout';
 
-export { Layout, divVariants }
+export { Layout, divVariants };

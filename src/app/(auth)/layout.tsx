@@ -6,7 +6,7 @@ function layout({
   children: React.ReactNode;
   params: { slug: string };
 }>) {
-  return <main className="absolute w-full">{children}</main>
+  return <main className="absolute w-full">{children}</main>;
 }
 
 export default layout;
