@@ -27,10 +27,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ko">
-      <body className={inter.className}>
-        {children}
-        <footer>footer</footer>
-      </body>
+      <body className={inter.className}>{children}</body>
     </html>
   );
 }
