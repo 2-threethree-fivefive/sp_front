@@ -17,9 +17,14 @@ function Product({
 }) {
   return (
     <div
-      className={`w-${width} min-w-${width} h-auto mr-4 pb-4 flex flex-col items-center gap-2`}
+      className={`w-36 min-w-36 h-auto mr-4 pb-4 flex flex-col items-center gap-2`}
     >
-      <Link href={`products/${product.productId}`}>
+      <Link
+        href={{
+          pathname: '/products/productDetail',
+          query: { productId: product.productId },
+        }}
+      >
         <Image
           src={product.productThumbnailImage}
           alt={product.productName}
@@ -30,14 +35,19 @@ function Product({
         />
       </Link>
       <div className="w-full flex flex-col gap-1 text-sm text-[#222222]">
-        <div className="flex justify-between items-center">
+        <div className="flex justify-between items-center text-xs">
           <span>스타벅스</span>
           <div className="flex gap-2">
             <EmptyHeartIcon width="20" height="20" />
             <CartBlackIcon />
           </div>
         </div>
-        <Link href={`products/${product.productId}`}>
+        <Link
+          href={{
+            pathname: '/products/productDetail',
+            query: { productId: product.productId },
+          }}
+        >
           <p className="line-clamp-2">{product.productName}</p>
           <p className="text-base font-bold text-black">
             {product.productPrice.toLocaleString()}원

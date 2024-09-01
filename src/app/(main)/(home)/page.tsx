@@ -10,6 +10,7 @@ import ReviewBest from './_components/ReviewBest'
 import StarbucksBest from './_components/StarbucksBest'
 import Footer from '@/components/layouts/Footer'
 import ScrollTopButton from '@/components/buttons/ScrollTopButton'
+import BottomNavbar from '@/components/layouts/BottomNavbar'
 
 export default async function Page() {
   // 메인 카테고리 리스트 데이터 fetch
@@ -27,7 +28,13 @@ export default async function Page() {
       <ul className="mt-16 flex justify-start overflow-x-auto gap-6 lg:gap-20 p-4 w-full bg-starbucks-green">
         {categoryList.map((category) => {
           return (
-            <Link href={`/products/${category.id}`} key={category.id}>
+            <Link
+              key={category.id}
+              href={{
+                pathname: '/products',
+                query: { mainId: category.id },
+              }}
+            >
               <li>
                 <span className="text-nowrap text-white">
                   {category.mainCategoryName}
@@ -44,7 +51,6 @@ export default async function Page() {
       })}
       <ReviewBest />
       <StarbucksBest categoryList={categoryList} />
-      <ScrollTopButton />
     </main>
   )
 }

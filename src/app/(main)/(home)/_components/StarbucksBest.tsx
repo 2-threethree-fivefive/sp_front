@@ -3,8 +3,10 @@
 import CategoryFilterButton from '@/components/buttons/CategoryFilterButton'
 import { mainCategoryListData } from '@/datas/main/categoryDatas'
 import { mainCategoryDataType } from '@/types/main/categoryType'
-import React, { useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import ArrowDownIcon from '/public/assets/images/icons/arrowDownIcon.svg'
+import { Drawer, DrawerTrigger } from '@/components/ui/drawer'
+import CategoryDrawer from './CategoryDrawer'
 
 function StarbucksBest({
   categoryList,
@@ -34,9 +36,18 @@ function StarbucksBest({
             )
           })}
         </ul>
-        <button className="bg-white border p-1 shadow-[0px_0px_10px_10px_rgba(255,255,255,0.95)]">
-          <ArrowDownIcon />
-        </button>
+        <Drawer>
+          <DrawerTrigger asChild>
+            <button className="bg-white border p-1 mr-4 shadow-[0px_0px_10px_10px_rgba(255,255,255,0.95)]">
+              <ArrowDownIcon />
+            </button>
+          </DrawerTrigger>
+          <CategoryDrawer
+            categoryList={categoryList}
+            selected={selected}
+            setSelected={setSelected}
+          />
+        </Drawer>
       </div>
     </section>
   )

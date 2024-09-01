@@ -33,7 +33,12 @@ function MainBanner({ eventBanner }: { eventBanner: eventThumbnailDataType }) {
         {eventBanner.eventThumbnailList.map((event: eventListDataType) => {
           return (
             <SwiperSlide key={event.id}>
-              <Link href={`/event/${event.id}`}>
+              <Link
+                href={{
+                  pathname: '/event',
+                  query: { eventId: event.id },
+                }}
+              >
                 <Image
                   src={event.imageUrl}
                   alt={event.eventName}

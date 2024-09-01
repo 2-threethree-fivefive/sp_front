@@ -20,7 +20,7 @@ function ScrollTopButton() {
     <>
       {isTop ? null : (
         <div
-          className="bg-white bg-opacity-90 fixed bottom-20 right-4 z-[100] p-4 rounded-full"
+          className="bg-white bg-opacity-90 fixed bottom-20 right-4 z-30 p-4 rounded-full"
           onClick={handleClick}
         >
           <TopIcon />
