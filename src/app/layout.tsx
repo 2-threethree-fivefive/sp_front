@@ -1,21 +1,19 @@
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
 import './globals.css';
-
-const inter = Inter({ subsets: ['latin'] });
+import AuthProvider from '@/providers/AuthProvider';
 
 export const metadata: Metadata = {
   title: {
-    default: 'STARBUCKS CLONE APP',
-    template: '%s | STARBUCKS CLONE APP',
+    default: 'STARBUCKS APP',
+    template: '%s | STARBUCKS APP',
   },
-  description: '스타벅스 클론코딩 프로젝트',
+  description: '스타벅스 프로젝트',
   icons: { icon: '/assets/images/icons/icon.png' },
-  metadataBase: new URL('https://spharos5th.com'),
+  metadataBase: new URL('https://starbucks-korea.com'),
   openGraph: {
-    url: 'https://spharos5th.com',
-    title: 'STARBUCKS CLONE APP',
-    description: '스타벅스 클론코딩 프로젝트',
+    url: 'https://starbucks-korea.com',
+    title: 'STARBUCKS APP',
+    description: '스타벅스 프로젝트',
     images: [{ url: '/assets/images/og/og_image.png' }],
   },
 };
@@ -27,7 +25,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ko">
-      <body className={inter.className}>{children}</body>
+      <body className="font-NanumSquare">
+        <AuthProvider>{children}</AuthProvider>
+      </body>
     </html>
   );
 }
