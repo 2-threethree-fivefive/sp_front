@@ -1,6 +1,6 @@
 'use client'
 
-import React from 'react'
+import React, { useState } from 'react'
 import CategoryIcon from '/public/assets/images/icons/categoryIcon.svg'
 import StarbucksIcon from '/public/assets/images/icons/starbucksIcon.svg'
 import SearchIcon from '/public/assets/images/icons/searchIcon.svg'
@@ -9,6 +9,8 @@ import Link from 'next/link'
 import { Dialog, DialogTrigger } from '../ui/dialog'
 import HamburgerCategory from './HamburgerCategory'
 import CloseIcon from '/public/assets/images/icons/closeIcon.svg'
+import { useRouter } from 'next/navigation'
+import SearchModal from '../modals/SearchModal'
 
 function MainPageHeader() {
   // 햄버거 메뉴 상태
@@ -17,16 +19,17 @@ function MainPageHeader() {
     setIsOpen(true)
     document.body.style.overflow = 'hidden'
   }
+
   const handleClose = () => {
     setIsOpen(false)
     document.body.style.overflow = 'auto'
   }
 
-  // // 검색 컴포넌트 상태
-  // const [isSearchOpen, setIsSearchOpen] = React.useState(false)
-  // const toggleSearch = () => {
-  //   setIsSearchOpen(!isSearchOpen)
-  // }
+  const [isSearchOpen, setIsSearchOpen] = useState(false)
+  const toggleSearch = () => {
+    setIsSearchOpen(!isSearchOpen)
+  }
+
   return (
     <div>
       <header className="fixed top-0 left-0 z-50 w-full flex justify-between px-4 items-center h-16 bg-starbucks-green">
@@ -41,7 +44,7 @@ function MainPageHeader() {
           </Link>
         </div>
         <div className="flex gap-3">
-          <SearchIcon />
+          <SearchIcon onClick={toggleSearch} />
           <Link href={'/cart'}>
             <CartWhiteIcon />
           </Link>
@@ -50,6 +53,7 @@ function MainPageHeader() {
       {isOpen && (
         <HamburgerCategory isOpen={isOpen} handleClose={handleClose} />
       )}
+      {isSearchOpen && <SearchModal toggleSearch={toggleSearch} />}
     </div>
   )
 }

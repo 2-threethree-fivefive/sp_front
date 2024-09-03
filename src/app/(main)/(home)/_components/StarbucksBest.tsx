@@ -1,20 +1,40 @@
 'use client'
 
-import CategoryFilterButton from '@/components/buttons/CategoryFilterButton'
 import { mainCategoryListData } from '@/datas/main/categoryDatas'
 import { mainCategoryDataType } from '@/types/main/categoryType'
 import React, { useEffect, useRef, useState } from 'react'
 import ArrowDownIcon from '/public/assets/images/icons/arrowDownIcon.svg'
 import { Drawer, DrawerTrigger } from '@/components/ui/drawer'
 import CategoryDrawer from './CategoryDrawer'
+import Product from './Product'
+import { bestDatas } from '@/datas/main/bestDatas'
+import {
+  productBestDataTpe,
+  productByEventType,
+  productInfoType,
+} from '@/types/main/productType'
+import CategoryFilterButton from './CategoryFilterButton'
 
 function StarbucksBest({
   categoryList,
 }: {
   categoryList: mainCategoryDataType[]
 }) {
-  // 무한 스크롤 (최대 50개까지)
+  // todo: 무한 스크롤 (최대 50개까지)
   const [selected, setSelected] = useState<number>(0)
+
+  // 조회되는 상품 목록들
+  const [productList, setProductList] = useState<productInfoType[]>([])
+
+  useEffect(() => {
+    async function getProductListByCategory() {
+      // let res = await fetch ('API_BASE_URL/product/best?대카테고리ID')
+      let res = await bestDatas
+      setProductList(res.productList)
+      // let res: productInfoType[] = await bestDatas.productList
+    }
+    getProductListByCategory()
+  }, [productList])
 
   return (
     <section className="w-full flex flex-col gap-1 pt-10">
@@ -48,6 +68,11 @@ function StarbucksBest({
             setSelected={setSelected}
           />
         </Drawer>
+      </div>
+      <div className="flex flex-wrap justify-between pl-4">
+        {productList.map((product) => {
+          return <Product key={product.productId} product={product} size="lg" />
+        })}
       </div>
     </section>
   )

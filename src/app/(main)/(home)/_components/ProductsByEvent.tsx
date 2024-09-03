@@ -17,9 +17,7 @@ async function ProductsByEvent({
       <h1 className="text-2xl font-bold">{eventItem.eventName}</h1>
       <div className="pt-4 overflow-x-auto flex">
         {eventItem.productList.map((product) => {
-          return (
-            <Product key={product.productId} product={product} width={36} />
-          )
+          return <Product key={product.productId} product={product} size="md" />
         })}
       </div>
     </section>

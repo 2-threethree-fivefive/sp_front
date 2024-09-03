@@ -13,12 +13,46 @@ import {
 } from '@/types/main/eventType'
 import Image from 'next/image'
 import Link from 'next/link'
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
+import ArrowRightIcon from '/public/assets/images/icons/arrowRightIcon.svg'
+import ShowAllEventList from './ShowAllEventList'
+import PlayIcon from '/public/assets/images/icons/playIcon.svg'
+import PauseIcon from '/public/assets/images/icons/pauseIcon.svg'
+import SwiperCore from 'swiper'
 
 function MainBanner({ eventBanner }: { eventBanner: eventThumbnailDataType }) {
+  // 전체보기 클릭 시 전체 이벤트 리스트 노출
+  const [showAll, setShowAll] = useState(false)
+  const handleShowAll = () => {
+    setShowAll(!showAll)
+  }
+
+  const [currentIndex, setCurrentIndex] = useState(0)
+
+  const handleSlideChange = (swiper: SwiperCore) => {
+    setCurrentIndex(swiper.activeIndex)
+    console.log(swiper.activeIndex)
+  }
+
+  // auto play
+  const swiperRef = useRef<SwiperCore | null>(null)
+  const [isAutoplay, setIsAutoplay] = useState(true) // autoplay 상태 관리
+
+  const toggleAutoplay = () => {
+    if (swiperRef.current) {
+      if (isAutoplay) {
+        swiperRef.current.autoplay.stop() // autoplay 중지
+      } else {
+        swiperRef.current.autoplay.start() // autoplay 시작
+      }
+      setIsAutoplay(!isAutoplay) // autoplay 상태 변경
+    }
+  }
   return (
-    <div className="w-full">
+    <div className="w-full relative">
       <Swiper
+        onSwiper={(swiper) => (swiperRef.current = swiper)} // swiper 인스턴스 설정
+        onSlideChange={handleSlideChange}
         spaceBetween={0}
         loop={true}
         centeredSlides={true}
@@ -28,7 +62,6 @@ function MainBanner({ eventBanner }: { eventBanner: eventThumbnailDataType }) {
         }}
         modules={[Autoplay]}
         slidesPerView={'auto'}
-        className=""
       >
         {eventBanner.eventThumbnailList.map((event: eventListDataType) => {
           return (
@@ -52,6 +85,34 @@ function MainBanner({ eventBanner }: { eventBanner: eventThumbnailDataType }) {
           )
         })}
       </Swiper>
+      <div className="flex gap-[2px] text-white font-bold text-xs absolute z-20 right-0 bottom-0">
+        <div className="flex items-center gap-2 bg-gray-800 bg-opacity-60 px-2">
+          {isAutoplay ? (
+            <PauseIcon onClick={toggleAutoplay} />
+          ) : (
+            <PlayIcon onClick={toggleAutoplay} />
+          )}
+          <div className="tracking-widest">
+            <span>{currentIndex}</span>
+            <span className="text-gray-400">
+              /{eventBanner.eventThumbnailList.length}
+            </span>
+          </div>
+        </div>
+        <button
+          className="flex items-center bg-gray-800 bg-opacity-60 p-2 pl-3"
+          onClick={handleShowAll}
+        >
+          전체보기
+          <ArrowRightIcon />
+        </button>
+      </div>
+      {showAll && (
+        <ShowAllEventList
+          eventBanner={eventBanner}
+          handleShowAll={handleShowAll}
+        />
+      )}
     </div>
   )
 }

@@ -1,6 +1,6 @@
 // 'use client'
 
-import { productListByEventType } from '@/types/main/productType'
+import { productInfoType } from '@/types/main/productType'
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
@@ -10,14 +10,14 @@ import StarIcon from '/public/assets/images/icons/starIcon.svg'
 
 function Product({
   product,
-  width,
+  size,
 }: {
-  product: productListByEventType
-  width: number
+  product: productInfoType
+  size: string
 }) {
   return (
     <div
-      className={`w-36 min-w-36 h-auto mr-4 pb-4 flex flex-col items-center gap-2`}
+      className={`h-auto mr-4 pb-4 flex flex-col items-center gap-2 ${size === 'md' ? 'w-36 min-w-36' : 'w-[170px] min-w-[170px'}`}
     >
       <Link
         href={{
@@ -39,7 +39,7 @@ function Product({
           <span>스타벅스</span>
           <div className="flex gap-2">
             <EmptyHeartIcon width="20" height="20" />
-            <CartBlackIcon />
+            <CartBlackIcon width="20" height="20" />
           </div>
         </div>
         <Link
@@ -52,12 +52,14 @@ function Product({
           <p className="text-base font-bold text-black">
             {product.productPrice.toLocaleString()}원
           </p>
-          <div className="flex gap-1 items-center text-[#777777] text-xs">
-            <StarIcon />
-            <span>{product.reviewScore}</span>
-            <div className="border-solid h-3/4 w-[1px] bg-gray-300"></div>
-            <span>{product.reviewCount}건</span>
-          </div>
+          {product.reviewCount > 0 ? (
+            <div className="flex gap-1 items-center text-[#777777] text-xs">
+              <StarIcon />
+              <span>{product.reviewScore}</span>
+              <div className="border-solid h-3/4 w-[1px] bg-gray-300"></div>
+              <span>{product.reviewCount}건</span>
+            </div>
+          ) : null}
         </Link>
       </div>
     </div>

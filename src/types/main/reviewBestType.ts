@@ -1,4 +1,4 @@
-import { productListByEventType } from './productType'
+import { productInfoType } from './productType'
 
 export interface reviewBestType {
   HttpStatus: string
@@ -11,5 +11,5 @@ export interface reviewBestDataType {
   reviewId: number
   reviewText: string
   reviewImageUrl: string
-  product: productListByEventType
+  product: productInfoType
 }

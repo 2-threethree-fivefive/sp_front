@@ -24,5 +24,23 @@ export const eventThumbnailData: eventThumbnailDataType = {
         'https://simg.ssgcdn.com/trans.ssg?src=/cmpt/banner/202407/2024071116051793695399823639_432.jpg&w=750&h=0',
       eventName: 'Image 3',
     },
+    {
+      id: 4,
+      imageUrl:
+        'https://simg.ssgcdn.com/trans.ssg?src=/cmpt/banner/202408/2024081314575234095027480602_360.jpg&w=750&h=0',
+      eventName: 'Image 4',
+    },
+    {
+      id: 5,
+      imageUrl:
+        'https://simg.ssgcdn.com/trans.ssg?src=/cmpt/banner/202408/2024081314575234095027480602_360.jpg&w=750&h=0',
+      eventName: 'Image 5',
+    },
+    {
+      id: 6,
+      imageUrl:
+        'https://simg.ssgcdn.com/trans.ssg?src=/cmpt/banner/202407/2024071116051793695399823639_432.jpg&w=750&h=0',
+      eventName: 'Image 6',
+    },
   ],
 }
