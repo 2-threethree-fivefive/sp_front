@@ -1,5 +1,5 @@
+import { SignInLinkType } from '@/types/authType';
 import SignInLink from './SignInLink';
-import { SignInLinkType } from '@/types/sign-in/SignInLinkType';
 
 const signInLinkData: SignInLinkType[] = [
   {

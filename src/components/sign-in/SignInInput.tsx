@@ -1,5 +1,5 @@
+import { SignInInputType } from '@/types/authType';
 import React from 'react';
-import { SignInInputType } from '@/types/sign-in/SignInInputType';
 
 function SignInInput({ signInInput }: { signInInput: SignInInputType }) {
   return (

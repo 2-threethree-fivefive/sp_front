@@ -1,8 +1,8 @@
 import Image from 'next/image';
 
-const SignUpIntroHeader = () => {
+const FindIdAuth = () => {
   return (
-    <div className="font-bold flex flex-col items-start mb-6">
+    <div className="font-bold flex flex-col items-center mb-48">
       <Image
         alt="starbucks-logo"
         src="/assets/images/logos/Starbucks-logo.svg"
@@ -11,12 +11,12 @@ const SignUpIntroHeader = () => {
         className="mb-4"
         priority
       />
-      <h2 className="text-xl mt-2 mb-3">
-        고객님
-        <br /> 환영합니다!
-      </h2>
+      <div className="text-xl mt-2 mb-3">
+        <p>고객님의 아이디는</p>
+        <p>{} 입니다.</p>
+      </div>
     </div>
   );
 };
 
-export default SignUpIntroHeader;
+export default FindIdAuth;

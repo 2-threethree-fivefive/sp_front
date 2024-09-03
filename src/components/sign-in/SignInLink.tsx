@@ -1,4 +1,4 @@
-import { SignInLinkType } from '@/types/sign-in/SignInLinkType';
+import { SignInLinkType } from '@/types/authType';
 import Link from 'next/link';
 import React from 'react';
 
