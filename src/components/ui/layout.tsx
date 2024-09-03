@@ -3,7 +3,7 @@ import { cva, type VariantProps } from 'class-variance-authority';
 
 import { cn } from '@/lib/utils';
 
-const divVariants = cva('font-NanumSquare', {
+const divVariants = cva('', {
   variants: {
     variant: {
       default: 'bg-primary text-primary-foreground hover:bg-primary/90',
