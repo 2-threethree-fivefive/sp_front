@@ -5,7 +5,7 @@ import React from 'react';
 export default function Page() {
   return (
     <>
-      <Authentication method={AuthenticationMethodType.SignUp} />
+      <Authentication method={AuthenticationMethodType.FindId} />
     </>
   );
 }

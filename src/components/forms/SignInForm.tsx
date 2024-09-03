@@ -5,6 +5,7 @@ import { Button } from '../ui/button';
 import SignInInput from '../sign-in/SignInInput';
 import SignInHeader from '../sign-in/SignInHeader';
 import SignInLinkList from '../sign-in/SignInLinkList';
+import { Layout } from '../ui/layout';
 
 function SignInForm() {
   const [id, setId] = useState('');
@@ -38,9 +39,11 @@ function SignInForm() {
 
       <SignInLinkList />
 
-      <Button size={'submit'} type="submit">
-        로그인하기
-      </Button>
+      <Layout variant="submitDiv">
+        <Button size={'submit'} type="submit">
+          로그인하기
+        </Button>
+      </Layout>
     </form>
   );
 }

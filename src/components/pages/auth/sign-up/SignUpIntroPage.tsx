@@ -76,7 +76,7 @@ function SignUpIntroPage() {
   }
 
   return (
-    <Layout variant="signUp">
+    <Layout variant="authentication">
       <SignUpIntroHeader />
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
@@ -188,9 +188,11 @@ function SignUpIntroPage() {
               </FormItem>
             )}
           />
-          <Button size={'submit'} type="submit" disabled={isSubmitDisabled}>
-            다음
-          </Button>
+          <Layout variant="submitDiv">
+            <Button size={'submit'} type="submit">
+              확인
+            </Button>
+          </Layout>
         </form>
       </Form>
     </Layout>

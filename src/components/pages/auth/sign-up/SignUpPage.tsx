@@ -4,7 +4,7 @@ import { Layout } from '@/components/ui/layout';
 
 function SignUpPage() {
   return (
-    <Layout variant="signUp">
+    <Layout variant="authentication">
       <SignUpHeader />
       <SignUpForm />
     </Layout>

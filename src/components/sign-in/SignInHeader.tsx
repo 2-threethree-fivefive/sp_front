@@ -6,10 +6,11 @@ const SignInHeader = () => {
       <h1 className="text-2xl font-bold mb-2">로그인</h1>
       <Image
         alt="starbucks-logo"
-        src="/assets/images/logos/Starbucks-logo.svg"
+        src="/assets/images/logos/starbucks-logo.svg"
         width={100}
         height={100}
         className="mb-4"
+        priority
       />
       <h2 className="text-xl mt-2 mb-3">
         안녕하세요.
