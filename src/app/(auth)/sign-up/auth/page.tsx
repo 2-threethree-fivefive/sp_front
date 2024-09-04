@@ -1,11 +1,7 @@
-import Authentication from '@/components/pages/auth/AuthenticationPage';
+import Authentication from '@/components/pages/auth/Authentication';
 import { AuthenticationMethodType } from '@/types/authType';
 import React from 'react';
 
 export default function Page() {
-  return (
-    <>
-      <Authentication method={AuthenticationMethodType.SignUp} />
-    </>
-  );
+  return <Authentication method={AuthenticationMethodType.SignUp} />;
 }

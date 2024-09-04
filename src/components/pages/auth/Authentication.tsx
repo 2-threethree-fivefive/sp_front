@@ -1,5 +1,3 @@
-'use client';
-
 import SignUpAuthHeader from '@/components/auth/SignAuthHeader';
 import SignUpAuthWithKakao from '@/components/auth/SignAuthWithKakao';
 import { Layout } from '@/components/ui/layout';

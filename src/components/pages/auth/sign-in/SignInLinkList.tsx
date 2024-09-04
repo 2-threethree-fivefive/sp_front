@@ -18,7 +18,7 @@ const signInLinkData: SignInLinkType[] = [
 
 const SignInLinkList = () => {
   return (
-    <ul className="flex flex-row justify-center items-center text-sm mt-4 mb-6">
+    <ul className="flex flex-row justify-center items-center text-sm mt-4 mb-14">
       {signInLinkData.map((link, index) => (
         <li key={index}>
           <SignInLink signLink={link} />

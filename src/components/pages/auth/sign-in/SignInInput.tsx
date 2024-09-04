@@ -1,10 +1,12 @@
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
 import { SignInInputType } from '@/types/authType';
 import React from 'react';
 
 function SignInInput({ signInInput }: { signInInput: SignInInputType }) {
   return (
     <div className="relative w-full mb-4">
-      <input
+      <Input
         type={signInInput.name}
         required
         autoComplete="off"
@@ -17,21 +19,21 @@ function SignInInput({ signInInput }: { signInInput: SignInInputType }) {
             e.target.classList.remove('border-green-500');
           }
         }}
-        className={'w-full py-2 px-0 border-b-2 focus:outline-none'}
       />
       <label
-        className={`absolute left-0 transition-all ${signInInput.value ? 'top-[-10px] text-green-500 text-sm' : 'top-2 text-gray-500'}`}
+        className={`absolute left-0 transition-all ${signInInput.value ? 'top-[-6px] text-green-500 text-sm' : 'top-4 text-gray-500'}`}
       >
         {signInInput.text}
       </label>
       {signInInput.value && (
-        <button
+        <Button
+          variant="clear"
+          size="clear"
           type="button"
           onClick={signInInput.clearValue}
-          className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500 text-xl"
         >
           &times;
-        </button>
+        </Button>
       )}
     </div>
   );

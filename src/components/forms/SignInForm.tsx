@@ -1,20 +1,13 @@
 'use client';
 
-import { useState } from 'react';
 import { Button } from '../ui/button';
-import SignInInput from '../sign-in/SignInInput';
-import SignInHeader from '../sign-in/SignInHeader';
-import SignInLinkList from '../sign-in/SignInLinkList';
 import { Layout } from '../ui/layout';
 import { signIn } from 'next-auth/react';
+import SignInLinkList from '../pages/auth/sign-in/SignInLinkList';
+import SignInHeader from '../pages/auth/sign-in/SignInHeader';
+import SignInField from './SIgnInField';
 
 function SignInForm() {
-  const [id, setId] = useState('');
-  const [password, setPassword] = useState('');
-
-  const clearId = () => setId('');
-  const clearPassword = () => setPassword('');
-
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
@@ -32,26 +25,7 @@ function SignInForm() {
       className="w-full max-w-md p-6 rounded-lg mx-auto mt-10 text-black"
     >
       <SignInHeader />
-      <SignInInput
-        signInInput={{
-          text: '아이디',
-          value: id,
-          name: 'id',
-          setValue: setId,
-          clearValue: clearId,
-        }}
-      />
-
-      <SignInInput
-        signInInput={{
-          text: '비밀번호',
-          value: password,
-          name: 'password',
-          setValue: setPassword,
-          clearValue: clearPassword,
-        }}
-      />
-
+      <SignInField />
       <SignInLinkList />
 
       <Layout variant="submitDiv">
