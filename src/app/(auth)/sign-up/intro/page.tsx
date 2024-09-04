@@ -1,10 +1,13 @@
-import SignUpIntroPage from '@/components/pages/auth/sign-up/SignUpIntroPage';
+import SignUpIntroForm from '@/components/forms/SignUpIntroForm';
+import SignUpIntroHeader from '@/components/pages/auth/sign-up/SignUpIntroHeader';
+import { Layout } from '@/components/ui/layout';
 import React from 'react';
 
 export default function Page() {
   return (
-    <>
-      <SignUpIntroPage />
-    </>
+    <Layout variant="authentication">
+      <SignUpIntroHeader />
+      <SignUpIntroForm />
+    </Layout>
   );
 }

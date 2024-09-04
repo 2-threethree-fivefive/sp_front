@@ -1,5 +1,3 @@
-import Image from 'next/image';
-
 const SignUpHeader = () => {
   return (
     <div className="font-bold flex flex-col items-start">
