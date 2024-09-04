@@ -4,9 +4,9 @@ import { productInfoType } from '@/types/main/productType'
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
-import EmptyHeartIcon from '/public/assets/images/icons/emptyHeartIcon.svg'
 import CartBlackIcon from '/public/assets/images/icons/cartBlackIcon.svg'
 import StarIcon from '/public/assets/images/icons/starIcon.svg'
+import LikeButton from '@/components/ui/LikeButton'
 
 function Product({
   product,
@@ -17,14 +17,9 @@ function Product({
 }) {
   return (
     <div
-      className={`h-auto mr-4 pb-4 flex flex-col items-center gap-2 ${size === 'md' ? 'w-36 min-w-36' : 'w-[170px] min-w-[170px'}`}
+      className={`h-auto mr-4 pb-4 flex flex-col items-center gap-2 ${size === 'md' ? 'w-36 min-w-36' : 'w-[45%]'}`}
     >
-      <Link
-        href={{
-          pathname: '/products/productDetail',
-          query: { productId: product.productId },
-        }}
-      >
+      <Link href={`/product/${product.productId}`}>
         <Image
           src={product.productThumbnailImage}
           alt={product.productName}
@@ -38,7 +33,7 @@ function Product({
         <div className="flex justify-between items-center text-xs">
           <span>스타벅스</span>
           <div className="flex gap-2">
-            <EmptyHeartIcon width="20" height="20" />
+            <LikeButton w={20} h={20} />
             <CartBlackIcon width="20" height="20" />
           </div>
         </div>

@@ -1,17 +1,17 @@
-import BottomNavbar from '@/components/layouts/BottomNavbar'
 import Footer from '@/components/layouts/Footer'
-import MainPageHeader from '@/components/layouts/MainPageHeader'
+import ProductBottomNavbar from '@/components/pages/main/product/ProductBottomNavbar'
+import ProductDetailHeader from '@/components/pages/main/product/ProductDetailHeader'
 import ScrollTopButton from '@/components/ui/ScrollTopButton'
 import React from 'react'
 
 function Layout({ children }: { children: React.ReactNode }) {
   return (
     <>
-      <MainPageHeader />
+      <ProductDetailHeader />
       {children}
       <ScrollTopButton />
       <Footer />
-      <BottomNavbar />
+      <ProductBottomNavbar />
     </>
   )
 }

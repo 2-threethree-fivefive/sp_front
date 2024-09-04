@@ -14,7 +14,7 @@ function CategorySlider({
           <Link
             key={category.id}
             href={{
-              pathname: '/products',
+              pathname: '/category',
               query: { mainId: category.id },
             }}
           >

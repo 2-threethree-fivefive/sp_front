@@ -6,7 +6,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import ArrowDownIcon from '/public/assets/images/icons/arrowDownIcon.svg'
 import { Drawer, DrawerTrigger } from '@/components/ui/drawer'
 import CategoryDrawer from './CategoryDrawer'
-import Product from './Product'
+import Product from '../../../cards/Product'
 import { bestDatas } from '@/datas/main/bestDatas'
 import {
   productBestDataTpe,
@@ -21,7 +21,15 @@ function StarbucksBest({
   categoryList: mainCategoryDataType[]
 }) {
   // todo: 무한 스크롤 (최대 50개까지)
+  // 선택되는 카테고리 index
   const [selected, setSelected] = useState<number>(0)
+
+  // 카테고리 선택 시 자동 스크롤
+  const scrollRef = useRef<HTMLUListElement>(null)
+  const handleClick = (idx: number) => {
+    setSelected(idx)
+    scrollRef.current?.scrollIntoView({ behavior: 'smooth', inline: 'center' })
+  }
 
   // 조회되는 상품 목록들
   const [productList, setProductList] = useState<productInfoType[]>([])
@@ -51,7 +59,9 @@ function StarbucksBest({
                 category={category}
                 idx={index}
                 isSelected={selected === index}
+                selected={selected}
                 setSelected={setSelected}
+                scrollRef={scrollRef}
               />
             )
           })}

@@ -44,7 +44,7 @@ function MainPageHeader() {
           </Link>
         </div>
         <div className="flex gap-3">
-          <SearchIcon onClick={toggleSearch} />
+          <SearchIcon onClick={toggleSearch} fill="white" />
           <Link href={'/cart'}>
             <CartWhiteIcon />
           </Link>

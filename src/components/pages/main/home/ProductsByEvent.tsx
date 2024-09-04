@@ -3,7 +3,7 @@ import { productByEventType } from '@/types/main/productType'
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
-import Product from './Product'
+import Product from '../../../cards/Product'
 
 async function ProductsByEvent({
   eventItem,

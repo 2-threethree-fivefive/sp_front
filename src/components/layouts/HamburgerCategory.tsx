@@ -22,7 +22,7 @@ function HamburgerCategory({
 
   return (
     <div>
-      <ul className="w-full fixed top-16 left-0 bg-white z-50 p-4">
+      <ul className="w-full fixed top-16 left-0 bg-white font-semibold text-[#666666] z-50 p-4">
         <Accordion type="single" collapsible>
           {categoryList.map((main) => {
             return (
@@ -46,7 +46,7 @@ function HamburgerCategory({
                       <div className="flex flex-col gap-3 bg-[#F5F5F5] p-6 border-t text-[#444444]">
                         <Link
                           href={{
-                            pathname: '/products',
+                            pathname: '/category',
                             query: { mainId: main.mainCategoryId },
                           }}
                           onClick={handleClose}
@@ -61,7 +61,7 @@ function HamburgerCategory({
                               <Link
                                 key={sub.subCategoryId}
                                 href={{
-                                  pathname: '/products',
+                                  pathname: '/category',
                                   query: {
                                     mainId: main.mainCategoryId,
                                     subId: sub.subCategoryId,

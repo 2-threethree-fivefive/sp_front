@@ -27,25 +27,24 @@ function MainBanner({ eventBanner }: { eventBanner: eventThumbnailDataType }) {
     setShowAll(!showAll)
   }
 
-  const [currentIndex, setCurrentIndex] = useState(0)
+  const [currentIndex, setCurrentIndex] = useState(1)
 
   const handleSlideChange = (swiper: SwiperCore) => {
-    setCurrentIndex(swiper.activeIndex)
-    console.log(swiper.activeIndex)
+    setCurrentIndex(swiper.realIndex) // loop 상태에서 제대로 된 index 가져올 수 있음
   }
 
   // auto play
   const swiperRef = useRef<SwiperCore | null>(null)
-  const [isAutoplay, setIsAutoplay] = useState(true) // autoplay 상태 관리
+  const [isAutoplay, setIsAutoplay] = useState(true)
 
   const toggleAutoplay = () => {
     if (swiperRef.current) {
       if (isAutoplay) {
-        swiperRef.current.autoplay.stop() // autoplay 중지
+        swiperRef.current.autoplay.stop()
       } else {
-        swiperRef.current.autoplay.start() // autoplay 시작
+        swiperRef.current.autoplay.start()
       }
-      setIsAutoplay(!isAutoplay) // autoplay 상태 변경
+      setIsAutoplay(!isAutoplay)
     }
   }
   return (
@@ -66,12 +65,7 @@ function MainBanner({ eventBanner }: { eventBanner: eventThumbnailDataType }) {
         {eventBanner.eventThumbnailList.map((event: eventListDataType) => {
           return (
             <SwiperSlide key={event.id}>
-              <Link
-                href={{
-                  pathname: '/event',
-                  query: { eventId: event.id },
-                }}
-              >
+              <Link href={`/event/${event.id}`}>
                 <Image
                   src={event.imageUrl}
                   alt={event.eventName}
@@ -93,7 +87,7 @@ function MainBanner({ eventBanner }: { eventBanner: eventThumbnailDataType }) {
             <PlayIcon onClick={toggleAutoplay} />
           )}
           <div className="tracking-widest">
-            <span>{currentIndex}</span>
+            <span>{currentIndex + 1}</span>
             <span className="text-gray-400">
               /{eventBanner.eventThumbnailList.length}
             </span>
@@ -111,6 +105,7 @@ function MainBanner({ eventBanner }: { eventBanner: eventThumbnailDataType }) {
         <ShowAllEventList
           eventBanner={eventBanner}
           handleShowAll={handleShowAll}
+          currentIndex={currentIndex}
         />
       )}
     </div>

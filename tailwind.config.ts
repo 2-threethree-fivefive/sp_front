@@ -20,6 +20,8 @@ const config = {
     extend: {
       colors: {
         'starbucks-green': '#006241',
+        'starbucks-red': '#FF5452',
+        'starbucks-lightgray': '#E5E5E5',
         border: 'hsl(var(--border))',
         input: 'hsl(var(--input))',
         ring: 'hsl(var(--ring))',
