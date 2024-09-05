@@ -2,6 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
+body {
+  -ms-overflow-style: none;
+}
+::-webkit-scrollbar {
+  display: none;
+}
+
 @layer base {
   @font-face {
     font-family: 'NanumSquare';
@@ -76,9 +83,6 @@
 @layer base {
   * {
     @apply border-border;
-  }
-  html {
-    @apply font-NanumSquare;
   }
   body {
     @apply bg-background text-foreground;
