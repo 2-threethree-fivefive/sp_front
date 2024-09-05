@@ -40,7 +40,7 @@ function HamburgerCategory({
                 ) : (
                   <AccordionItem value={main.mainCategoryName}>
                     <AccordionTrigger>
-                      <li>{main.mainCategoryName}</li>
+                      <li className="font-semibold">{main.mainCategoryName}</li>
                     </AccordionTrigger>
                     <AccordionContent>
                       <div className="flex flex-col gap-3 bg-[#F5F5F5] p-6 border-t text-[#444444]">

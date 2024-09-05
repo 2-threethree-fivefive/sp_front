@@ -37,19 +37,14 @@ function Product({
             <CartBlackIcon width="20" height="20" />
           </div>
         </div>
-        <Link
-          href={{
-            pathname: '/products/productDetail',
-            query: { productId: product.productId },
-          }}
-        >
+        <Link href={`/product/${product.productId}`}>
           <p className="line-clamp-2">{product.productName}</p>
           <p className="text-base font-bold text-black">
             {product.productPrice.toLocaleString()}원
           </p>
           {product.reviewCount > 0 ? (
             <div className="flex gap-1 items-center text-[#777777] text-xs">
-              <StarIcon />
+              <StarIcon width="11" height="16" fill="#C6C6C6" />
               <span>{product.reviewScore}</span>
               <div className="border-solid h-3/4 w-[1px] bg-gray-300"></div>
               <span>{product.reviewCount}건</span>
