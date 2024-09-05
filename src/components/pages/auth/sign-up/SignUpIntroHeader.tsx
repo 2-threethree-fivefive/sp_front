@@ -13,7 +13,8 @@ const SignUpIntroHeader = () => {
       />
       <h2 className="text-xl mt-2 mb-3">
         고객님
-        <br /> 환영합니다!
+        <br />
+        환영합니다!
       </h2>
     </div>
   );

@@ -8,6 +8,7 @@ const divVariants = cva('', {
     variant: {
       default: 'bg-primary text-primary-foreground hover:bg-primary/90',
       signIn: 'flex flex-col justify-between h-screen bg-white',
+      signUpCheckbox: 'pb-4 border-b-2',
       authentication:
         'flex flex-col h-screen bg-white w-full max-w-md p-6 rounded-lg mx-auto text-black',
       findId: 'flex flex-col h-screen justify-center items-center',
