@@ -98,7 +98,7 @@ function MainBanner({ eventBanner }: { eventBanner: eventThumbnailDataType }) {
           onClick={handleShowAll}
         >
           전체보기
-          <ArrowRightIcon />
+          <ArrowRightIcon fill="white" />
         </button>
       </div>
       {showAll && (

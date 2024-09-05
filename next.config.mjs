@@ -1,7 +1,12 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    domains: ['succ.ssgcdn.com', 'simg.ssgcdn.com', 'sitem.ssgcdn.com'],
+    domains: [
+      'prod-starbucks-product-details.s3.ap-northeast-2.amazonaws.com',
+      'succ.ssgcdn.com',
+      'simg.ssgcdn.com',
+      'sitem.ssgcdn.com',
+    ],
   },
   webpack: (config) => {
     config.module.rules.push({
