@@ -27,7 +27,7 @@ function MainBanner({ eventBanner }: { eventBanner: eventThumbnailDataType }) {
     setShowAll(!showAll);
   };
 
-  const [currentIndex, setCurrentIndex] = useState(1);
+  const [currentIndex, setCurrentIndex] = useState(0);
 
   const handleSlideChange = (swiper: SwiperCore) => {
     setCurrentIndex(swiper.realIndex); // loop 상태에서 제대로 된 index 가져올 수 있음

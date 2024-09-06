@@ -43,7 +43,7 @@ async function ReviewBest() {
                     {review.product.productPrice.toLocaleString()}원
                   </p>
                   <div className="flex gap-1 items-center text-[#777777] text-xs">
-                    <StarIcon />
+                    <StarIcon width="11" height="16" fill="#C6C6C6" />
                     <span>{review.product.reviewScore}</span>
                     <div className="border-solid h-3/4 w-[1px] bg-gray-300"></div>
                     <span>{review.product.reviewCount}건</span>
