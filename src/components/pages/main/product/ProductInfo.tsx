@@ -37,7 +37,7 @@ function ProductInfo({ productInfo }: { productInfo: productDetailDataType }) {
           <span className="underline underline-offset-1">
             {productInfo.reviewCount.toLocaleString()}건 리뷰
           </span>
-          <ArrowRightIcon fill="black" />
+          <ArrowRightIcon fill="black" width={16} height={16} />
         </div>
       </div>
     </section>

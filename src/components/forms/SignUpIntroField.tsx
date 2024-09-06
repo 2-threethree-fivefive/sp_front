@@ -10,11 +10,12 @@ import { ControllerRenderProps } from 'react-hook-form';
 import { Control } from 'react-hook-form';
 import { Layout } from '../ui/layout';
 import { signUpIntroDataType } from '@/types/ResponseTypes';
+import { CheckedState } from '@radix-ui/react-checkbox';
 
 const handleCheckedChange = (
   field: ControllerRenderProps<{ items: string[] }, 'items'>,
   item: { id: string; label: string },
-  checked: boolean | 'indeterminate'
+  checked: CheckedState
 ) => {
   let newValue;
 
