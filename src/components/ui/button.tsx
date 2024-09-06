@@ -15,7 +15,7 @@ const buttonVariants = cva('', {
     size: {
       default: 'h-10 px-4 py-2',
       submit:
-        'h-10 px-4 py-2 w-full bg-green-500 rounded-full disabled:bg-slate-300',
+        'h-10 px-4 py-2 w-full bg-starbucks-green rounded-full disabled:bg-slate-300',
       kakao: 'w-full h-10 bg-white relative',
       clear: '',
     },

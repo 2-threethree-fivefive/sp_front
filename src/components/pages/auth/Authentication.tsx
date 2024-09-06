@@ -1,5 +1,5 @@
-import SignUpAuthHeader from '@/components/auth/SignAuthHeader';
-import SignUpAuthWithKakao from '@/components/auth/SignAuthWithKakao';
+import SignUpAuthHeader from '@/components/pages/auth/SignAuthHeader';
+import SignUpAuthWithKakao from '@/components/pages/auth/SignAuthWithKakao';
 import { Layout } from '@/components/ui/layout';
 import { AuthenticationMethodType } from '@/types/authType';
 

@@ -13,15 +13,15 @@ function SignInInput({ signInInput }: { signInInput: SignInInputType }) {
         value={signInInput.value}
         name={signInInput.name}
         onChange={(e) => signInInput.setValue(e.target.value)}
-        onFocus={(e) => e.target.classList.add('border-green-500')}
+        onFocus={(e) => e.target.classList.add('border-starbucks-green')}
         onBlur={(e) => {
           if (!signInInput.value) {
-            e.target.classList.remove('border-green-500');
+            e.target.classList.remove('border-starbucks-green');
           }
         }}
       />
       <label
-        className={`absolute left-0 transition-all ${signInInput.value ? 'top-[-6px] text-green-500 text-sm' : 'top-4 text-gray-500'}`}
+        className={`absolute left-0 transition-all ${signInInput.value ? 'top-[-6px] text-starbucks-green text-sm' : 'top-4 text-gray-500'}`}
       >
         {signInInput.text}
       </label>
