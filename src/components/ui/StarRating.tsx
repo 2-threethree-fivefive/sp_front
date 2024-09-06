@@ -9,7 +9,7 @@ function StarRating({ rating, w }: { rating: number; w: number }) {
     } else if (rating < starValue - 1) {
       return 0; // 별이 전혀 채워지지 않은 경우
     } else {
-      return (rating - starIndex) * 100 * 1.2; // 별이 부분적으로 채워진 경우
+      return (rating - starIndex) * 100 * 1.25; // 별이 부분적으로 채워진 경우
     }
   };
   return (
