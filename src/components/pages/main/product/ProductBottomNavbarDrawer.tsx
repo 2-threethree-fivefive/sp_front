@@ -1,5 +1,9 @@
 'use client';
-import { DrawerContent } from '@/components/ui/drawer';
+import {
+  DrawerContent,
+  DrawerDescription,
+  DrawerTitle,
+} from '@/components/ui/drawer';
 import { InfoIcon } from 'lucide-react';
 import React, { useState } from 'react';
 
@@ -16,6 +20,8 @@ function ProductBottomNavbarDrawer({ type }: { type: number }) {
   };
   return (
     <DrawerContent>
+      <DrawerTitle />
+      <DrawerDescription />
       <div className="flex flex-col gap-4 pt-8">
         <div className="flex flex-col gap-4 px-4">
           <div className="p-4 bg-starbucks-lightgray">

@@ -15,7 +15,7 @@ function StarRating({ rating, w }: { rating: number; w: number }) {
   return (
     <div className="flex">
       {[...Array(5)].map((_, index) => (
-        <div key={index} className="relative w-6 h-6">
+        <div key={index} className="relative -ml-1 w-6">
           <StarIcon width={w} height={w} fill="#C6C6C6" />
           <div
             className="absolute top-0 left-0 h-full overflow-hidden"

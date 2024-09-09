@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import BackIcon from '/public/assets/images/icons/arrowLeftIcon.svg';
-import CartBlackIcon from '/public/assets/images/icons/cartBlackIcon.svg';
+import CartIcon from '../ui/CartIcon';
 
 function SearchModal({ toggleSearch }: { toggleSearch: () => void }) {
   useEffect(() => {
@@ -22,7 +22,7 @@ function SearchModal({ toggleSearch }: { toggleSearch: () => void }) {
           className="w-3/4 h-10 px-4 text-sm rounded-full bg-[#F5F5F5]"
           placeholder="원하시는 상품을 검색해보세요."
         />
-        <CartBlackIcon width="24" height="24" />
+        <CartIcon count={0} />
       </div>
     </div>
   );
