@@ -11,11 +11,7 @@ import Image from 'next/image';
 import { productInfoType } from '@/types/main/productType';
 import { productDetailDataType } from '@/types/main/productDetailType';
 
-function ProductImgSwiper({
-  productInfo,
-}: {
-  productInfo: productDetailDataType;
-}) {
+function ImgSwiper({ imgList }: { imgList: string[] }) {
   return (
     <>
       <Swiper
@@ -24,7 +20,7 @@ function ProductImgSwiper({
         modules={[Pagination, Navigation]}
         className="w-full h-full"
       >
-        {productInfo.productThumbnailImageList.map((img, index) => {
+        {imgList.map((img, index) => {
           return (
             <SwiperSlide
               key={index}
@@ -45,4 +41,4 @@ function ProductImgSwiper({
   );
 }
 
-export default ProductImgSwiper;
+export default ImgSwiper;

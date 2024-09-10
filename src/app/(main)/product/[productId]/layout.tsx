@@ -26,6 +26,7 @@ function Layout({
         {recommend}
       </div>
       {children}
+      {modal}
       <ScrollTopButton />
       <Footer />
       <ProductBottomNavbar />

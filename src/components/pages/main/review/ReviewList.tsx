@@ -1,3 +1,4 @@
+'use client';
 import ReviewItem from '@/components/cards/ReviewItem';
 import { reviewListData } from '@/datas/main/reviewDatas';
 import { reviewItemType } from '@/types/main/reviewType';
