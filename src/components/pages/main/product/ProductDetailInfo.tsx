@@ -7,17 +7,11 @@ import ProductDetailImageList from './ProductDetailImageList';
 
 function ProductDetailInfo({
   productInfo,
-  infoSection,
 }: {
   productInfo: productDetailDataType;
-  infoSection: React.RefObject<HTMLDivElement> | null;
 }) {
   return (
-    <div
-      ref={infoSection}
-      id="info"
-      className="flex flex-col gap-4 bg-white mt-5 px-4 py-8"
-    >
+    <div id="info" className="flex flex-col gap-4 bg-white mt-5 px-4 py-8">
       <h1 className="text-lg font-bold">상세 정보</h1>
       <p className="text-sm text-[#666666]">
         상품번호 : {productInfo.productId}
