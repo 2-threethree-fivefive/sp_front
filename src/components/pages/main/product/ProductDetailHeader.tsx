@@ -1,9 +1,16 @@
 'use client';
-import React, { RefObject, useEffect, useRef, useState } from 'react';
+import React, {
+  RefObject,
+  useContext,
+  useEffect,
+  useRef,
+  useState,
+} from 'react';
 import BackIcon from '/public/assets/images/icons/backIcon.svg';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import CartIcon from '@/components/ui/CartIcon';
+import { SectionRefsContext } from '@/app/(main)/product/[productId]/page';
 
 function ProductDetailHeader({
   scrollToSection,
@@ -30,9 +37,12 @@ function ProductDetailHeader({
       window.removeEventListener('scroll', handleScroll);
     };
   }, []);
+  // const { infoSection, reviewSection, recommendSection } =
+  //   useContext(SectionRefsContext);
+  console.log(infoSection, reviewSection, recommendSection);
 
   return (
-    <>
+    <header>
       {!isTop && (
         <header className="flex justify-between items-center fixed top-0 left-0 z-10 w-full bg-white h-14 px-4 transition-transform">
           <BackIcon onClick={() => router.back()} />
@@ -44,7 +54,7 @@ function ProductDetailHeader({
           <CartIcon count={10} />
         </header>
       )}
-    </>
+    </header>
   );
 }
 

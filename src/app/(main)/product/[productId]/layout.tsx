@@ -4,10 +4,27 @@ import ProductBottomNavbar from '@/components/pages/main/product/ProductBottomNa
 import ScrollTopButton from '@/components/ui/ScrollTopButton';
 import React from 'react';
 
-function Layout({ children }: { children: React.ReactNode }) {
+function Layout({
+  children,
+  productinfo,
+  reviews,
+  recommend,
+  modal,
+}: {
+  children: React.ReactNode;
+  productinfo: React.ReactNode;
+  reviews: React.ReactNode;
+  recommend: React.ReactNode;
+  modal: React.ReactNode;
+}) {
   return (
     <>
       <BasicHeader />
+      <div className="w-full h-full bg-starbucks-lightgray">
+        {productinfo}
+        {reviews}
+        {recommend}
+      </div>
       {children}
       <ScrollTopButton />
       <Footer />
