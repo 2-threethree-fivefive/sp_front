@@ -5,6 +5,7 @@ import BackIcon from '/public/assets/images/icons/backIcon.svg';
 import { productInfoType } from '@/types/main/productType';
 import { productsByEventDatas } from '@/datas/main/productDatas';
 import { bestDatas } from '@/datas/main/bestDatas';
+import SimpleHeader from '@/components/layouts/SimpleHeader';
 
 function Page() {
   const router = useRouter();
@@ -20,17 +21,7 @@ function Page() {
   //   getRecentProductList()
   // }, [])
 
-  return (
-    <div className="p-4 pt-8 bg-gray-100">
-      <header className="relative font-bold text-center">
-        최근 본 상품
-        <BackIcon
-          className="absolute top-0 left-0"
-          onClick={() => router.back()}
-        />
-      </header>
-    </div>
-  );
+  return <SimpleHeader title="최근 본 상품" />;
 }
 
 export default Page;

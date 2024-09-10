@@ -2,11 +2,10 @@
 import { useRouter } from 'next/navigation';
 import React, { useState } from 'react';
 import BackIcon from '/public/assets/images/icons/backIcon.svg';
-import StarbucksIcon from '/public/assets/images/icons/starbucksIcon.svg';
 import SearchIcon from '/public/assets/images/icons/searchIcon.svg';
-import CartBlackIcon from '/public/assets/images/icons/cartBlackIcon.svg';
 import Link from 'next/link';
 import Image from 'next/image';
+import CartIcon from '../ui/CartIcon';
 
 function BasicHeader() {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
@@ -16,18 +15,21 @@ function BasicHeader() {
   const router = useRouter();
   return (
     <div>
-      <header className="w-full flex justify-between px-4 items-center h-16 bg-white">
+      <header className="w-full flex justify-between px-4 items-center h-14 bg-white">
         <div className="flex items-center gap-3">
           <BackIcon onClick={() => router.back()} />
           <Link href={'/'}>
-            <StarbucksIcon />
+            <Image
+              src="/assets/images/logos/starbucks-text-black.png"
+              alt="starbucks text black"
+              width={150}
+              height={30}
+            />
           </Link>
         </div>
         <div className="flex gap-3">
           <SearchIcon onClick={toggleSearch} fill="black" />
-          <Link href={'/cart'}>
-            <CartBlackIcon width="24" height="24" />
-          </Link>
+          <CartIcon count={10} />
         </div>
       </header>
     </div>
