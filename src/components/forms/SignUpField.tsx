@@ -3,7 +3,7 @@
 import { SignUpRequestType } from '@/types/RequestTypes';
 import { useState } from 'react';
 import SignInInput from '../pages/auth/sign-in/SignInInput';
-import { signInSchema } from '../schemas/signInSchema';
+import { signUpSchema } from '../schemas/signUpSchema';
 
 function SignUpField() {
   const [inputValues, setInputValues] = useState<SignUpRequestType>({
@@ -29,7 +29,7 @@ function SignUpField() {
     };
     setInputValues(updatedValues);
 
-    const res = signInSchema.safeParse(updatedValues);
+    const res = signUpSchema.safeParse(updatedValues);
 
     if (!res.success) {
       const fieldErrors: Partial<SignUpRequestType> = {};

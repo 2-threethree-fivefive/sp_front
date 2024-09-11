@@ -32,3 +32,44 @@ export interface orderDeliveryResType {
   message: string;
   data: orderDeliveryDataType[];
 }
+
+// 쿠폰에 관한 정보 타입
+export interface couponDataType {
+  couponId: string;
+  discount: number;
+  available: boolean;
+  couponTitle: string;
+  startDate: string;
+  endDate: string;
+  condition: string;
+}
+
+// 쿠폰에 관한 Res 타입
+export interface couponResType {
+  HttpStatus: string;
+  code: number;
+  message: string;
+  data: couponDataType[];
+}
+
+// 쿠폰에 관한 정보 타입
+export interface deliveryDataType {
+  deliveryId: string;
+  nickname: string | null;
+  name: string;
+  postNumber: string;
+  basicAddress: string;
+  detailAddress: string;
+  phone1: string;
+  phone2: string | null;
+  Message: string | null;
+  isBase: boolean;
+}
+
+// 쿠폰에 관한 Res 타입
+export interface deliveryResType {
+  HttpStatus: string;
+  code: number;
+  message: string;
+  data: deliveryDataType[];
+}

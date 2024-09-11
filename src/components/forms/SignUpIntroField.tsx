@@ -68,6 +68,7 @@ function SignUpIntroField({ control, items }: SignUpIntroFieldProps) {
             <Layout variant="signUpCheckbox">
               <FormControl>
                 <Checkbox
+                  variant="small"
                   checked={
                     items
                       ? items.every((item) => field.value?.includes(item.id))
@@ -96,6 +97,7 @@ function SignUpIntroField({ control, items }: SignUpIntroFieldProps) {
                 >
                   <FormControl>
                     <Checkbox
+                      variant="small"
                       checked={field.value?.includes(item.id)}
                       onCheckedChange={(checked) => {
                         handleCheckedChange(field, item, checked);
