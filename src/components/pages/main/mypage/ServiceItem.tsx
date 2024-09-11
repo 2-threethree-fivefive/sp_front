@@ -1,12 +1,12 @@
 import Link from 'next/link';
 import {
-  Bell,
   Truck,
   Gift,
   Ticket,
   Megaphone,
   FileSpreadsheet,
   ChevronRight,
+  MessageSquareMore,
 } from 'lucide-react';
 
 function ServiceItem({ text, link }: { text: string; link: string }) {
@@ -25,8 +25,8 @@ function ServiceItem({ text, link }: { text: string; link: string }) {
     case '배송지 관리':
       Icon = Truck;
       break;
-    case '입고 알림 내역':
-      Icon = Bell;
+    case '리뷰 관리':
+      Icon = MessageSquareMore;
       break;
     case '배송지 정보 수집 및 이용 동의':
       Icon = Megaphone;
