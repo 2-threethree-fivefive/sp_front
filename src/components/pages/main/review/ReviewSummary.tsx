@@ -5,6 +5,7 @@ import { productDetailData } from '@/datas/main/productDetailDatas';
 import { reviewSummaryData } from '@/datas/main/reviewDatas';
 import { reviewSummaryType } from '@/types/main/reviewType';
 import { ArrowRightIcon, ChevronRight } from 'lucide-react';
+import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
 
 function ReviewSummary() {
@@ -38,10 +39,12 @@ function ReviewSummary() {
           <div className="flex w-full justify-between">
             <span className="font-bold">포토&동영상 리뷰</span>
             {/* 크기가 스크린 너비 넘어갈 경우에만 더보기 노출 & 모달 열기 */}
-            <div className="flex items-center text-sm">
-              <span>더보기(20)</span>
-              <ChevronRight width={16} className="text-gray-500" />
-            </div>
+            <Link href={`/product/${reviewSummary.productUUID}/photoReviewAll`}>
+              <div className="flex items-center text-sm">
+                <span>더보기(20)</span>
+                <ChevronRight width={16} className="text-gray-500" />
+              </div>
+            </Link>
           </div>
           {/* 포토 동영상 imgList 보여주기 */}
           <div className="flex gap-2 overflow-x-auto">
@@ -50,10 +53,12 @@ function ReviewSummary() {
             <div className="w-24 min-w-24 h-24 bg-gray-500">상품사진</div>
             <div className="w-24 min-w-24 h-24 bg-gray-500">상품사진</div>
             <div className="w-24 min-w-24 h-24 bg-gray-500">상품사진</div>
-            <div className="w-24 min-w-24 h-24 bg-gray-300 flex flex-col justify-center items-center">
-              <span>+</span>
-              <span>더보기</span>
-            </div>
+            <Link href={`/product/${reviewSummary.productUUID}/photoReviewAll`}>
+              <div className="w-24 min-w-24 h-24 bg-gray-300 flex flex-col justify-center items-center">
+                <span>+</span>
+                <span>더보기</span>
+              </div>
+            </Link>
           </div>
         </div>
       ) : (

@@ -49,7 +49,9 @@ async function ReviewBest() {
                     <span>{review.product.reviewCount}건</span>
                   </div>
                 </Link>
-                <Link href={`/reviewDetail/${review.reviewId}`}>
+                <Link
+                  href={`/product/${review.product.productId}/reviewdetail?reviewId=${review.reviewId}`}
+                >
                   <p className="text-xs text-[#666666] text-ellipsis line-clamp-3">
                     {review.reviewText}
                   </p>

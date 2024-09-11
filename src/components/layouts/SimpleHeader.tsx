@@ -1,3 +1,4 @@
+'use client';
 import { ChevronLeft } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import React from 'react';
@@ -5,15 +6,13 @@ import React from 'react';
 function SimpleHeader({ title }: { title: string }) {
   const router = useRouter();
   return (
-    <div className="p-4 pt-8 bg-gray-100">
-      <header className="relative font-bold text-center">
-        {title}
-        <ChevronLeft
-          className="absolute top-0 left-0"
-          onClick={() => router.back()}
-        />
-      </header>
-    </div>
+    <header className="w-full h-14 p-4 relative font-semibold text-center">
+      <ChevronLeft
+        className="absolute top-[14px] -ml-1 text-gray-700"
+        onClick={() => router.back()}
+      />
+      <span>{title}</span>
+    </header>
   );
 }
 

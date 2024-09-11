@@ -13,7 +13,7 @@ function ReviewItem({ review }: { review: reviewItemType }) {
       <div className="flex items-baseline">
         <StarRatingBlack reviewScore={review.reviewScore} />
         <span className="text-xs pl-1">사용자ID</span>
-        {/* 이미지가 있는 경우만 더보기 아이콘 노출 */}
+        {/* 이미지가 있는 경우만 화살표 노출 */}
         <Link
           href={`/product/${review.productUuid}/reviewdetail?reviewId=${review.reviewUuid}`}
           scroll={false}
