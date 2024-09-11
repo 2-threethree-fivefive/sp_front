@@ -11,7 +11,7 @@ function ProductDetailInfo({
   productInfo: productDetailDataType;
 }) {
   return (
-    <div id="info" className="flex flex-col gap-4 bg-white mt-5 px-4 py-8">
+    <section id="info" className="flex flex-col gap-4 bg-white mt-5 px-4 py-8">
       <h1 className="text-lg font-bold">상세 정보</h1>
       <p className="text-sm text-[#666666]">
         상품번호 : {productInfo.productId}
@@ -44,7 +44,7 @@ function ProductDetailInfo({
       {/* 상품 공지? */}
       {/* 상품 상세 이미지 */}
       <ProductDetailImageList productInfo={productInfo} />
-    </div>
+    </section>
   );
 }
 

@@ -1,7 +1,7 @@
 import React from 'react';
 
-function Page() {
-  return <div>reviewDetail</div>;
+function Page({ params }: { params: { reviewId: string } }) {
+  return <div>{params.reviewId}</div>;
 }
 
 export default Page;

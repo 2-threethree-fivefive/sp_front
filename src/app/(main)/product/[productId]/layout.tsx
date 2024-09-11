@@ -2,6 +2,7 @@ import BasicHeader from '@/components/layouts/BasicHeader';
 import Footer from '@/components/layouts/Footer';
 import ProductBottomNavbar from '@/components/pages/main/product/ProductBottomNavbar';
 import ScrollTopButton from '@/components/ui/ScrollTopButton';
+import ScrollProvider from '@/providers/ScrollProvider';
 import React from 'react';
 
 function Layout({
@@ -19,13 +20,15 @@ function Layout({
 }) {
   return (
     <>
-      <BasicHeader />
-      <div className="w-full h-full bg-starbucks-lightgray">
-        {productinfo}
-        {reviews}
-        {recommend}
-      </div>
-      {children}
+      {/* <BasicHeader /> */}
+      <ScrollProvider>
+        <div className="w-full h-full bg-starbucks-lightgray">
+          {productinfo}
+          {reviews}
+          {recommend}
+        </div>
+        {children}
+      </ScrollProvider>
       {modal}
       <ScrollTopButton />
       <Footer />

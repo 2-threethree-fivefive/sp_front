@@ -1,7 +1,7 @@
 import SimpleHeader from '@/components/layouts/SimpleHeader';
 import React from 'react';
 
-export default function ReviewAllModal({
+export default function PhotoReviewAllModal({
   children,
 }: {
   children: React.ReactNode;
@@ -11,7 +11,7 @@ export default function ReviewAllModal({
       open
       className="fixed top-0 left-0 w-full h-full overflow-hidden flex flex-col items-center z-50"
     >
-      <SimpleHeader title="리뷰 전체 보기" />
+      <SimpleHeader title="포토&동영상 전체" />
       <div className="flex-1 w-full overflow-y-auto">{children}</div>
     </dialog>
   );

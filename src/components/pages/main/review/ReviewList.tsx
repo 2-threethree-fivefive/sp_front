@@ -2,6 +2,7 @@
 import ReviewItem from '@/components/cards/ReviewItem';
 import { reviewListData } from '@/datas/main/reviewDatas';
 import { reviewItemType } from '@/types/main/reviewType';
+import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
 
 function ReviewList() {
@@ -24,9 +25,14 @@ function ReviewList() {
             ))}
           </div>
           {reviewList.length > 4 && (
-            <button className="border h-10 w-full mt-4 text-sm">
-              전체보기
-            </button>
+            <Link
+              href={`/product/${reviewList[0].productUuid}/reviewall`}
+              scroll={false}
+            >
+              <button className="border h-10 w-full mt-4 text-sm">
+                전체보기
+              </button>
+            </Link>
           )}
         </div>
       ) : null}
