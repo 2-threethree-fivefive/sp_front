@@ -4,6 +4,7 @@ import { eventThumbnailData } from '@/datas/main/eventDatas';
 import { eventThumbnailDataType } from '@/types/main/eventType';
 import Image from 'next/image';
 import Link from 'next/link';
+import FitImage from '@/components/ui/FitImage';
 
 function ShowAllEventList({
   eventBanner,
@@ -59,14 +60,7 @@ function ShowAllEventList({
               //   linkRefs.current[index] = el
               // }}
             >
-              <Image
-                src={event.imageUrl}
-                alt={event.eventName}
-                width={0}
-                height={0}
-                sizes="100vw"
-                style={{ width: '100%', height: 'auto' }}
-              />
+              <FitImage src={event.imageUrl} alt={event.eventName} />
             </Link>
           );
         })}

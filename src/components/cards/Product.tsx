@@ -7,6 +7,7 @@ import React from 'react';
 import CartBlackIcon from '/public/assets/images/icons/cartBlackIcon.svg';
 import StarIcon from '/public/assets/images/icons/starIcon.svg';
 import LikeButton from '@/components/ui/LikeButton';
+import FitImage from '../ui/FitImage';
 
 function Product({
   product,
@@ -20,13 +21,9 @@ function Product({
       className={`h-auto mr-4 pb-4 flex flex-col items-center gap-2 ${size === 'md' ? 'w-36 min-w-36' : 'w-[45%]'}`}
     >
       <Link href={`/product/${product.productId}`}>
-        <Image
+        <FitImage
           src={product.productThumbnailImage}
           alt={product.productName}
-          width={0}
-          height={0}
-          sizes="100vw"
-          style={{ width: '100%', height: 'auto' }}
         />
       </Link>
       <div className="w-full flex flex-col gap-1 text-sm text-[#222222]">

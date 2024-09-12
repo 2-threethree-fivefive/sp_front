@@ -3,6 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
 import StarIcon from '/public/assets/images/icons/starIcon.svg';
+import FitImage from '@/components/ui/FitImage';
 
 async function ReviewBest() {
   // fetch
@@ -23,14 +24,9 @@ async function ReviewBest() {
                 href={`/product/${review.product.productId}`}
                 className="w-2/5"
               >
-                <Image
+                <FitImage
                   src={review.product.productThumbnailImage}
                   alt={review.product.productName}
-                  width={0}
-                  height={0}
-                  sizes="100vw"
-                  style={{ width: '100%', height: 'auto' }}
-                  priority
                 />
               </Link>
               <div className="w-3/5 flex flex-col gap-0.5 pl-2">

@@ -4,6 +4,7 @@ import ArrowRightIcon from '/public/assets/images/icons/arrowRightIcon.svg';
 import Image from 'next/image';
 import Link from 'next/link';
 import NoticeIcon from '/public/assets/images/icons/noticeIcon.svg';
+import FitImage from '@/components/ui/FitImage';
 
 function ProductInfo({ productInfo }: { productInfo: productDetailDataType }) {
   return (
@@ -14,13 +15,9 @@ function ProductInfo({ productInfo }: { productInfo: productDetailDataType }) {
       </p>
       {/* 로그인되어있을때만 이동 가능 */}
       <Link href="https://member.ssg.com/m/mbrsp/join/benefit.ssg">
-        <Image
-          alt="SSG Universe"
-          width={0}
-          height={0}
+        <FitImage
           src="https://simg.ssgcdn.com/trans.ssg?src=/ui/m_ssg/img/product/mndtl_universe_type_banner07.png"
-          sizes="100vw"
-          style={{ width: '100%', height: 'auto' }}
+          alt="SSG Universe"
         />
       </Link>
       {/* 공지 (재고관련, 최근 구매율,  ) */}
