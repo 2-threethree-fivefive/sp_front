@@ -1,3 +1,4 @@
+import FitImage from '@/components/ui/FitImage';
 import { trendTagData } from '@/datas/main/trendtagData';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -22,15 +23,7 @@ async function TrendTags() {
               }}
               className="w-24 min-w-24 h-auto mr-4 pb-4 flex flex-col items-center gap-2 "
             >
-              <Image
-                src={tag.tagImgUrl}
-                alt={tag.tagName}
-                width={0}
-                height={0}
-                sizes="100vw"
-                style={{ width: '100%', height: 'auto' }}
-                className="rounded-full"
-              />
+              <FitImage src={tag.tagImgUrl} alt={tag.tagName} />
               <span className="text-sm">{tag.tagName}</span>
             </Link>
           );

@@ -19,6 +19,7 @@ import ShowAllEventList from './ShowAllEventList';
 import PlayIcon from '/public/assets/images/icons/playIcon.svg';
 import PauseIcon from '/public/assets/images/icons/pauseIcon.svg';
 import SwiperCore from 'swiper';
+import FitImage from '@/components/ui/FitImage';
 
 function MainBanner({ eventBanner }: { eventBanner: eventThumbnailDataType }) {
   // 전체보기 클릭 시 전체 이벤트 리스트 노출
@@ -66,14 +67,7 @@ function MainBanner({ eventBanner }: { eventBanner: eventThumbnailDataType }) {
           return (
             <SwiperSlide key={event.id}>
               <Link href={`/event/${event.id}`}>
-                <Image
-                  src={event.imageUrl}
-                  alt={event.eventName}
-                  width={0}
-                  height={0}
-                  sizes="100vw"
-                  style={{ width: '100%', height: 'auto' }}
-                />
+                <FitImage src={event.imageUrl} alt={event.eventName} />
               </Link>
             </SwiperSlide>
           );

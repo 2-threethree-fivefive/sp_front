@@ -1,4 +1,3 @@
-'use client';
 import CloseHeader from '@/components/layouts/CloseHeader';
 import React from 'react';
 
