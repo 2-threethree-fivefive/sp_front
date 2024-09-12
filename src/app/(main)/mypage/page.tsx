@@ -1,3 +1,4 @@
+import BasicHeader from '@/components/layouts/BasicHeader';
 import OrderDelivery from '@/components/pages/main/mypage/OrderDelivery';
 import ServiceList from '@/components/pages/main/mypage/ServiceList';
 import TermPolicy from '@/components/pages/main/mypage/TermPolicy';

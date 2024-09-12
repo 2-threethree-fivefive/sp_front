@@ -33,8 +33,8 @@ function DeliveryCard({ delivery }: { delivery: deliveryDataType }) {
         {delivery.phone1}
         {delivery.phone2 && ` | ${delivery.phone2}`}
       </p>
-      {delivery.Message && (
-        <p className="text-md text-slate-500 mt-1">{delivery.Message}</p>
+      {delivery.message && (
+        <p className="text-md text-slate-500 mt-1">{delivery.message}</p>
       )}
     </div>
   );

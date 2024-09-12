@@ -1,10 +1,10 @@
-import { getDeliveryData } from '@/actions/mypage/deleveryAction';
+import { getDeliveryListData } from '@/actions/mypage/deleveryAction';
 import { deliveryDataType } from '@/types/ResponseTypes';
 import DeliveryCard from './DeliveryCard';
 
 async function DeliveryContent() {
   const deliveries: deliveryDataType[] =
-    (await getDeliveryData()) as deliveryDataType[];
+    (await getDeliveryListData()) as deliveryDataType[];
 
   const baseDeliveries = deliveries.filter((delivery) => delivery.isBase);
   const otherDeliveries = deliveries.filter((delivery) => !delivery.isBase);

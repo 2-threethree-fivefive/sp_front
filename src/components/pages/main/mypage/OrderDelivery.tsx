@@ -1,6 +1,6 @@
 import { orderDeliveryDataType } from '@/types/ResponseTypes';
 import { getOrderDeliveryData } from '@/actions/mypage/orderDeliveryAction';
-import OrderDeliveryItemBox from './OrderDeliveryItemBox';
+import OrderDeliveryItemBox from './OrderDeliveryItemList';
 
 async function OrderDelivery() {
   const datas: orderDeliveryDataType[] =

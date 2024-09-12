@@ -2,7 +2,7 @@ import { orderDeliveryDataType } from '@/types/ResponseTypes';
 import OrderDeliveryItem from './OrderDeliveryItem';
 import ArrowRightIcon from '/public/assets/images/icons/arrowRightIcon.svg';
 
-function OrderDeliveryItemBox({ datas }: { datas: orderDeliveryDataType[] }) {
+function OrderDeliveryList({ datas }: { datas: orderDeliveryDataType[] }) {
   return (
     <ul className="flex justify-around text-center p-2 my-4">
       {datas.map((data, index) => (
@@ -17,4 +17,4 @@ function OrderDeliveryItemBox({ datas }: { datas: orderDeliveryDataType[] }) {
   );
 }
 
-export default OrderDeliveryItemBox;
+export default OrderDeliveryList;
