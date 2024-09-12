@@ -12,7 +12,7 @@ export default function ReviewDetailModal({
       open
       className="fixed top-0 left-0 w-full h-full overflow-hidden flex flex-col items-center z-50"
     >
-      <CloseHeader title="리뷰 상세" />
+      <CloseHeader />
       {children}
     </dialog>
   );

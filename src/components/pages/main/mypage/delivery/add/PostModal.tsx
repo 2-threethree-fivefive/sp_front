@@ -7,7 +7,7 @@ interface PostModalProps {
 
 function PostModal({ handleComplete }: PostModalProps) {
   return (
-    <div className="absolute top-0 left-0 w-full h-full bg-white">
+    <div className="absolute top-[60px] left-0 z-40 w-full h-full bg-white">
       <div className="">
         <DaumPostcode onComplete={handleComplete} />
       </div>
