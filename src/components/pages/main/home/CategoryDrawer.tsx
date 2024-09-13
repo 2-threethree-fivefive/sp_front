@@ -7,17 +7,18 @@ import {
   DrawerHeader,
   DrawerTitle,
 } from '@/components/ui/drawer';
-import { mainCategoryDataType } from '@/types/main/categoryType';
+
 import React, { Dispatch, SetStateAction, useEffect } from 'react';
 import CloseIcon from '/public/assets/images/icons/closeIcon.svg';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
+import { topCategoryDataType } from '@/types/ResponseTypes';
 
 function CategoryDrawer({
   categoryList,
   selected,
   setSelected,
 }: {
-  categoryList: mainCategoryDataType[];
+  categoryList: topCategoryDataType[];
   selected: number;
   setSelected: Dispatch<SetStateAction<number>>;
 }) {
@@ -55,7 +56,7 @@ function CategoryDrawer({
                 className={selected === index ? 'font-bold' : 'text-[#666666]'}
                 htmlFor={index.toString()}
               >
-                {category.mainCategoryName}
+                {category.topCategoryName}
               </label>
             </div>
           );

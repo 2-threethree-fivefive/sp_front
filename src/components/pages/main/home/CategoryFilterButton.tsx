@@ -1,4 +1,4 @@
-import { mainCategoryDataType } from '@/types/main/categoryType';
+import { topCategoryDataType } from '@/types/ResponseTypes';
 import React, { Dispatch, SetStateAction, useEffect, useRef } from 'react';
 
 function CategoryFilterButton({
@@ -9,7 +9,7 @@ function CategoryFilterButton({
   setSelected,
   scrollRef,
 }: {
-  category: mainCategoryDataType;
+  category: topCategoryDataType;
   idx: number;
   isSelected: boolean;
   selected: number;
@@ -34,7 +34,7 @@ function CategoryFilterButton({
       className={`text-nowrap px-3 py-2 border tracking-tighter ${isSelected && 'bg-black text-white'}`}
       onClick={() => setSelected(idx)}
     >
-      <button>{category.mainCategoryName}</button>
+      <button>{category.topCategoryName}</button>
     </li>
   );
 }

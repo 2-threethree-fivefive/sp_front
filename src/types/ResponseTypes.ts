@@ -1,8 +1,8 @@
-export interface commonResType {
+export interface commonResType<T> {
   HttpStatus: string;
   code: number;
   message: string;
-  data: unknown;
+  data?: T;
 }
 
 // 이용 약관에 관한 정보 타입
@@ -115,25 +115,9 @@ export interface productDataType {
   productInfo: string;
 }
 
-// 상품 UUID로 상품 기본 정보에 관한 Res 타입
-export interface productResType {
-  HttpStatus: string;
-  code: number;
-  message: string;
-  data: productDataType;
-}
-
 // 상품UUID로 상품 가격 정보 타입
 export interface productPriceDataType {
   price: number;
-}
-
-// 상품 UUID로 상품 가격 정보에 관한 Res 타입
-export interface productPriceResType {
-  HttpStatus: string;
-  code: number;
-  message: string;
-  data: productPriceDataType;
 }
 
 // 상품UUID로 할인율 정보 타입
@@ -142,26 +126,10 @@ export interface productDiscountDataType {
   discountPrice: number;
 }
 
-// 상품 UUID로 할인율 정보에 관한 Res 타입
-export interface productDiscountResType {
-  HttpStatus: string;
-  code: number;
-  message: string;
-  data: productDiscountDataType;
-}
-
 // 상품 UUID에 대한 전체 리뷰 Score, Count:
 export interface productReviewAllDataType {
   reviewAvg: number;
   reviewCnt: number;
-}
-
-// 상품 UUID로 할인율 정보에 관한 Res 타입
-export interface productReviewAllResType {
-  HttpStatus: string;
-  code: number;
-  message: string;
-  data: productReviewAllDataType;
 }
 
 // UUID로 이미지 정보 타입
@@ -171,10 +139,18 @@ export interface imageDataType {
   imageName: string;
 }
 
-// UUID로 이미지 정보에 관한 Res 타입
-export interface imageResType {
-  HttpStatus: string;
-  code: number;
-  message: string;
-  data: imageDataType;
+// 카테고리 데이터 타입
+export interface topCategoryDataType {
+  id: number;
+  topCategoryName: string;
+}
+
+export interface middleCategoryDataType {
+  id: number;
+  middleCategoryName: string;
+}
+
+export interface bottomCategoryDataType {
+  id: number;
+  bottomCategoryName: string;
 }
