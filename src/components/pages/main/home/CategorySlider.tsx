@@ -1,11 +1,14 @@
-import { mainCategoryDataType } from '@/types/main/categoryType';
+import {
+  mainCategoryDataType,
+  topCategoryDataType,
+} from '@/types/main/categoryType';
 import Link from 'next/link';
 import React from 'react';
 
 function CategorySlider({
   categoryList,
 }: {
-  categoryList: mainCategoryDataType[];
+  categoryList: topCategoryDataType[];
 }) {
   return (
     <ul className="mt-16 flex justify-start overflow-x-auto gap-6 lg:gap-20 p-4 w-full bg-starbucks-green">
@@ -20,7 +23,7 @@ function CategorySlider({
           >
             <li>
               <span className="text-nowrap text-white">
-                {category.mainCategoryName}
+                {category.topCategoryName}
               </span>
             </li>
           </Link>

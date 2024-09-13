@@ -6,10 +6,8 @@ import StarbucksIcon from '/public/assets/images/icons/starbucksIcon.svg';
 import SearchIcon from '/public/assets/images/icons/searchIcon.svg';
 import CartWhiteIcon from '/public/assets/images/icons/cartWhiteIcon.svg';
 import Link from 'next/link';
-import { Dialog, DialogTrigger } from '../ui/dialog';
 import HamburgerCategory from './HamburgerCategory';
 import CloseIcon from '/public/assets/images/icons/closeIcon.svg';
-import { useRouter } from 'next/navigation';
 import SearchModal from '../modals/SearchModal';
 
 function MainPageHeader() {

@@ -1,8 +1,8 @@
-export interface commonResType {
+export interface commonResType<T> {
   HttpStatus: string;
   code: number;
   message: string;
-  data: unknown;
+  data?: T;
 }
 
 // 이용 약관에 관한 정보 타입

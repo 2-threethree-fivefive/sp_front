@@ -1,7 +1,10 @@
 'use client';
 
 import { mainCategoryListData } from '@/datas/main/categoryDatas';
-import { mainCategoryDataType } from '@/types/main/categoryType';
+import {
+  mainCategoryDataType,
+  topCategoryDataType,
+} from '@/types/main/categoryType';
 import React, { useEffect, useRef, useState } from 'react';
 import ArrowDownIcon from '/public/assets/images/icons/arrowDownIcon.svg';
 import { Drawer, DrawerTrigger } from '@/components/ui/drawer';
@@ -18,7 +21,7 @@ import CategoryFilterButton from './CategoryFilterButton';
 function StarbucksBest({
   categoryList,
 }: {
-  categoryList: mainCategoryDataType[];
+  categoryList: topCategoryDataType[];
 }) {
   // todo: 무한 스크롤 (최대 50개까지)
   // 선택되는 카테고리 index
