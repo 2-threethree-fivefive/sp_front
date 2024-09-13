@@ -1,4 +1,4 @@
-export interface AddDeliveryFormType {
+export interface DeliveryFormType {
   nickname: string;
   name: string;
   postNumber: string;

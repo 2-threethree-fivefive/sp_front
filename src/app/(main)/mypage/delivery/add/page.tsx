@@ -1,5 +1,6 @@
 import { postDeliveryAction } from '@/actions/mypage/deleveryAction';
 import AddDeliveryForm from '@/components/forms/AddDeliveryForm';
+import CloseHeader from '@/components/layouts/CloseHeader';
 import MyPageHeader from '@/components/layouts/MyPageHeader';
 
 function Page() {
@@ -11,6 +12,7 @@ function Page() {
 
   return (
     <>
+      <CloseHeader />
       <MyPageHeader text="배송지 정보" />
       <AddDeliveryForm handlePostDelivery={handlePostDelivery} />
     </>

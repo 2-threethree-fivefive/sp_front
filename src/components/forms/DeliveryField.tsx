@@ -6,32 +6,48 @@ import { Button } from '../ui/button';
 import { Address } from 'react-daum-postcode';
 import PostModal from '../pages/main/mypage/delivery/add/PostModal';
 import { DeliveryMessage } from '../pages/main/mypage/delivery/add/DeliveryMessage';
-import { AddDeliveryFormType } from '@/types/main/deliveryType';
+import { DeliveryFormType } from '@/types/main/deliveryType';
 import { Checkbox } from '../ui/checkbox';
 import { Label } from '../ui/label';
+import { deliveryDataType } from '@/types/ResponseTypes';
 
-function AddDeliveryField() {
-  const [inputValues, setInputValues] = useState<AddDeliveryFormType>({
-    nickname: '',
-    name: '',
-    postNumber: '',
-    basicAddress: '',
-    detailAddress: '',
-    phone1: '',
-    phone2: '',
-    message: '',
-    customMessage: '',
-    isBase: false,
+function DeliveryField({ delivery }: { delivery: deliveryDataType | null }) {
+  const selectMessage = [
+    '배송 메모를 선택해 주세요.',
+    '배송 전 연락 바랍니다.',
+    '부재 시 경비실에 맡겨주세요.',
+    '부재 시 경비실에 맡겨주세요.',
+    '부재 시 문 앞에 놓아주세요.',
+    '부재 시 전화 또는 문자 남겨주세요.',
+  ];
+
+  const [inputValues, setInputValues] = useState<DeliveryFormType>({
+    nickname: delivery?.nickname || '',
+    name: delivery?.name || '',
+    postNumber: delivery?.postNumber || '',
+    basicAddress: delivery?.basicAddress || '',
+    detailAddress: delivery?.detailAddress || '',
+    phone1: delivery?.phone1 || '',
+    phone2: delivery?.phone2 || '',
+    message: selectMessage.includes(delivery?.message || '')
+      ? delivery?.message || ''
+      : '직접 입력',
+    customMessage:
+      !selectMessage.includes(delivery?.message || '') &&
+      delivery?.message !== '직접 입력'
+        ? delivery?.message || ''
+        : '',
+    isBase: delivery?.isBase || false,
   });
 
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const handleClear = (name: keyof AddDeliveryFormType) => {
+  const handleClear = (name: keyof DeliveryFormType) => {
     setInputValues((prev) => ({ ...prev, [name]: '' }));
   };
 
   const handleChange =
-    (name: keyof AddDeliveryFormType) => (value: string | boolean) => {
+    (name: keyof DeliveryFormType) => (value: string | boolean) => {
       const updatedValues = {
         ...inputValues,
         [name]: value,
@@ -175,4 +191,4 @@ function AddDeliveryField() {
   );
 }
 
-export default AddDeliveryField;
+export default DeliveryField;

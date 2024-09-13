@@ -1,11 +1,11 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import SignInInput from '@/components/pages/auth/sign-in/SignInInput';
-import { AddDeliveryFormType } from '@/types/main/deliveryType';
+import { DeliveryFormType } from '@/types/main/deliveryType';
 
 interface OrderStatusSelectProps {
   message: string;
   customMessage: string;
-  setValue: (name: keyof AddDeliveryFormType) => (value: string) => void;
+  setValue: (name: keyof DeliveryFormType) => (value: string) => void;
 }
 
 export const DeliveryMessage: React.FC<OrderStatusSelectProps> = ({
@@ -17,12 +17,6 @@ export const DeliveryMessage: React.FC<OrderStatusSelectProps> = ({
     const value = e.target.value;
     setValue('message')(value);
   };
-
-  useEffect(() => {
-    if (message === '직접 입력') {
-      setValue('customMessage')('');
-    }
-  }, [message]);
 
   return (
     <div>

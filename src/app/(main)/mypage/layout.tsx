@@ -7,7 +7,7 @@ function Layout({ children }: { children: React.ReactNode }) {
   return (
     <>
       <BasicHeader />
-      <main className="absolute top-16 w-full">{children}</main>
+      <main>{children}</main>
       <ScrollTopButton />
       <BottomNavbar />
     </>
