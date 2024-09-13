@@ -3,7 +3,13 @@ import SignUpAuthWithKakao from '@/components/pages/auth/SignAuthWithKakao';
 import { Layout } from '@/components/ui/layout';
 import { AuthenticationMethodType } from '@/types/authType';
 
-function Authentication({ method }: { method: AuthenticationMethodType }) {
+function Authentication({
+  method,
+  onNext,
+}: {
+  method: AuthenticationMethodType;
+  onNext: () => void;
+}) {
   return (
     <Layout variant="authentication">
       <SignUpAuthHeader />

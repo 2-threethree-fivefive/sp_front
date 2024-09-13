@@ -1,13 +1,17 @@
+import { createAuth } from '@/actions/auth/signUpAction';
+import { getSignUpInroData } from '@/actions/auth/statics/signUpIntroAction';
 import SignUpForm from '@/components/forms/SignUpForm';
-import SignUpHeader from '@/components/pages/auth/sign-up/SignUpHeader';
 import { Layout } from '@/components/ui/layout';
+import { signUpIntroDataType } from '@/types/ResponseTypes';
 import React from 'react';
 
-export default function Page() {
+export default async function Page() {
+  const items: signUpIntroDataType[] =
+    (await getSignUpInroData()) as signUpIntroDataType[];
+
   return (
     <Layout variant="authentication">
-      <SignUpHeader />
-      <SignUpForm />
+      <SignUpForm items={items} createAuth={createAuth} />
     </Layout>
   );
 }

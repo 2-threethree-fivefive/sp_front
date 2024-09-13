@@ -1,26 +1,48 @@
 'use client';
 
-import { Button } from '../ui/button';
-import { Layout } from '../ui/layout';
+import { signUpIntroDataType } from '@/types/ResponseTypes';
 import SignUpField from './SignUpField';
+import SignUpIntroField from './SignUpIntroField';
+import { useState } from 'react';
+import { SignUpRequestType } from '@/types/RequestTypes';
+import Authentication from '../pages/auth/Authentication';
+import { AuthenticationMethodType } from '@/types/authType';
+import SignUpHeader from '../pages/auth/sign-up/SignUpHeader';
 
-function SignUpForm() {
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+const steps = ['TermsAgree', 'SignUpInfo', 'Autentication', 'SignUpInfo'];
+
+function SignUpForm({
+  items,
+  createAuth,
+}: {
+  items: signUpIntroDataType[];
+  createAuth: (formData: FormData) => Promise<SignUpRequestType>;
+}) {
+  const [stepLevel, setStepLevel] = useState(0);
+
+  const onNext = () => {
+    setStepLevel((prev) => prev + 1);
   };
 
   return (
-    <form
-      className="w-full max-w-md rounded-lg mx-auto mt-10 text-black"
-      onSubmit={handleSubmit}
-    >
-      <SignUpField />
-      <Layout variant="submitDiv">
-        <Button size={'submit'} type="submit">
-          확인
-        </Button>
-      </Layout>
-    </form>
+    <>
+      <SignUpHeader step={steps[stepLevel]} />
+      <form
+        className="w-full max-w-md rounded-lg mx-auto mt-10 text-black"
+        action={createAuth}
+      >
+        {steps[stepLevel] === 'TermsAgree' && (
+          <SignUpIntroField items={items} onNext={onNext} />
+        )}
+        {steps[stepLevel] === 'Autentication' && (
+          <Authentication
+            method={AuthenticationMethodType.SignUp}
+            onNext={onNext}
+          />
+        )}
+        {steps[stepLevel] === 'SignUpInfo' && <SignUpField />}
+      </form>
+    </>
   );
 }
 
