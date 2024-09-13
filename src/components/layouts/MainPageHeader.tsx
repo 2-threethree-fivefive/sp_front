@@ -1,26 +1,18 @@
 'use client';
 
-import React, { useState } from 'react';
-import CategoryIcon from '/public/assets/images/icons/categoryIcon.svg';
-import StarbucksIcon from '/public/assets/images/icons/starbucksIcon.svg';
-import SearchIcon from '/public/assets/images/icons/searchIcon.svg';
-import CartWhiteIcon from '/public/assets/images/icons/cartWhiteIcon.svg';
-import Link from 'next/link';
+import React, { useEffect, useState } from 'react';
 import HamburgerCategory from './HamburgerCategory';
-import CloseIcon from '/public/assets/images/icons/closeIcon.svg';
 import SearchModal from '../modals/SearchModal';
+import CategorySlider from '../pages/main/home/CategorySlider';
+import MainHeaderNav from './MainHeaderNav';
+import { topCategoryDataType } from '@/types/ResponseTypes';
+import { getTopCategories } from '@/actions/initial/categoryActions';
 
 function MainPageHeader() {
-  // 햄버거 메뉴 상태
-  const [isOpen, setIsOpen] = React.useState(false);
-  const handleOpen = () => {
-    setIsOpen(true);
-    document.body.style.overflow = 'hidden';
-  };
-
-  const handleClose = () => {
-    setIsOpen(false);
-    document.body.style.overflow = 'auto';
+  const [isOpen, setIsOpen] = useState(false);
+  const handleToggle = () => {
+    setIsOpen(!isOpen);
+    document.body.style.overflow = isOpen ? 'hidden' : 'auto';
   };
 
   const [isSearchOpen, setIsSearchOpen] = useState(false);
@@ -28,31 +20,25 @@ function MainPageHeader() {
     setIsSearchOpen(!isSearchOpen);
   };
 
+  const [topCategories, setTopCategories] = useState<topCategoryDataType[]>([]);
+  useEffect(() => {
+    const getData = async () => {
+      const data = await getTopCategories();
+      setTopCategories(data);
+    };
+    getData();
+  }, []);
+
   return (
-    <div>
-      <header className="fixed top-0 left-0 z-50 w-full flex justify-between px-4 items-center h-16 bg-starbucks-green">
-        <div className="flex items-center gap-3">
-          {isOpen ? (
-            <CloseIcon fill={'white'} onClick={handleClose} />
-          ) : (
-            <CategoryIcon onClick={handleOpen} />
-          )}
-          <Link href={'/'}>
-            <StarbucksIcon />
-          </Link>
-        </div>
-        <div className="flex gap-3">
-          <SearchIcon onClick={toggleSearch} fill="white" />
-          <Link href={'/cart'}>
-            <CartWhiteIcon />
-          </Link>
-        </div>
-      </header>
-      {isOpen && (
-        <HamburgerCategory isOpen={isOpen} handleClose={handleClose} />
-      )}
-      {isSearchOpen && <SearchModal toggleSearch={toggleSearch} />}
-    </div>
+    <header>
+      <MainHeaderNav isOpen={isOpen} handleToggle={handleToggle} />
+      <CategorySlider topCategories={topCategories} />
+      <HamburgerCategory
+        topCategories={topCategories}
+        isOpen={isOpen}
+        handleToggle={handleToggle}
+      />
+    </header>
   );
 }
 

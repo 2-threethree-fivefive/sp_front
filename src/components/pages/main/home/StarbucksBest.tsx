@@ -1,10 +1,5 @@
 'use client';
 
-import { mainCategoryListData } from '@/datas/main/categoryDatas';
-import {
-  mainCategoryDataType,
-  topCategoryDataType,
-} from '@/types/main/categoryType';
 import React, { useEffect, useRef, useState } from 'react';
 import ArrowDownIcon from '/public/assets/images/icons/arrowDownIcon.svg';
 import { Drawer, DrawerTrigger } from '@/components/ui/drawer';
@@ -17,6 +12,7 @@ import {
   productInfoType,
 } from '@/types/main/productType';
 import CategoryFilterButton from './CategoryFilterButton';
+import { topCategoryDataType } from '@/types/ResponseTypes';
 
 function StarbucksBest({
   categoryList,

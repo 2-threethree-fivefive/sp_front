@@ -1,16 +1,16 @@
 'use server';
+
 import {
+  bottomCategoryDataType,
+  commonResType,
   middleCategoryDataType,
-  subCategoryDataType,
   topCategoryDataType,
-} from '@/types/main/categoryType';
-import { commonResType } from '@/types/ResponseTypes';
+} from '@/types/ResponseTypes';
 
 export async function getTopCategories(): Promise<topCategoryDataType[]> {
   'use server';
   const res = await fetch(
-    `${process.env.API_BASE_URL}/api/v1/category/top-categories`,
-    { next: { revalidate: 60 * 60 * 24 } }
+    `${process.env.API_BASE_URL}/api/v1/category/top-categories`
   );
   if (!res.ok) {
     throw new Error('Failed to fetch');
@@ -21,13 +21,12 @@ export async function getTopCategories(): Promise<topCategoryDataType[]> {
   return data.data as topCategoryDataType[];
 }
 
-export async function getSubCategories(
+export async function getMiddleCategories(
   topCategoryId: number
 ): Promise<middleCategoryDataType[]> {
   'use server';
   const res = await fetch(
-    `${process.env.API_BASE_URL}/api/v1/category/top-categories/${topCategoryId}/middle-categories`,
-    { next: { revalidate: 60 * 60 * 24 } }
+    `${process.env.API_BASE_URL}/api/v1/category/middle-categories/by-id/${topCategoryId}`
   );
   if (!res.ok) {
     throw new Error('Failed to fetch');
@@ -35,4 +34,19 @@ export async function getSubCategories(
 
   const data = (await res.json()) as commonResType<middleCategoryDataType[]>;
   return data.data as middleCategoryDataType[];
+}
+
+export async function getBottomCategories(
+  middleCategoryId: number
+): Promise<bottomCategoryDataType[]> {
+  'use server';
+  const res = await fetch(
+    `${process.env.API_BASE_URL}/api/v1/category/bottom-categories/by-id/${middleCategoryId}`
+  );
+  if (!res.ok) {
+    throw new Error('Failed to fetch');
+  }
+
+  const data = (await res.json()) as commonResType<bottomCategoryDataType[]>;
+  return data.data as bottomCategoryDataType[];
 }

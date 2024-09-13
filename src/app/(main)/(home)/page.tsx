@@ -8,7 +8,8 @@ import ReviewBest from '@/components/pages/main/home/ReviewBest';
 import StarbucksBest from '@/components/pages/main/home/StarbucksBest';
 import ProductsByEventList from '@/components/pages/main/home/ProductsByEventList';
 import { getTopCategories } from '@/actions/initial/categoryActions';
-import { topCategoryDataType } from '@/types/main/categoryType';
+import { topCategoryDataType } from '@/types/ResponseTypes';
+import { Cat } from 'lucide-react';
 
 export default async function Page() {
   // 메인 카테고리 리스트 데이터 fetch
@@ -23,7 +24,7 @@ export default async function Page() {
 
   return (
     <main>
-      <CategorySlider categoryList={topCategories} />
+      {/* <CategorySlider categoryList={topCategories} /> */}
       <MainBanner eventBanner={eventBanner} />
       <TrendTags />
       <ProductsByEventList />

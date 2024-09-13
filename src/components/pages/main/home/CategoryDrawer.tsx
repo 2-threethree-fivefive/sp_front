@@ -7,13 +7,11 @@ import {
   DrawerHeader,
   DrawerTitle,
 } from '@/components/ui/drawer';
-import {
-  mainCategoryDataType,
-  topCategoryDataType,
-} from '@/types/main/categoryType';
+
 import React, { Dispatch, SetStateAction, useEffect } from 'react';
 import CloseIcon from '/public/assets/images/icons/closeIcon.svg';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
+import { topCategoryDataType } from '@/types/ResponseTypes';
 
 function CategoryDrawer({
   categoryList,

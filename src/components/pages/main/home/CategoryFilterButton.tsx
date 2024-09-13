@@ -1,7 +1,4 @@
-import {
-  mainCategoryDataType,
-  topCategoryDataType,
-} from '@/types/main/categoryType';
+import { topCategoryDataType } from '@/types/ResponseTypes';
 import React, { Dispatch, SetStateAction, useEffect, useRef } from 'react';
 
 function CategoryFilterButton({
