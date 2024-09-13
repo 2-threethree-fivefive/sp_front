@@ -22,8 +22,8 @@ function HamburgerCategory({
     topCategoryDataType[] | null
   >(null);
   useEffect(() => {
-    const getTop = () => {
-      const topCategories = getTopCategories();
+    const getTop = async () => {
+      const topCategories = await getTopCategories();
       setTopCategories(topCategories);
     };
     getTop();
