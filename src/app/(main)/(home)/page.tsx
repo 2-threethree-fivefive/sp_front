@@ -1,7 +1,6 @@
 import React from 'react';
 import { eventThumbnailData } from '@/datas/main/eventDatas';
 import { productsByEventDatas } from '@/datas/main/productDatas';
-import CategorySlider from '@/components/pages/main/home/CategorySlider';
 import MainBanner from '@/components/pages/main/home/MainBanner';
 import TrendTags from '@/components/pages/main/home/TrendTags';
 import ReviewBest from '@/components/pages/main/home/ReviewBest';
@@ -9,7 +8,6 @@ import StarbucksBest from '@/components/pages/main/home/StarbucksBest';
 import ProductsByEventList from '@/components/pages/main/home/ProductsByEventList';
 import { getTopCategories } from '@/actions/initial/categoryActions';
 import { topCategoryDataType } from '@/types/ResponseTypes';
-import { Cat } from 'lucide-react';
 
 export default async function Page() {
   // 메인 카테고리 리스트 데이터 fetch
@@ -24,7 +22,6 @@ export default async function Page() {
 
   return (
     <main>
-      {/* <CategorySlider categoryList={topCategories} /> */}
       <MainBanner eventBanner={eventBanner} />
       <TrendTags />
       <ProductsByEventList />

@@ -4,24 +4,27 @@ import CategoryIcon from '/public/assets/images/icons/categoryIcon.svg';
 import StarbucksIcon from '/public/assets/images/icons/starbucksIcon.svg';
 import SearchIcon from '/public/assets/images/icons/searchIcon.svg';
 import CartWhiteIcon from '/public/assets/images/icons/cartWhiteIcon.svg';
-import CloseIcon from '/public/assets/images/icons/closeIcon.svg';
 import Link from 'next/link';
+import { usePathname, useRouter } from 'next/navigation';
+import { X } from 'lucide-react';
 
-function MainHeaderNav({
-  isOpen,
-  handleToggle,
-}: {
-  isOpen: boolean;
-  handleToggle: () => void;
-}) {
+function MainHeaderNav() {
+  const pathName = usePathname();
+  const router = useRouter();
   return (
     <nav
       id="global-nav-bar"
       className="fixed top-0 left-0 z-50 w-full flex justify-between px-4 items-center h-14 bg-starbucks-green"
     >
       <ul className="flex items-center gap-3">
-        <li onClick={handleToggle}>
-          {isOpen ? <CloseIcon fill={'white'} /> : <CategoryIcon />}
+        <li>
+          <Link href="/categories" scroll={false}>
+            {pathName === '/categories' ? (
+              <X stroke="white" onClick={() => router.back()} />
+            ) : (
+              <CategoryIcon />
+            )}
+          </Link>
         </li>
         <li>
           <Link href={'/'}>
@@ -36,7 +39,7 @@ function MainHeaderNav({
           </Link>
         </li>
         <li>
-          <Link href={'/cart'}>
+          <Link href="/cart" scroll={false}>
             <CartWhiteIcon />
           </Link>
         </li>
