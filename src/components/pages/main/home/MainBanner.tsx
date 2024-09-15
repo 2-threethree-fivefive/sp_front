@@ -73,7 +73,7 @@ function MainBanner({ eventBanner }: { eventBanner: eventThumbnailDataType }) {
           );
         })}
       </Swiper>
-      <div className="flex gap-[2px] text-white font-bold text-xs absolute z-20 right-0 bottom-0">
+      <div className="flex gap-[2px] text-white font-bold text-xs absolute z-10 right-0 bottom-0">
         <div className="flex items-center gap-2 bg-gray-800 bg-opacity-60 px-2">
           {isAutoplay ? (
             <PauseIcon onClick={toggleAutoplay} />

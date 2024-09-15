@@ -17,7 +17,7 @@ export async function getTopCategories(): Promise<topCategoryDataType[]> {
   }
 
   const data = (await res.json()) as commonResType<topCategoryDataType[]>;
-  // console.log(data.data);
+  console.log(data.data);
   return data.data as topCategoryDataType[];
 }
 
