@@ -9,7 +9,7 @@ import Authentication from '../pages/auth/Authentication';
 import { AuthenticationMethodType } from '@/types/authType';
 import SignUpHeader from '../pages/auth/sign-up/SignUpHeader';
 
-const steps = ['TermsAgree', 'SignUpInfo', 'Autentication', 'SignUpInfo'];
+const steps = ['TermsAgree', 'Autentication', 'SignUpInfo'];
 
 function SignUpForm({
   items,
@@ -26,7 +26,7 @@ function SignUpForm({
 
   return (
     <>
-      <SignUpHeader step={steps[stepLevel]} />
+      <SignUpHeader steps={steps} stepLevel={stepLevel} />
       <form
         className="w-full max-w-md rounded-lg mx-auto mt-10 text-black"
         action={createAuth}
