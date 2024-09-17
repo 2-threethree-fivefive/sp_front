@@ -1,4 +1,4 @@
-import { getMiddleCategories } from '@/actions/initial/categoryActions';
+import { getMiddleCategories } from '@/actions/category/categoryActions';
 import {
   AccordionContent,
   AccordionItem,
@@ -13,7 +13,7 @@ import React from 'react';
 import CategoryAccordionItem from './CategoryAccordionItem';
 
 async function CategoryAccordion({ main }: { main: topCategoryDataType }) {
-  const middleCategories: middleCategoryDataType[] = await (
+  const middleCategories: middleCategoryDataType[] = (
     await getMiddleCategories(main.id)
   ).filter((category) => category.middleCategoryName === '카테고리');
 

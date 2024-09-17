@@ -1,27 +1,33 @@
-'use client';
+import { getTopCategories } from '@/actions/category/categoryActions';
+import CategoryBreadcrumb from '@/components/pages/main/category/CategoryBreadcrumb';
+import FilterBadgeList from '@/components/pages/main/category/FilterBadgeList';
+import ProductList from '@/components/pages/main/product/ProductList';
+import { topCategoryDataType } from '@/types/ResponseTypes';
+import React from 'react';
 
-import { useSearchParams } from 'next/navigation';
-import React, { useEffect } from 'react';
+export default async function Page({
+  searchParams,
+}: {
+  searchParams: { [key: string]: number };
+}) {
+  const topCategories: topCategoryDataType[] = await getTopCategories();
+  const mainId = searchParams?.mainId;
+  const subId = searchParams?.subId;
 
-export default function Page() {
-  const params = useSearchParams();
-  console.log(params.get('mainId'), params.get('subId'));
-  // fetch data
-  useEffect(() => {
-    async function getProductListByCategory() {
-      // const res = await fetch(
-      //   `/api/products_by_category?mainId=${params.get('mainId')}&subId=${params.get('subId')}`
-      // )
-      // const data = await res.json()
-      // console.log(data)
-      console.log('fetch data');
-    }
-    getProductListByCategory();
-  }, [params]);
-
+  // todo: product list data fetch
   return (
-    <main>
-      <div className="bg-yellow-500 mt-16">{}</div>
+    <main className="bg-white w-full h-full mt-14">
+      <CategoryBreadcrumb
+        topCategories={topCategories}
+        mainId={mainId}
+        subId={subId}
+      />
+      <FilterBadgeList mainId={mainId} />
+      <p className="px-4 text-sm text-gray-500">
+        <span className="text-black font-semibold">{30}</span>개의 상품이
+        있습니다.
+      </p>
+      <ProductList />
     </main>
   );
 }

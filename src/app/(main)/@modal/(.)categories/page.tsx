@@ -1,6 +1,6 @@
 import React from 'react';
 import HamburgerCategoryModal from './modal';
-import { getTopCategories } from '@/actions/initial/categoryActions';
+import { getTopCategories } from '@/actions/category/categoryActions';
 import HamburgerCategory from '@/components/layouts/HamburgerCategory';
 
 async function Page() {

@@ -6,7 +6,7 @@ import TrendTags from '@/components/pages/main/home/TrendTags';
 import ReviewBest from '@/components/pages/main/home/ReviewBest';
 import StarbucksBest from '@/components/pages/main/home/StarbucksBest';
 import ProductsByEventList from '@/components/pages/main/home/ProductsByEventList';
-import { getTopCategories } from '@/actions/initial/categoryActions';
+import { getTopCategories } from '@/actions/category/categoryActions';
 import { topCategoryDataType } from '@/types/ResponseTypes';
 
 export default async function Page() {
@@ -21,7 +21,7 @@ export default async function Page() {
   const eventList = await productsByEventDatas;
 
   return (
-    <main>
+    <main className="bg-white">
       <MainBanner eventBanner={eventBanner} />
       <TrendTags />
       <ProductsByEventList />
