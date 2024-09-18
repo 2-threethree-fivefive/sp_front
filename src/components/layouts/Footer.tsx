@@ -5,7 +5,7 @@ import Link from 'next/link';
 
 function Footer() {
   return (
-    <section className="w-full pb-16 pt-10">
+    <section className="w-full pb-16 pt-10 bg-white">
       <div className="bg-[#777777] tracking-[-0.07rem] text-white py-[11px] px-[14px] flex justify-between">
         <div className="flex">
           <CustomerServiceIcon />

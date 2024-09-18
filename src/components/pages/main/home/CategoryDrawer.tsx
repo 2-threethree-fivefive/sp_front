@@ -17,15 +17,16 @@ function CategoryDrawer({
   categoryList,
   selected,
   setSelected,
+  handleDrawerToggle,
 }: {
   categoryList: topCategoryDataType[];
   selected: number;
   setSelected: Dispatch<SetStateAction<number>>;
+  handleDrawerToggle: () => void;
 }) {
   const handleSelected = (idx: number) => {
     setSelected(idx);
   };
-
   return (
     <DrawerContent className="pb-8">
       <DrawerHeader className="border-b border-gray-300 mb-2">
@@ -41,7 +42,10 @@ function CategoryDrawer({
             <div
               key={category.id}
               className="space-x-4 mb-[10px] text-sm text-start"
-              onClick={() => handleSelected(index)}
+              onClick={() => {
+                handleSelected(index);
+                handleDrawerToggle();
+              }}
             >
               <RadioGroupItem
                 value={index.toString()}

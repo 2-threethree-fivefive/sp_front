@@ -1,4 +1,4 @@
-import { getBottomCategories } from '@/actions/initial/categoryActions';
+import { getBottomCategories } from '@/actions/category/categoryActions';
 import { bottomCategoryDataType } from '@/types/ResponseTypes';
 import Link from 'next/link';
 import React from 'react';

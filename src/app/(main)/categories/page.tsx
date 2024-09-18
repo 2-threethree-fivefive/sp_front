@@ -1,4 +1,4 @@
-import { getTopCategories } from '@/actions/initial/categoryActions';
+import { getTopCategories } from '@/actions/category/categoryActions';
 import React from 'react';
 import HamburgerCategoryModal from '../@modal/(.)categories/modal';
 import HamburgerCategory from '@/components/layouts/HamburgerCategory';

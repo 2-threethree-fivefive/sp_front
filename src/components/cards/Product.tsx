@@ -18,7 +18,7 @@ function Product({
 }) {
   return (
     <div
-      className={`h-auto mr-4 pb-4 flex flex-col items-center gap-2 ${size === 'md' ? 'w-36 min-w-36' : 'w-[45%]'}`}
+      className={`h-auto pb-4 flex flex-col items-center gap-2 ${size === 'md' ? 'w-36 min-w-36' : size === 'lg' ? 'w-[45%]' : 'w-40 min-w-40'}`}
     >
       <Link href={`/product/${product.productId}`}>
         <FitImage
