@@ -16,7 +16,7 @@ function ProductBottomNavbar() {
         <LikeButton w={30} h={30} />
       </li>
       <Drawer>
-        <DrawerTrigger className="w-full h-full flex">
+        <DrawerTrigger className="w-full h-full flex" asChild>
           <li
             className="w-[40%] h-full border flex gap-1 justify-center items-center"
             onClick={() => handleClick(1)}
