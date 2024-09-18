@@ -11,7 +11,7 @@ const SignAuthHeader = () => {
         className="mb-4"
         priority
       />
-      <h2 className="text-2xl mt-2 mb-3">인증하기</h2>
+      <h2 className="text-2xl mt-2 mb-3">카카오 인증하기</h2>
     </div>
   );
 };

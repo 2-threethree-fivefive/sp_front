@@ -58,7 +58,7 @@ const SignUpHeader = ({
               className={`w-8 h-8 shrink-0 mx-[-1px] p-1.5 flex items-center justify-center rounded-full ${index <= stepLevel ? 'bg-starbucks-green' : 'bg-gray-300'}`}
             >
               <span className="text-base text-white font-bold">
-                {index + 1}
+                {index < stepLevel ? '✔' : index + 1}
               </span>
             </div>
             {index < steps.length - 1 && (
