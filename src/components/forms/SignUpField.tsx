@@ -1,29 +1,31 @@
-'use client';
-
-import { SignUpRequestType } from '@/types/RequestTypes';
+import { SignUpErrorMessageType } from '@/types/RequestTypes';
 import { useState } from 'react';
 import SignInInput from '../pages/auth/sign-in/SignInInput';
 import { signUpSchema } from '../schemas/signUpSchema';
+import { Layout } from '../ui/layout';
+import { Button } from '../ui/button';
+import { SignUpFieldType } from '@/types/authType';
 
 function SignUpField() {
-  const [inputValues, setInputValues] = useState<SignUpRequestType>({
+  const [errorMessages, setErrorMessages] = useState<
+    Partial<SignUpErrorMessageType>
+  >({});
+
+  const [inputValues, setInputValues] = useState<SignUpFieldType>({
     id: '',
+    name: '',
     nickname: '',
     email: '',
     password: '',
     confirmPassword: '',
   });
 
-  const [errorMessages, setErrorMessages] = useState<
-    Partial<SignUpRequestType>
-  >({});
-
-  const clearInput = (name: keyof SignUpRequestType) => {
+  const clearInput = (name: keyof SignUpFieldType) => {
     setInputValues((prev) => ({ ...prev, [name]: '' }));
   };
 
-  const handleChange = (name: keyof SignUpRequestType) => (value: string) => {
-    const updatedValues = {
+  const handleChange = (name: keyof SignUpFieldType) => (value: string) => {
+    const updatedValues: SignUpFieldType = {
       ...inputValues,
       [name]: value,
     };
@@ -32,9 +34,9 @@ function SignUpField() {
     const res = signUpSchema.safeParse(updatedValues);
 
     if (!res.success) {
-      const fieldErrors: Partial<SignUpRequestType> = {};
+      const fieldErrors: Partial<SignUpErrorMessageType> = {};
       res.error.errors.forEach((error) => {
-        const fieldName = error.path[0] as keyof SignUpRequestType;
+        const fieldName = error.path[0] as keyof SignUpErrorMessageType;
         fieldErrors[fieldName] = error.message;
       });
       setErrorMessages((prev) => ({ ...prev, [name]: fieldErrors[name] }));
@@ -56,6 +58,18 @@ function SignUpField() {
       />
       {errorMessages.id && (
         <p className="text-xs text-red-500">{errorMessages.id}</p>
+      )}
+      <SignInInput
+        signInInput={{
+          text: '이름',
+          value: inputValues.name,
+          name: 'name',
+          setValue: (value) => handleChange('name')(value),
+          clearValue: () => clearInput('name'),
+        }}
+      />
+      {errorMessages.name && (
+        <p className="text-xs text-red-500">{errorMessages.name}</p>
       )}
       <SignInInput
         signInInput={{
@@ -105,6 +119,11 @@ function SignUpField() {
       {errorMessages.confirmPassword && (
         <p className="text-xs text-red-500">{errorMessages.confirmPassword}</p>
       )}
+      <Layout variant="submitDiv">
+        <Button size={'submit'} type="submit">
+          확인
+        </Button>
+      </Layout>
     </>
   );
 }

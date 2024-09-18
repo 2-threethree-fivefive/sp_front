@@ -17,3 +17,12 @@ export enum AuthenticationMethodType {
   FindId = 'find-id',
   FindPw = 'find-pw',
 }
+
+export interface SignUpFieldType {
+  id: string;
+  name: string;
+  nickname: string;
+  email: string;
+  password: string;
+  confirmPassword: string;
+}
