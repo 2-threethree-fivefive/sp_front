@@ -33,3 +33,11 @@ export interface AddDeliveryRequestType {
   message: string;
   isBase: boolean;
 }
+
+export interface cartItemType {
+  id: string;
+  name: string;
+  price: number;
+  quantity: number;
+  isChecked: boolean;
+}

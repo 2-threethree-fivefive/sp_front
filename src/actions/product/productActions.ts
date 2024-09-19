@@ -1,9 +1,9 @@
 import { productData } from '@/datas/main/productData';
-import { productResType } from '@/types/ResponseTypes';
+import { commonResType, productDataType } from '@/types/ResponseTypes';
 
 export async function getProductData() {
   'use server';
-  const res: productResType = productData;
+  const res: commonResType<productDataType> = productData;
   if (res.HttpStatus === 'ok') {
     return res.data;
   }
