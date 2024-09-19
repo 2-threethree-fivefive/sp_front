@@ -1,3 +1,4 @@
+import ScrollTopButton from '@/components/ui/ScrollTopButton';
 import React from 'react';
 
 function Layout({
@@ -11,6 +12,7 @@ function Layout({
     <>
       {children}
       {modal}
+      <ScrollTopButton />
     </>
   );
 }

@@ -2,6 +2,7 @@ import { getTopCategories } from '@/actions/category/categoryActions';
 import CategoryBreadcrumb from '@/components/pages/main/category/CategoryBreadcrumb';
 import FilterBadgeList from '@/components/pages/main/category/FilterBadgeList';
 import ProductList from '@/components/pages/main/product/ProductList';
+import { bestDatas } from '@/datas/main/bestDatas';
 import { topCategoryDataType } from '@/types/ResponseTypes';
 import React from 'react';
 
@@ -15,6 +16,7 @@ export default async function Page({
   const subId = searchParams?.subId;
 
   // todo: product list data fetch
+  const productList = bestDatas.productList;
   return (
     <main className="bg-white w-full h-full mt-14">
       <CategoryBreadcrumb
@@ -27,7 +29,7 @@ export default async function Page({
         <span className="text-black font-semibold">{30}</span>개의 상품이
         있습니다.
       </p>
-      <ProductList />
+      <ProductList productList={productList} />
     </main>
   );
 }

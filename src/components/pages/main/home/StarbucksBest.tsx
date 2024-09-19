@@ -1,6 +1,8 @@
 import React from 'react';
 import { topCategoryDataType } from '@/types/ResponseTypes';
 import CategoryFilter from './CategoryFilter';
+import ProductList from '../product/ProductList';
+import { bestDatas } from '@/datas/main/bestDatas';
 
 function StarbucksBest({
   categoryList,
@@ -17,13 +19,14 @@ function StarbucksBest({
         스타벅스 인기 상품들을 만나보세요
       </p>
       <CategoryFilter categoryList={categoryList} />
-      <div className="flex flex-wrap justify-between pl-4">
-        {/* {productList.map((product) => {
+      <ProductList productList={bestDatas.productList} />
+      {/* <div className="flex flex-wrap justify-between pl-4">
+        {productList.map((product) => {
           return (
             <Product key={product.productId} product={product} size="lg" />
           );
-        })} */}
-      </div>
+        })}
+      </div> */}
     </section>
   );
 }

@@ -8,7 +8,6 @@ function Layout({ children }: { children: React.ReactNode }) {
     <>
       <BasicHeader />
       <main>{children}</main>
-      <ScrollTopButton />
       <BottomNavbar />
     </>
   );
