@@ -1,8 +1,8 @@
+'use client';
 import { productInfoType } from '@/types/main/productType';
 import React from 'react';
 import CartBlackIcon from '/public/assets/images/icons/cartBlackIcon.svg';
 import LikeButton from '../ui/LikeButton';
-import Image from 'next/image';
 import { Checkbox } from '../ui/checkbox';
 import Link from 'next/link';
 import FitImage from '../ui/FitImage';
@@ -22,7 +22,7 @@ function ProductHorizontalItem({
     handleItemCheck(product.productId.toString(), checked);
   };
   return (
-    <div className="relative bg-white flex w-full h-[100px] rounded-md">
+    <li className="relative bg-white flex w-full h-[100px] rounded-md">
       {isSetting && (
         <Checkbox
           id={product.productId.toString()}
@@ -66,7 +66,7 @@ function ProductHorizontalItem({
           <LikeButton w={26} h={26} />
         </button>
       </div>
-    </div>
+    </li>
   );
 }
 
