@@ -1,6 +1,6 @@
-import { couponResType } from '@/types/ResponseTypes';
+import { commonResType, couponDataType } from '@/types/ResponseTypes';
 
-export const couponData: couponResType = {
+export const couponData: commonResType<couponDataType[]> = {
   HttpStatus: 'ok',
   code: 200,
   message: 'success',

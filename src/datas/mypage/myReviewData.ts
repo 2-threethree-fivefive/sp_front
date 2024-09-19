@@ -1,6 +1,6 @@
-import { myReviewListResType } from '@/types/ResponseTypes';
+import { commonResType, myReviewDataType } from '@/types/ResponseTypes';
 
-export const myReviewListData: myReviewListResType = {
+export const myReviewListData: commonResType<myReviewDataType[]> = {
   HttpStatus: 'ok',
   code: 200,
   message: 'success',

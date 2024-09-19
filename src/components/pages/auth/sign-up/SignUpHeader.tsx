@@ -1,3 +1,5 @@
+import React from 'react';
+
 const SignUpHeader = ({
   steps,
   stepLevel,
@@ -37,23 +39,13 @@ const SignUpHeader = ({
         </>
       );
       break;
-    default:
-      headerText = (
-        <>
-          <h2 className="text-2xl">
-            회원가입 절차를
-            <br />
-            진행해주세요.
-          </h2>
-        </>
-      );
   }
 
   return (
     <>
       <div className="mt-4 flex space-x-2 justify-center items-center my-6">
         {steps.map((step, index) => (
-          <>
+          <React.Fragment key={index}>
             <div
               className={`w-8 h-8 shrink-0 mx-[-1px] p-1.5 flex items-center justify-center rounded-full ${index <= stepLevel ? 'bg-starbucks-green' : 'bg-gray-300'}`}
             >
@@ -66,7 +58,7 @@ const SignUpHeader = ({
                 className={`w-full h-1 ${index < stepLevel ? 'bg-starbucks-green' : 'bg-gray-300'}`}
               ></div>
             )}
-          </>
+          </React.Fragment>
         ))}
       </div>
       <div className="font-bold flex flex-col items-start">{headerText}</div>

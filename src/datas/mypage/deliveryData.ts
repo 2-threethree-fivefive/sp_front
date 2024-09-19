@@ -1,6 +1,6 @@
-import { deliveryResType } from '@/types/ResponseTypes';
+import { commonResType, deliveryDataType } from '@/types/ResponseTypes';
 
-export const deliveryData: deliveryResType = {
+export const deliveryData: commonResType<deliveryDataType> = {
   HttpStatus: 'ok',
   code: 200,
   message: 'success',

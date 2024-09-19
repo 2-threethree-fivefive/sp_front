@@ -1,9 +1,9 @@
 import { couponData } from '@/datas/mypage/couponData';
-import { couponResType } from '@/types/ResponseTypes';
+import { commonResType, couponDataType } from '@/types/ResponseTypes';
 
 export async function getMyCouponData() {
   'use server';
-  const res: couponResType = couponData;
+  const res: commonResType<couponDataType[]> = couponData;
   if (res.HttpStatus === 'ok') {
     return res.data;
   }
@@ -13,7 +13,7 @@ export async function getMyCouponData() {
 
 export async function getCouponData() {
   'use server';
-  const res: couponResType = couponData;
+  const res: commonResType<couponDataType[]> = couponData;
   if (res.HttpStatus === 'ok') {
     return res.data;
   }

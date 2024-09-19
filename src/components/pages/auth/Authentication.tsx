@@ -13,7 +13,7 @@ function Authentication({
   return (
     <Layout variant="authentication">
       <SignUpAuthHeader />
-      <SignUpAuthWithKakao method={method} />
+      <SignUpAuthWithKakao method={method} onNext={onNext} />
     </Layout>
   );
 }
