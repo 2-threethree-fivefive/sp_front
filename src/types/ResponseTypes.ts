@@ -5,32 +5,23 @@ export interface commonResType<T> {
   data?: T;
 }
 
+// user
+export interface userDataType {
+  accessToken: string;
+  name: string;
+  uuid: string;
+}
+
 // 이용 약관에 관한 정보 타입
 export interface signUpIntroDataType {
   id: string;
   label: string;
 }
 
-// 이용 약관에 관한 Res 타입
-export interface signUpIntroResType {
-  HttpStatus: string;
-  code: number;
-  message: string;
-  data: signUpIntroDataType[];
-}
-
 // 주문/배송에 관한 정보 타입
 export interface orderDeliveryDataType {
   id: string;
   value: number;
-}
-
-// 주문/배송에 관한 Res 타입
-export interface orderDeliveryResType {
-  HttpStatus: string;
-  code: number;
-  message: string;
-  data: orderDeliveryDataType[];
 }
 
 // 쿠폰에 관한 정보 타입
@@ -42,14 +33,6 @@ export interface couponDataType {
   startDate: string;
   endDate: string;
   condition: string;
-}
-
-// 쿠폰에 관한 Res 타입
-export interface couponResType {
-  HttpStatus: string;
-  code: number;
-  message: string;
-  data: couponDataType[];
 }
 
 // 배송지에 관한 정보 타입
@@ -64,22 +47,6 @@ export interface deliveryDataType {
   phone2: string | null;
   message: string | null;
   isBase: boolean;
-}
-
-// 배송지에 대한 정보타임
-export interface deliveryResType {
-  HttpStatus: string;
-  code: number;
-  message: string;
-  data: deliveryDataType;
-}
-
-// 배송지리스트에 관한 Res 타입
-export interface deliveryListResType {
-  HttpStatus: string;
-  code: number;
-  message: string;
-  data: deliveryDataType[];
 }
 
 // 내 리뷰에 관한 정보 타입
@@ -98,14 +65,6 @@ export interface myReviewResType {
   code: number;
   message: string;
   data: myReviewDataType;
-}
-
-// 내 리뷰리스트에 관한 Res 타입
-export interface myReviewListResType {
-  HttpStatus: string;
-  code: number;
-  message: string;
-  data: myReviewDataType[];
 }
 
 // 상품 기본 정보 타입

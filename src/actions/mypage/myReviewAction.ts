@@ -1,9 +1,9 @@
 import { myReviewListData } from '@/datas/mypage/myReviewData';
-import { myReviewListResType } from '@/types/ResponseTypes';
+import { commonResType, myReviewDataType } from '@/types/ResponseTypes';
 
 export async function getMyReviewListData() {
   'use server';
-  const res: myReviewListResType = myReviewListData;
+  const res: commonResType<myReviewDataType[]> = myReviewListData;
   if (res.HttpStatus === 'ok') {
     return res.data;
   }

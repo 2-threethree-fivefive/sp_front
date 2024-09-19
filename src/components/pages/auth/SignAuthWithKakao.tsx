@@ -3,17 +3,21 @@
 import Image from 'next/image';
 import { Button } from '../../ui/button';
 import { AuthenticationMethodType } from '@/types/authType';
+import { signIn } from 'next-auth/react';
 
 const SignAuthWithKakao = ({
   method,
+  onNext,
 }: {
   method: AuthenticationMethodType;
+  onNext: () => void;
 }) => {
-  const handleKakaoAuth = () => {
+  const handleKakaoAuth = async (e: React.MouseEvent) => {
+    e.preventDefault();
     switch (method) {
       case 'sign-up':
-        // 인증 후 추가정보입력페이지 이동
-        console.log('회원가입 처리');
+        await signIn('kakao', { redirect: false });
+        onNext();
         break;
 
       case 'find-id':

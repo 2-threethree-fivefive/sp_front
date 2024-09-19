@@ -1,6 +1,6 @@
-import { signUpIntroResType } from '@/types/ResponseTypes';
+import { commonResType, signUpIntroDataType } from '@/types/ResponseTypes';
 
-export const signUpIntroData: signUpIntroResType = {
+export const signUpIntroData: commonResType<signUpIntroDataType[]> = {
   HttpStatus: 'ok',
   code: 200,
   message: 'success',

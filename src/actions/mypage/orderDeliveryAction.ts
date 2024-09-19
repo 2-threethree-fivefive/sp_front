@@ -1,9 +1,9 @@
 import { orderDeliveryData } from '@/datas/mypage/orderDeliveryData';
-import { orderDeliveryResType } from '@/types/ResponseTypes';
+import { commonResType, orderDeliveryDataType } from '@/types/ResponseTypes';
 
 export async function getOrderDeliveryData() {
   'use server';
-  const res: orderDeliveryResType = orderDeliveryData;
+  const res: commonResType<orderDeliveryDataType[]> = orderDeliveryData;
   if (res.HttpStatus === 'ok') {
     return res.data;
   }

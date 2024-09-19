@@ -1,12 +1,12 @@
 import { deliveryData } from '@/datas/mypage/deliveryData';
 import { deliveryListData } from '@/datas/mypage/deliveryListData';
 import { AddDeliveryRequestType } from '@/types/RequestTypes';
-import { deliveryListResType, deliveryResType } from '@/types/ResponseTypes';
+import { commonResType, deliveryDataType } from '@/types/ResponseTypes';
 
 // 배송지 정보 받아오기
 export async function getDeliveryData() {
   'use server';
-  const res: deliveryResType = deliveryData;
+  const res: commonResType<deliveryDataType> = deliveryData;
   if (res.HttpStatus === 'ok') {
     return res.data;
   }
@@ -17,7 +17,7 @@ export async function getDeliveryData() {
 // 배송지리스트 정보 받아오기
 export async function getDeliveryListData() {
   'use server';
-  const res: deliveryListResType = deliveryListData;
+  const res: commonResType<deliveryDataType[]> = deliveryListData;
   if (res.HttpStatus === 'ok') {
     return res.data;
   }

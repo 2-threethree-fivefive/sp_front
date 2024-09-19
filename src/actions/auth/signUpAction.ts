@@ -10,16 +10,13 @@ export async function createAuth(formData: FormData) {
   };
   console.log(payload);
   console.log(formData);
-  const res = await fetch(
-    `${process.env.NEXT_PUBLIC_API}/api/v1/auth/sign-up`,
-    {
-      method: 'POST',
-      body: JSON.stringify(payload),
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    }
-  );
+  const res = await fetch(`${process.env.API_BASE_URL}/api/v1/auth/sign-up`, {
+    method: 'POST',
+    body: JSON.stringify(payload),
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  });
   console.log(res);
 
   if (res.ok) {
