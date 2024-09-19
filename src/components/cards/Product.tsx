@@ -1,7 +1,4 @@
-// 'use client'
-
 import { productInfoType } from '@/types/main/productType';
-import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
 import CartBlackIcon from '/public/assets/images/icons/cartBlackIcon.svg';
@@ -18,7 +15,7 @@ function Product({
 }) {
   return (
     <div
-      className={`h-auto pb-4 flex flex-col items-center gap-2 ${size === 'md' ? 'w-36 min-w-36' : size === 'lg' ? 'w-[45%]' : 'w-40 min-w-40'}`}
+      className={`h-auto pb-4 flex flex-col items-center gap-2 ${size === 'md' ? 'w-36 min-w-36' : size === 'lg' ? 'w-[45%]' : 'w-[167px] min-w-[167px]'}`}
     >
       <Link href={`/product/${product.productId}`}>
         <FitImage

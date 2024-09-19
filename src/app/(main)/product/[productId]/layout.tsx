@@ -30,7 +30,6 @@ function Layout({
         {children}
       </ScrollProvider>
       {modal}
-      <ScrollTopButton />
       <Footer />
       <ProductBottomNavbar />
     </>

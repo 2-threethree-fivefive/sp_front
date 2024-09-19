@@ -9,7 +9,6 @@ function Layout({ children }: { children: React.ReactNode }) {
     <>
       <MainPageHeader />
       {children}
-      <ScrollTopButton />
       <Footer />
       <BottomNavbar />
     </>

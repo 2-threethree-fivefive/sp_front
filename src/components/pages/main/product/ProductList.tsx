@@ -1,11 +1,10 @@
 import Product from '@/components/cards/Product';
-import { bestDatas } from '@/datas/main/bestDatas';
+import { productInfoType } from '@/types/main/productType';
 import React from 'react';
 
-function ProductList() {
-  const productList = bestDatas.productList;
+function ProductList({ productList }: { productList: productInfoType[] }) {
   return (
-    <div className="flex flex-wrap gap-2 px-4 py-2">
+    <div className="flex flex-wrap justify-between p-4">
       {productList.map((product) => {
         return <Product key={product.productId} product={product} size="xl" />;
       })}
