@@ -6,7 +6,7 @@ import SearchIcon from '/public/assets/images/icons/searchIcon.svg';
 import CartWhiteIcon from '/public/assets/images/icons/cartWhiteIcon.svg';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
-import { X } from 'lucide-react';
+import { ArrowLeft, ArrowRight, X } from 'lucide-react';
 
 function MainHeaderNav() {
   const pathName = usePathname();
@@ -21,8 +21,10 @@ function MainHeaderNav() {
           <Link href="/categories" scroll={false}>
             {pathName === '/categories' ? (
               <X stroke="white" onClick={() => router.back()} />
-            ) : (
+            ) : pathName === '/' ? (
               <CategoryIcon />
+            ) : (
+              <ArrowLeft stroke="white" onClick={() => router.back()} />
             )}
           </Link>
         </li>

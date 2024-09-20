@@ -68,7 +68,7 @@ export interface myReviewResType {
 }
 
 // 상품 기본 정보 타입
-export interface productDataType {
+export interface productBasicDataType {
   productName: string;
   productDescription: string;
   productInfo: string;
@@ -112,4 +112,21 @@ export interface middleCategoryDataType {
 export interface bottomCategoryDataType {
   id: number;
   bottomCategoryName: string;
+}
+
+// 상품 uuid만
+export interface productUuidDataType {
+  productUuid: string;
+}
+
+// 상품 요약 정보 (상세 페이지 진입 전 미리 보여주는 데이터)
+export interface productInfoDataType {
+  productUuid: string;
+  productName: string;
+  productDescription: string;
+  productInfo: string;
+  price: number;
+  // productThumbnailImage: string;
+  // reviewScore: number;
+  // reviewCount: number;
 }
