@@ -18,8 +18,8 @@ async function TrendTags() {
             <Link
               key={tag.id}
               href={{
-                pathname: '/products',
-                query: { tagId: tag.id },
+                pathname: '/result',
+                query: { query: tag.tagName },
               }}
               className="w-24 min-w-24 h-auto mr-4 pb-4 flex flex-col items-center gap-2 "
             >
