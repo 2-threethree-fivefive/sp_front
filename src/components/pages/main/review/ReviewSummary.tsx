@@ -1,73 +1,71 @@
-'use client';
-
 import StarRating from '@/components/ui/StarRating';
-import { productDetailData } from '@/datas/main/productDetailDatas';
-import { reviewSummaryData } from '@/datas/main/reviewDatas';
-import { reviewSummaryType } from '@/types/main/reviewType';
-import { ArrowRightIcon, ChevronRight } from 'lucide-react';
+import {
+  productReviewSummaryType,
+  reviewDataType,
+} from '@/types/ResponseTypes';
+import { ChevronRight } from 'lucide-react';
 import Link from 'next/link';
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 
-function ReviewSummary() {
-  const [reviewSummary, setReviewSummary] = useState<reviewSummaryType | null>(
-    null
-  );
-
-  useEffect(() => {
-    const getReviewSummary = async () => {
-      const reviewSummary = await reviewSummaryData;
-      setReviewSummary(reviewSummary);
-    };
-    getReviewSummary();
-  }, []);
-
+function MediaReviewSummary({
+  productUuid,
+  reviewSummary,
+  mediaReviewList,
+}: {
+  productUuid: string;
+  reviewSummary: productReviewSummaryType;
+  mediaReviewList: reviewDataType[];
+}) {
   return (
     <>
-      {reviewSummary ? (
+      {reviewSummary.reviewCnt > 0 && (
         <div className="flex flex-col gap-2">
           <div className="flex gap-2">
-            <StarRating rating={reviewSummary.totalReviewScore} w={30} />
+            <StarRating rating={reviewSummary.reviewAvg} w={30} />
             <div className="flex items-baseline gap-1">
               <span className="text-lg font-bold">
-                {reviewSummary.totalReviewScore}
+                {reviewSummary.reviewAvg}
               </span>
               <span className="text-sm text-gray-600">
-                ({reviewSummary.imagesCount.toLocaleString()})
+                ({reviewSummary.reviewCnt})
               </span>
             </div>
           </div>
-          <div className="flex w-full justify-between">
-            <span className="font-bold">포토&동영상 리뷰</span>
-            {/* 크기가 스크린 너비 넘어갈 경우에만 더보기 노출 & 모달 열기 */}
-            <Link href={`/product/${reviewSummary.productUUID}/photoReviewAll`}>
-              <div className="flex items-center text-sm">
-                <span>더보기(20)</span>
-                <ChevronRight width={16} className="text-gray-500" />
-              </div>
-            </Link>
-          </div>
-          {/* 포토 동영상 imgList 보여주기 */}
+          {mediaReviewList.length > 10 && (
+            <div className="flex w-full justify-between">
+              <span className="font-bold">포토&동영상 리뷰</span>
+              <Link href={`/product/${productUuid}/photoReviewAll`}>
+                <div className="flex items-center text-sm">
+                  <span>더보기({mediaReviewList.length.toLocaleString()})</span>
+                  <ChevronRight width={16} className="text-gray-500" />
+                </div>
+              </Link>
+            </div>
+          )}
           <div className="flex gap-2 overflow-x-auto">
-            <div className="w-24 min-w-24 h-24 bg-gray-500">상품사진</div>
-            <div className="w-24 min-w-24 h-24 bg-gray-500">상품사진</div>
-            <div className="w-24 min-w-24 h-24 bg-gray-500">상품사진</div>
-            <div className="w-24 min-w-24 h-24 bg-gray-500">상품사진</div>
-            <div className="w-24 min-w-24 h-24 bg-gray-500">상품사진</div>
-            <Link href={`/product/${reviewSummary.productUUID}/photoReviewAll`}>
-              <div className="w-24 min-w-24 h-24 bg-gray-300 flex flex-col justify-center items-center">
-                <span>+</span>
-                <span>더보기</span>
-              </div>
-            </Link>
+            {mediaReviewList.map((media) => {
+              return (
+                <div
+                  key={media.reviewUuid}
+                  className="w-24 min-w-24 h-24 bg-gray-500"
+                >
+                  상품사진
+                </div>
+              );
+            })}
+            {mediaReviewList.length >= 10 && (
+              <Link href={`/product/${productUuid}/photoReviewAll`}>
+                <div className="w-24 min-w-24 h-24 bg-gray-300 flex flex-col justify-center items-center">
+                  <span>+</span>
+                  <span>더보기</span>
+                </div>
+              </Link>
+            )}
           </div>
         </div>
-      ) : (
-        <span className="text-gray-600 text-sm text-center">
-          아직 등록된 리뷰가 없습니다.
-        </span>
       )}
     </>
   );
 }
 
-export default ReviewSummary;
+export default MediaReviewSummary;

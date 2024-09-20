@@ -7,7 +7,15 @@ import {
 import { InfoIcon } from 'lucide-react';
 import React, { useState } from 'react';
 
-function ProductBottomNavbarDrawer({ type }: { type: number }) {
+function ProductBottomNavbarDrawer({
+  type,
+  productName,
+  productPrice,
+}: {
+  type: number;
+  productName: string;
+  productPrice: number;
+}) {
   const [productCount, setProductCount] = useState(1);
   // todo: 상품에 대해서 1회 주문 당 상품 구매 제한 개수
   const handleProductAdd = () => {
@@ -25,7 +33,7 @@ function ProductBottomNavbarDrawer({ type }: { type: number }) {
       <div className="flex flex-col gap-4 pt-8">
         <div className="flex flex-col gap-4 px-4">
           <div className="p-4 bg-starbucks-lightgray">
-            <p className="text-sm pb-3">상품 이름 ~~~~~ </p>
+            <p className="text-sm pb-3">{productName}</p>
             <div className="flex justify-between">
               <div className="flex gap-0.5">
                 <button
@@ -41,12 +49,16 @@ function ProductBottomNavbarDrawer({ type }: { type: number }) {
                   +
                 </button>
               </div>
-              <span className="font-bold">48,000원</span>
+              <span className="font-bold">
+                {productPrice?.toLocaleString()}원
+              </span>
             </div>
           </div>
           <div className="flex gap-2 font-bold items-center justify-end">
             <span>총 합계</span>
-            <span className="text-2xl text-starbucks-red">48,000원</span>
+            <span className="text-2xl text-starbucks-red">
+              {(productPrice * productCount)?.toLocaleString()}원
+            </span>
           </div>
           {type === 1 ? (
             <div className="flex justify-center items-center gap-1 text-xs text-gray-500">

@@ -6,7 +6,7 @@ import {
   productBasicDataType,
   productInfoDataType,
   productPriceDataType,
-  productReviewAllDataType,
+  productReviewSummaryType,
   productUuidDataType,
 } from '@/types/ResponseTypes';
 
@@ -22,6 +22,7 @@ export async function getProductBasicInfo(
   }
 
   const data = (await res.json()) as commonResType<productBasicDataType>;
+  console.log(data);
   return data.data as productBasicDataType;
 }
 
@@ -42,7 +43,7 @@ export async function getProductPrice(
 
 export async function getProductReviewSummary(
   productUuid: string
-): Promise<productReviewAllDataType> {
+): Promise<productReviewSummaryType> {
   'use server';
 
   const res = await fetch(
@@ -53,8 +54,8 @@ export async function getProductReviewSummary(
     throw new Error('Failed to fetch');
   }
 
-  const data = (await res.json()) as commonResType<productReviewAllDataType>;
-  return data.data as productReviewAllDataType;
+  const data = (await res.json()) as commonResType<productReviewSummaryType>;
+  return data.data as productReviewSummaryType;
 }
 
 export async function getProductThumbnailImage(
@@ -70,6 +71,28 @@ export async function getProductThumbnailImage(
 
   const data = (await res.json()) as commonResType<imageDataType>;
   return data.data as imageDataType;
+}
+
+export async function getProductInfo(
+  productUuid: string
+): Promise<productInfoDataType> {
+  try {
+    // todo: 백엔드 api 수정 후 review, thumbnail에 대한 것 추가
+    const [basicInfo, price] = await Promise.all([
+      getProductBasicInfo(productUuid),
+      getProductPrice(productUuid),
+      // getProductReviewSummary(productUuid),
+      // getProductThumbnailImage(productUuid),
+    ]);
+
+    return {
+      productUuid: productUuid,
+      ...basicInfo,
+      ...price,
+    } as productInfoDataType;
+  } catch (error) {
+    throw new Error('Failed to fetch');
+  }
 }
 
 export async function getProductInfoList(

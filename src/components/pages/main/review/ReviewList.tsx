@@ -1,19 +1,9 @@
-'use client';
 import ReviewItem from '@/components/cards/ReviewItem';
-import { reviewListData } from '@/datas/main/reviewDatas';
-import { reviewItemType } from '@/types/main/reviewType';
+import { reviewDataType } from '@/types/ResponseTypes';
 import Link from 'next/link';
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 
-function ReviewList() {
-  const [reviewList, setReviewList] = useState<reviewItemType[] | null>(null);
-  useEffect(() => {
-    const getReviewList = async () => {
-      const reviewList = await reviewListData;
-      setReviewList(reviewList);
-    };
-    getReviewList();
-  }, []);
+function ReviewList({ reviewList }: { reviewList: reviewDataType[] }) {
   return (
     <>
       {reviewList ? (

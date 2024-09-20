@@ -15,7 +15,6 @@ export async function getTopCategories(): Promise<topCategoryDataType[]> {
   if (!res.ok) {
     throw new Error('Failed to fetch');
   }
-
   const data = (await res.json()) as commonResType<topCategoryDataType[]>;
   return data.data as topCategoryDataType[];
 }

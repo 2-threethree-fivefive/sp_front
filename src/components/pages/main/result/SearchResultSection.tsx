@@ -12,7 +12,6 @@ async function SearchResultSection({
   productUuidList: productUuidDataType[];
 }) {
   const productInfoList = await getProductInfoList(productUuidList);
-  console.log(productInfoList);
   return (
     <section className="mt-14 py-4 space-y-2">
       <SearchInput />

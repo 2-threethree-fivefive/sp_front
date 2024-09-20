@@ -5,6 +5,15 @@ export interface commonResType<T> {
   data?: T;
 }
 
+export interface infiniteResType<T> {
+  status: string;
+  message: string;
+  result: T;
+  avg: number;
+  cnt: number;
+  hasNext: boolean;
+}
+
 // user
 export interface userDataType {
   accessToken: string;
@@ -86,7 +95,7 @@ export interface productDiscountDataType {
 }
 
 // 상품 UUID에 대한 전체 리뷰 Score, Count:
-export interface productReviewAllDataType {
+export interface productReviewSummaryType {
   reviewAvg: number;
   reviewCnt: number;
 }
@@ -129,4 +138,14 @@ export interface productInfoDataType {
   // productThumbnailImage: string;
   // reviewScore: number;
   // reviewCount: number;
+}
+
+export interface reviewDataType {
+  content: string;
+  reviewUuid: string;
+  reviewScore: number;
+  productUuid: string;
+  authorName: string;
+  regDate: string;
+  modDate: string;
 }

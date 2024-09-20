@@ -21,10 +21,11 @@ async function TrendTags() {
                 pathname: '/result',
                 query: { query: tag.tagName },
               }}
+              scroll={false}
               className="w-24 min-w-24 h-auto mr-4 pb-4 flex flex-col items-center gap-2 "
             >
               <FitImage src={tag.tagImgUrl} alt={tag.tagName} />
-              <span className="text-sm">{tag.tagName}</span>
+              <span className="text-sm">#{tag.tagName}</span>
             </Link>
           );
         })}

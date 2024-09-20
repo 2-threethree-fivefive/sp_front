@@ -64,9 +64,9 @@ export const options: NextAuthOptions = {
           const data = (await res.json()) as commonResType<userDataType>;
           // user data update or session data update
           console.log('data입니다', data);
-          user.name = data.result?.name;
-          user.uuid = data.result?.uuid;
-          user.accessToken = data.result?.accessToken;
+          user.name = data.data?.name;
+          user.uuid = data.data?.uuid;
+          user.accessToken = data.data?.accessToken;
           console.log('user입니다', user);
 
           return true;
