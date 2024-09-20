@@ -14,7 +14,7 @@ function SignInForm() {
     signIn('credentials', {
       id: formData.get('id') as string,
       password: formData.get('password') as string,
-      redirect: true,
+      redirect: false,
       callbackUrl: '/',
     });
   };

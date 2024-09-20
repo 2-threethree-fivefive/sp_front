@@ -2,20 +2,18 @@ import { SignUpErrorMessageType } from '@/types/RequestTypes';
 import { useState } from 'react';
 import SignInInput from '../pages/auth/sign-in/SignInInput';
 import { signUpSchema } from '../schemas/signUpSchema';
+import { SignUpFieldType } from '@/types/authType';
 import { Layout } from '../ui/layout';
 import { Button } from '../ui/button';
-import { SignUpFieldType } from '@/types/authType';
 
-function SignUpField() {
+function SignUpField({ formData }: { formData: FormData }) {
   const [errorMessages, setErrorMessages] = useState<
     Partial<SignUpErrorMessageType>
   >({});
-
   const [inputValues, setInputValues] = useState<SignUpFieldType>({
     id: '',
     name: '',
     nickname: '',
-    email: '',
     password: '',
     confirmPassword: '',
   });
@@ -30,6 +28,8 @@ function SignUpField() {
       [name]: value,
     };
     setInputValues(updatedValues);
+
+    formData.set(name, value);
 
     const res = signUpSchema.safeParse(updatedValues);
 
@@ -82,18 +82,6 @@ function SignUpField() {
       />
       {errorMessages.nickname && (
         <p className="text-xs text-red-500">{errorMessages.nickname}</p>
-      )}
-      <SignInInput
-        signInInput={{
-          text: '이메일 주소',
-          value: inputValues.email,
-          name: 'email',
-          setValue: (value) => handleChange('email')(value),
-          clearValue: () => clearInput('email'),
-        }}
-      />
-      {errorMessages.email && (
-        <p className="text-xs text-red-500">{errorMessages.email}</p>
       )}
       <SignInInput
         signInInput={{
