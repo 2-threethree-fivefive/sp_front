@@ -1,6 +1,6 @@
-import { productResType } from '@/types/ResponseTypes';
+import { commonResType, productDataType } from '@/types/ResponseTypes';
 
-export const productData: productResType = {
+export const productData: commonResType<productDataType> = {
   HttpStatus: 'ok',
   code: 200,
   message: 'success',
