@@ -44,7 +44,7 @@ export async function getProductReviewSummary(
   productUuid: string
 ): Promise<productReviewAllDataType> {
   'use server';
-  
+
   const res = await fetch(
     // todo: 백엔드 url 변경 후 확인
     `${process.env.API_BASE_URL}/api/v1/product/reviewAvg/${productUuid}`
