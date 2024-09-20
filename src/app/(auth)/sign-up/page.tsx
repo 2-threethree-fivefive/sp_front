@@ -9,9 +9,19 @@ export default async function Page() {
   const items: signUpIntroDataType[] =
     (await getSignUpInroData()) as signUpIntroDataType[];
 
+  const handleSignUp = async (formData: FormData) => {
+    'use server';
+    const res = await createAuth(formData);
+    console.log(res);
+  };
+
   return (
     <Layout variant="authentication">
-      <SignUpForm items={items} createAuth={createAuth} />
+      <SignUpForm
+        items={items}
+        createAuth={createAuth}
+        handleSignUp={handleSignUp}
+      />
     </Layout>
   );
 }

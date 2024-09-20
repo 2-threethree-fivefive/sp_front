@@ -17,20 +17,22 @@ export const options: NextAuthOptions = {
         }
 
         try {
-          const res = await fetch(`http://localhost:8080/api/v1/auth/sign-in`, {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-              id: credentials.id,
-              password: credentials.password,
-            }),
-            cache: 'no-cache',
-          });
+          const res = await fetch(
+            `${process.env.API_BASE_URL}/api/v1/auth/sign-in`,
+            {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({
+                id: credentials.id,
+                password: credentials.password,
+              }),
+              cache: 'no-cache',
+            }
+          );
 
           const user = (await res.json()) as commonResType<userDataType>;
-          console.log('user입니다.', user);
           return user.result;
         } catch (error) {
           console.error('error', error);
@@ -45,6 +47,9 @@ export const options: NextAuthOptions = {
   ],
   callbacks: {
     async signIn({ user, account, profile, email, credentials }) {
+      console.log(email);
+      console.log(user);
+      console.log(account);
       if (profile && account) {
         try {
           const res = await fetch(

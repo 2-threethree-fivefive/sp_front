@@ -27,14 +27,13 @@ function SignUpIntroField({
   ) => {
     let currentTerms = [...terms];
 
-    if (item.id === 'option') {
+    if (item.id === '4') {
       if (checked) {
-        setTerms([...currentTerms, item.id, 'option_1', 'option_2']);
+        setTerms([...currentTerms, item.id, '5', '6']);
       } else {
         setTerms(
           currentTerms.filter(
-            (value) =>
-              value !== item.id && value !== 'option_1' && value !== 'option_2'
+            (value) => value !== item.id && value !== '5' && value !== '6'
           )
         );
       }
@@ -47,12 +46,10 @@ function SignUpIntroField({
 
       if (
         !checked &&
-        !currentTerms.includes(
-          item.id === 'option_1' ? 'option_2' : 'option_1'
-        ) &&
-        item.id !== 'option'
+        !currentTerms.includes(item.id === '5' ? '6' : '5') &&
+        item.id !== '4'
       ) {
-        currentTerms = currentTerms.filter((value) => value !== 'option');
+        currentTerms = currentTerms.filter((value) => value !== '4');
       }
       setTerms(currentTerms);
     }
@@ -70,9 +67,11 @@ function SignUpIntroField({
     }
   };
 
+  const isButtonEnabled = ['1', '2', '3'].every((id) => terms.includes(id));
+
   return (
     <>
-      <div>
+      <div className="border-b-2 pb-4">
         <label>
           <Checkbox
             checked={
@@ -86,27 +85,34 @@ function SignUpIntroField({
           <span className="ml-2 font-bold text-md">약관 전체동의</span>
         </label>
       </div>
-      {items.map((item) => (
-        <div key={item.id} className="flex flex-row space-x-3 p-1 gap-1">
-          <label>
+      <div>
+        {items.map((item) => (
+          <label
+            key={item.id}
+            className={`flex flex-row mt-2 p-1 gap-1 ${['5', '6'].includes(item.id) && 'ml-6 inline-flex'}`}
+          >
             <Checkbox
               name={item.id}
               checked={terms.includes(item.id)}
               onCheckedChange={(checked) => handleCheckedChange(item, checked)}
               disabled={
-                !terms.includes('option') &&
-                (item.id === 'option_1' || item.id === 'option_2')
+                !terms.includes('4') && (item.id === '5' || item.id === '6')
               }
             />
-            <span className="font-bold text-md">{item.label}</span>
+            <span className="ml-2 font-bold text-md">{item.label}</span>
           </label>
-        </div>
-      ))}
+        ))}
+      </div>
       {errorMessages.terms && (
         <p className="text-xs text-red-500">{errorMessages.terms}</p>
       )}
       <Layout variant="submitDiv">
-        <Button size={'submit'} type="button" onClick={onNext}>
+        <Button
+          size={'submit'}
+          type="button"
+          onClick={onNext}
+          disabled={!isButtonEnabled}
+        >
           다음
         </Button>
       </Layout>
