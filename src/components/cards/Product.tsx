@@ -4,6 +4,7 @@ import CartBlackIcon from '/public/assets/images/icons/cartBlackIcon.svg';
 import LikeButton from '@/components/ui/LikeButton';
 import FitImage from '../ui/FitImage';
 import { productInfoDataType } from '@/types/ResponseTypes';
+import { StarIcon } from 'lucide-react';
 
 function Product({
   product,
@@ -36,14 +37,19 @@ function Product({
           <p className="text-base font-bold text-black">
             {product.price?.toLocaleString()}원
           </p>
-          {/* {product.reviewCount > 0 ? (
+          {product.reviewcount > 0 ? (
             <div className="flex gap-1 items-center text-[#777777] text-xs">
-              <StarIcon width="11" height="16" fill="#C6C6C6" />
-              <span>{product.reviewScore}</span>
+              <StarIcon
+                width="11"
+                height="16"
+                fill="#C6C6C6"
+                stroke="#C6C6C6"
+              />
+              <span>{product.reviewscoreAvg}</span>
               <div className="border-solid h-3/4 w-[1px] bg-gray-300"></div>
-              <span>{product.reviewCount}건</span>
+              <span>{product.reviewcount}건</span>
             </div>
-          ) : null} */}
+          ) : null}
         </Link>
       </div>
     </div>

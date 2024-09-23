@@ -101,3 +101,18 @@ export const deleteAllCartItemList = async (item: cartItemType) => {
   });
   revalidateTag('deleteCart');
 };
+
+// 장바구니에 상품 추가
+export const addCartItem = async (productUuid: string, quantity: number) => {
+  'use server';
+  const res = await fetch(
+    `${process.env.API_BASE_URL}/api/v1/wishList/fromProductDetailsPage/wishlist/${productUuid}/add/${quantity}`,
+    {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    }
+  );
+  revalidateTag('addCart');
+};

@@ -5,7 +5,6 @@ import { productUuidDataType } from '@/types/ResponseTypes';
 import React from 'react';
 
 async function Page({ searchParams }: { searchParams: { query: string } }) {
-  console.log(searchParams.query);
   const productUuidList: productUuidDataType[] = await getSearchResults({
     searchValue: searchParams.query,
   });

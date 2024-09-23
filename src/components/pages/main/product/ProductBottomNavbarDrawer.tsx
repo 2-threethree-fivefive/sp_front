@@ -17,9 +17,11 @@ function ProductBottomNavbarDrawer({
   productPrice: number;
 }) {
   const [productCount, setProductCount] = useState(1);
-  // todo: 상품에 대해서 1회 주문 당 상품 구매 제한 개수
+  // todo: 상품에 대해서 1회 주문 당 상품 구매 제한 개수 alert
   const handleProductAdd = () => {
-    setProductCount((prev) => prev + 1);
+    if (productCount < 5) {
+      setProductCount((prev) => prev + 1);
+    }
   };
   const handleProductSubtract = () => {
     if (productCount > 1) {

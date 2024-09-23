@@ -17,7 +17,6 @@ function ReviewItem({ review }: { review: reviewDataType }) {
           <ChevronRight width={14} className="absolute top-3 right-0" />
         </Link>
       </div>
-      {/* 이미지가 있는 경우만 리뷰 상세보기 가능 */}
       <Link
         href={`/product/${review.productUuid}/reviewdetail?reviewId=${review.reviewUuid}`}
         scroll={false}

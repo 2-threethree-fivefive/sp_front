@@ -18,16 +18,16 @@ function MediaReviewSummary({
 }) {
   return (
     <>
-      {reviewSummary.reviewCnt > 0 && (
+      {reviewSummary.reviewcount > 0 && (
         <div className="flex flex-col gap-2">
           <div className="flex gap-2">
-            <StarRating rating={reviewSummary.reviewAvg} w={30} />
+            <StarRating rating={reviewSummary.reviewscoreAvg} w={30} />
             <div className="flex items-baseline gap-1">
               <span className="text-lg font-bold">
-                {reviewSummary.reviewAvg}
+                {reviewSummary.reviewscoreAvg}
               </span>
               <span className="text-sm text-gray-600">
-                ({reviewSummary.reviewCnt})
+                ({reviewSummary.reviewcount})
               </span>
             </div>
           </div>

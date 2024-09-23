@@ -12,7 +12,6 @@ async function Page({ params }: { params: { productId: string } }) {
   const productInfo: productInfoDataType = await getProductInfo(
     params.productId
   );
-  console.log(productInfo);
 
   return (
     <>

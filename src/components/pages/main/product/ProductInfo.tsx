@@ -1,7 +1,5 @@
-import { productDetailDataType } from '@/types/main/productDetailType';
 import React from 'react';
 import ArrowRightIcon from '/public/assets/images/icons/arrowRightIcon.svg';
-import Image from 'next/image';
 import Link from 'next/link';
 import NoticeIcon from '/public/assets/images/icons/noticeIcon.svg';
 import FitImage from '@/components/ui/FitImage';
@@ -29,12 +27,19 @@ function ProductInfo({ productInfo }: { productInfo: productInfoDataType }) {
       <div className="flex mt-2 gap-5 text-sm">
         <div>
           <span>★</span>
-          <span className="pl-1 font-bold">{4.5}</span>
+          <span className="pl-1 font-bold">{productInfo.reviewscoreAvg}</span>
         </div>
-        <div className="flex items-center">
-          <span className="underline underline-offset-1">{100}건 리뷰</span>
-          <ArrowRightIcon fill="black" width={16} height={16} />
-        </div>
+        <Link
+          href={`/product/${productInfo.productUuid}/reviewall`}
+          scroll={false}
+        >
+          <div className="flex items-center">
+            <span className="underline underline-offset-1">
+              {productInfo.reviewcount}건 리뷰
+            </span>
+            <ArrowRightIcon fill="black" width={16} height={16} />
+          </div>
+        </Link>
       </div>
     </section>
   );

@@ -4,7 +4,7 @@ import LikeButton from '@/components/ui/LikeButton';
 import { Gift } from 'lucide-react';
 import { Drawer, DrawerTrigger } from '@/components/ui/drawer';
 import ProductBottomNavbarDrawer from './ProductBottomNavbarDrawer';
-import { useParams, usePathname } from 'next/navigation';
+import { useParams } from 'next/navigation';
 import {
   productBasicDataType,
   productPriceDataType,
@@ -55,11 +55,13 @@ function ProductBottomNavbar() {
             구매하기
           </li>
         </DrawerTrigger>
-        <ProductBottomNavbarDrawer
-          type={type}
-          productName={productInfo?.productName}
-          productPrice={productPrice}
-        />
+        {productInfo && productPrice && (
+          <ProductBottomNavbarDrawer
+            type={type}
+            productName={productInfo.productName}
+            productPrice={productPrice.price}
+          />
+        )}
       </Drawer>
     </ul>
   );
