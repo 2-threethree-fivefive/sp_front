@@ -11,26 +11,28 @@ export const options: NextAuthOptions = {
         id: { label: 'id', type: 'text' },
         password: { label: 'password', type: 'password' },
       },
-      async authorize(credentials, req) {
+      async authorize(credentials): Promise<any> {
         if (!credentials?.id || !credentials?.password) {
           return null;
         }
 
         try {
-          const res = await fetch(`http://localhost:8080/api/v1/auth/sign-in`, {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-              id: credentials.id,
-              password: credentials.password,
-            }),
-            cache: 'no-cache',
-          });
-
+          const res = await fetch(
+            `${process.env.API_BASE_URL}/api/v1/auth/sign-in`,
+            {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({
+                userId: credentials.id,
+                password: credentials.password,
+              }),
+              cache: 'no-cache',
+            }
+          );
           const user = (await res.json()) as commonResType<userDataType>;
-          console.log('user입니다.', user);
+          console.log(user);
           return user.result;
         } catch (error) {
           console.error('error', error);
@@ -57,17 +59,16 @@ export const options: NextAuthOptions = {
               body: JSON.stringify({
                 provider: account.provider,
                 providerId: account.providerAccountId,
+                providerEmail: user.email,
               }),
               cache: 'no-cache',
             }
           );
           const data = (await res.json()) as commonResType<userDataType>;
-          // user data update or session data update
-          console.log('data입니다', data);
-          user.name = data.data?.name;
-          user.uuid = data.data?.uuid;
-          user.accessToken = data.data?.accessToken;
-          console.log('user입니다', user);
+          user.name = data.result?.name;
+          user.uuid = data.result?.uuid;
+          user.accessToken = data.result?.accessToken;
+          console.log(data);
 
           return true;
         } catch (error) {
@@ -85,6 +86,10 @@ export const options: NextAuthOptions = {
     async session({ session, token }) {
       session.user = token as any;
       return session;
+    },
+
+    async redirect({ url, baseUrl }) {
+      return url.startsWith(baseUrl) ? url : baseUrl;
     },
   },
   pages: {

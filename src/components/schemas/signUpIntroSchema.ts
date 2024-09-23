@@ -3,7 +3,7 @@ import { z } from 'zod';
 export const signUpIntroSchema = z.object({
   terms: z.array(z.string()).refine(
     (value) => {
-      const requiredItems = ['ness1', 'ness2', 'ness3'];
+      const requiredItems = ['1', '2', '3'];
       return requiredItems.every((term) => value.includes(term));
     },
     {

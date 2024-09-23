@@ -1,8 +1,10 @@
 export interface commonResType<T> {
   HttpStatus: string;
+  isSuccess: boolean;
   code: number;
   message: string;
   data?: T;
+  result?: T;
 }
 
 export interface commonResultType<T> {
@@ -25,6 +27,7 @@ export interface userDataType {
   accessToken: string;
   name: string;
   uuid: string;
+  email?: string;
 }
 
 // 이용 약관에 관한 정보 타입

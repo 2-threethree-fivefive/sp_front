@@ -13,7 +13,11 @@ const SignUpHeader = ({
     case 0:
       headerText = (
         <>
-          <h2 className="text-2xl">약관에 동의해주세요.</h2>
+          <h2 className="text-2xl">
+            약관에
+            <br />
+            동의해주세요.
+          </h2>
         </>
       );
       break;
@@ -21,9 +25,9 @@ const SignUpHeader = ({
       headerText = (
         <>
           <h2 className="text-2xl">
-            카카오톡을 통해
+            이메일을
             <br />
-            인증 후 회원가입이 가능합니다.
+            입력해주세요.
           </h2>
         </>
       );
