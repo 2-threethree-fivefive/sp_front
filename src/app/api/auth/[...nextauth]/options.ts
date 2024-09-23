@@ -65,7 +65,6 @@ export const options: NextAuthOptions = {
             }
           );
           const data = (await res.json()) as commonResType<userDataType>;
-
           user.name = data.result?.name;
           user.uuid = data.result?.uuid;
           user.accessToken = data.result?.accessToken;
