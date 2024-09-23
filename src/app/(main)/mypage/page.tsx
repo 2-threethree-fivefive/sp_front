@@ -1,4 +1,4 @@
-import BasicHeader from '@/components/layouts/BasicHeader';
+import LogOut from '@/components/pages/main/mypage/LogOut';
 import OrderDelivery from '@/components/pages/main/mypage/OrderDelivery';
 import ServiceList from '@/components/pages/main/mypage/ServiceList';
 import TermPolicy from '@/components/pages/main/mypage/TermPolicy';
@@ -11,6 +11,7 @@ function Page() {
       <Layout variant="mypage">
         <ServiceList />
         <TermPolicy />
+        <LogOut />
       </Layout>
     </>
   );

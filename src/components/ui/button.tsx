@@ -15,11 +15,12 @@ const buttonVariants = cva('font-bold', {
       outline: 'border border-input bg-background',
       orderlist: 'border bg-white text-slate-600 rounded-md',
       calendar: 'border bg-slate-100 text-black rounded-md',
+      logout: 'bg-none',
     },
     size: {
       default: 'h-10 px-4 py-2',
       submit: 'h-10 px-4 py-2 w-full rounded-full disabled:bg-slate-300',
-      kakao: 'w-full h-10 bg-white relative',
+      kakao: 'w-full h-10 bg-white relative rounded-full',
       clear: '',
     },
   },
