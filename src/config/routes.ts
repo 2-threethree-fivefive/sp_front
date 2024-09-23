@@ -1,6 +1,7 @@
 export const routes = {
   signIn: '/sign-in',
-  signup: '/sign-up',
+  signUp: '/sign-up',
   cart: '/cart',
   mypage: '/mypage',
+  like: '/wishlist',
 };

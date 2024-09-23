@@ -1,5 +1,7 @@
 'use server';
 
+import { commonResType } from '@/types/ResponseTypes';
+
 export async function createAuth(formData: FormData) {
   'use server';
   console.log('FormData before submission:', Array.from(formData.entries()));
@@ -10,7 +12,6 @@ export async function createAuth(formData: FormData) {
     email: formData.get('email'),
     password: formData.get('password'),
   };
-  console.log(payload);
   const res = await fetch(`${process.env.API_BASE_URL}/api/v1/auth/sign-up`, {
     method: 'POST',
     body: JSON.stringify(payload),
@@ -18,7 +19,6 @@ export async function createAuth(formData: FormData) {
       'Content-Type': 'application/json',
     },
   });
-  console.log(res);
 
   if (res.ok) {
     return await res.json();
