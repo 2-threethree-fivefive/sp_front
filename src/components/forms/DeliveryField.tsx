@@ -108,7 +108,6 @@ function DeliveryField({ delivery }: { delivery: deliveryDataType | null }) {
               name: 'postNumber',
               setValue: (value) => handleChange('postNumber')(value),
               clearValue: () => null,
-              disabled: true,
             }}
           />
         </span>
@@ -130,7 +129,6 @@ function DeliveryField({ delivery }: { delivery: deliveryDataType | null }) {
           name: 'basicAddress',
           setValue: (value) => handleChange('basicAddress')(value),
           clearValue: () => null,
-          disabled: true,
         }}
       />
       <SignInInput

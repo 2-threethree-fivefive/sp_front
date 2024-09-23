@@ -24,20 +24,22 @@ export interface ChangePwRequestType {
 
 export interface AddDeliveryRequestType {
   nickname: string;
-  name: string;
+  receiver: string;
   postNumber: string;
-  basicAddress: string;
+  address: string;
   detailAddress: string;
   phone1: string;
   phone2: string;
   message: string;
-  isBase: boolean;
+  baseAddress: boolean;
 }
 
 export interface cartItemType {
-  id: string;
-  name: string;
-  price: number;
-  quantity: number;
-  isChecked: boolean;
+  productUuid: string;
+  memberUuid: string;
+  limitQuantity: number;
+  currentQuantity: number;
+  regDate: Date;
+  modDate: Date;
+  checked: boolean;
 }

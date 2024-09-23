@@ -65,13 +65,15 @@ export const options: NextAuthOptions = {
             }
           );
           const data = (await res.json()) as commonResType<userDataType>;
-
-          user.name = data.result?.name;
-          user.uuid = data.result?.uuid;
-          user.accessToken = data.result?.accessToken;
-          console.log(data);
-
-          return true;
+          console.log('여기', account);
+          if (data.result?.registered === true) {
+            user.name = data.result?.name;
+            user.uuid = data.result?.uuid;
+            user.accessToken = data.result?.accessToken;
+          } else {
+            return '/sign-up';
+          }
+          return '/';
         } catch (error) {
           console.error('error입니다.', error);
           return '/sign-up';
@@ -85,7 +87,7 @@ export const options: NextAuthOptions = {
     },
 
     async session({ session, token }) {
-      session.user = token as any;
+      session.user = { ...token } as any;
       return session;
     },
 

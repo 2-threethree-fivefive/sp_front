@@ -1,8 +1,9 @@
 import { commonResType, deliveryDataType } from '@/types/ResponseTypes';
 
-export const deliveryListData: commonResType<deliveryDataType> = {
+export const deliveryListData: commonResType<deliveryDataType[]> = {
   HttpStatus: 'ok',
   code: 200,
+  isSuccess: true,
   message: 'success',
   data: [
     {

@@ -2,11 +2,18 @@ import React from 'react';
 import CartHeaderNav from '../pages/main/cart/CartHeaderNav';
 import CartDeliveryNav from '../pages/main/cart/CartDeliveryNav';
 import { deliveryDataType } from '@/types/ResponseTypes';
-import { getDeliveryData } from '@/actions/mypage/deleveryAction';
+import { getDeliveryListData } from '@/actions/mypage/deleveryAction';
+import { getServerSession } from 'next-auth';
+import { options } from '@/app/api/auth/[...nextauth]/options';
 
 async function CartLayoutHeader() {
-  const delivery: deliveryDataType =
-    (await getDeliveryData()) as deliveryDataType;
+  const session = await getServerSession(options);
+  const deliveries: deliveryDataType[] = (await getDeliveryListData(
+    session?.user?.accessToken
+  )) as deliveryDataType[];
+  const delivery: deliveryDataType | undefined = deliveries.find(
+    (delivery) => delivery.isBase === true
+  );
   return (
     <header className="w-full">
       <CartHeaderNav />

@@ -1,25 +1,24 @@
 import { fetchCartItemList } from '@/actions/cart/cartAction';
+import { options } from '@/app/api/auth/[...nextauth]/options';
 import CartListContainer from '@/components/pages/main/cart/CartListContainer';
+import { getServerSession } from 'next-auth';
 import React from 'react';
 
 export default async function Page() {
-  // const cartItemList = await fetchCartItemList();
-  const cartItemList = [
-    {
-      id: '1',
-      name: '이름',
-      price: 33333,
-      quantity: 1,
-      isChecked: true,
-    },
-    {
-      id: '2',
-      name: '이름2',
-      price: 22222,
-      quantity: 2,
-      isChecked: true,
-    },
-  ];
+  const session = await getServerSession(options);
+  const cartItemList = await fetchCartItemList(session?.user?.accessToken);
+  // const cartItemsWithDetails = await Promise.all(
+  //   cartItemList.map(async (item) => {
+  //     const productDetails = await fetchProductDetails(
+  //       item.productUuid,
+  //       session?.user?.accessToken
+  //     );
+  //     return {
+  //       ...item,
+  //       price: productDetails.price,
+  //     };
+  //   })
+  // );
   return (
     <main className="bg-white w-full h-full">
       <CartListContainer cartItemList={cartItemList} />

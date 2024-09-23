@@ -1,14 +1,25 @@
+'use client';
+
 import { deliveryDataType } from '@/types/ResponseTypes';
 import Link from 'next/link';
 
-function DeliveryCard({ delivery }: { delivery: deliveryDataType }) {
+function DeliveryCard({
+  delivery,
+  handleDeleteDelivery,
+}: {
+  delivery: deliveryDataType;
+  handleDeleteDelivery: (deliveryId: string) => Promise<void>;
+}) {
+  const submitDelete = () => {
+    handleDeleteDelivery(delivery.deliveryId);
+  };
   return (
     <div className="flex flex-col gap-y-1 text-md px-5 py-3">
       <p className="flex justify-between font-extrabold">
         <span>
-          {delivery.name}
+          {delivery.receiver}
           {delivery.nickname && <>{`(${delivery.nickname})`}</>}
-          {delivery.isBase && (
+          {delivery.baseAddress && (
             <span className="text-xs text-green-500 bg-green-100 p-1 ml-2">
               기본
             </span>
@@ -18,15 +29,15 @@ function DeliveryCard({ delivery }: { delivery: deliveryDataType }) {
           <Link href={`delivery/${delivery.deliveryId}`} className="">
             수정
           </Link>
-          {!delivery.isBase && (
+          {!delivery.baseAddress && (
             <>
-              |<span>삭제</span>
+              |<span onClick={submitDelete}>삭제</span>
             </>
           )}
         </span>
       </p>
       <p className="font-semibold">
-        {`(${delivery.postNumber}) ${delivery.basicAddress}`} <br />
+        {`(${delivery.postNumber}) ${delivery.address}`} <br />
         {delivery.detailAddress}
       </p>
       <p className="text-sm text-slate-500">

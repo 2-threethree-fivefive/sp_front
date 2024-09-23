@@ -12,6 +12,7 @@ export interface userDataType {
   accessToken: string;
   name: string;
   uuid: string;
+  registered?: boolean;
   email?: string;
 }
 
@@ -42,14 +43,14 @@ export interface couponDataType {
 export interface deliveryDataType {
   deliveryId: string;
   nickname: string | null;
-  name: string;
+  receiver: string;
   postNumber: string;
-  basicAddress: string;
+  address: string;
   detailAddress: string;
   phone1: string;
   phone2: string | null;
   message: string | null;
-  isBase: boolean;
+  baseAddress: boolean;
 }
 
 // 내 리뷰에 관한 정보 타입
