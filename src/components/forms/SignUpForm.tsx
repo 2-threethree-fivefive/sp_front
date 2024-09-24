@@ -21,7 +21,6 @@ function SignUpForm({
 
   const [stepLevel, setStepLevel] = useState(0);
   const [formData, setFormData] = useState<FormData>(new FormData());
-
   const onNext = () => {
     setStepLevel((prev) => prev + 1);
   };

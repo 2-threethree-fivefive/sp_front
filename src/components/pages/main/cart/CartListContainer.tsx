@@ -23,7 +23,6 @@ export default function CartListContainer({
   ) => {
     cartCheckUpdate(item, checked);
   };
-  console.log(cartItemList);
   const totalPrice = cartItemList.reduce((acc, item) => {
     return item.checked ? acc + item.limitQuantity * item.currentQuantity : acc;
   }, 0);

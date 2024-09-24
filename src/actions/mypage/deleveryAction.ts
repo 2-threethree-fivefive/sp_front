@@ -4,6 +4,24 @@ import { AddDeliveryRequestType } from '@/types/RequestTypes';
 import { deliveryDataType } from '@/types/ResponseTypes';
 import { revalidateTag } from 'next/cache';
 
+// 기본 배송지 정보 받아오기
+export async function getBaseDeliveryData(
+  token: string
+): Promise<deliveryDataType> {
+  const res = await fetch(`${process.env.API_BASE_URL}/api/v1/shipping/base`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`,
+    },
+  });
+  if (!res.ok) {
+    throw new Error('Failed to fetch base delivery item');
+  }
+  const data = await res.json();
+  return data.result;
+}
+
 // 배송지 정보 받아오기
 export async function getDeliveryData(
   deliveryId: string,
@@ -34,14 +52,13 @@ export async function getDeliveryListData(
     `${process.env.API_BASE_URL}/api/v1/shipping/shipping-list`,
     {
       method: 'GET',
-      next: { tags: ['deleteDelivery'] },
+      next: { tags: ['deleteDelivery', 'putBaseDelivery'] },
       headers: {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${token}`,
       },
     }
   );
-  console.log('여기', res);
   if (!res.ok) {
     throw new Error('Failed to fetch delivery item list');
   }
@@ -55,7 +72,7 @@ export async function postDeliveryAction(formData: FormData, token: string) {
   const payload: AddDeliveryRequestType = {
     nickname: formData.get('nickname') as string,
     postNumber: formData.get('postNumber') as string,
-    address: formData.get('basicAddress') as string,
+    address: formData.get('address') as string,
     detailAddress: formData.get('detailAddress') as string,
     phone1: formData.get('phone1') as string,
     phone2: formData.get('phone2') as string,
@@ -63,9 +80,10 @@ export async function postDeliveryAction(formData: FormData, token: string) {
       formData.get('message') === '직접 입력'
         ? (formData.get('customMessage') as string)
         : (formData.get('message') as string),
-    receiver: formData.get('name') as string,
-    baseAddress: formData.get('isBase') === 'on',
+    receiver: formData.get('receiver') as string,
+    baseAddress: formData.get('baseAddress') === 'on',
   };
+  console.log(payload);
 
   const res = await fetch(`${process.env.API_BASE_URL}/api/v1/shipping/add`, {
     method: 'POST',
@@ -87,9 +105,9 @@ export async function putDeliveryAction(
   'use server';
   const payload: AddDeliveryRequestType = {
     nickname: formData.get('nickname') as string,
-    receiver: formData.get('name') as string,
+    receiver: formData.get('receiver') as string,
     postNumber: formData.get('postNumber') as string,
-    address: formData.get('basicAddress') as string,
+    address: formData.get('address') as string,
     detailAddress: formData.get('detailAddress') as string,
     phone1: formData.get('phone1') as string,
     phone2: formData.get('phone2') as string,
@@ -97,7 +115,7 @@ export async function putDeliveryAction(
       formData.get('message') === '직접 입력'
         ? (formData.get('customMessage') as string)
         : (formData.get('message') as string),
-    baseAddress: formData.get('isBase') === 'on',
+    baseAddress: formData.get('baseAddress') === 'on',
   };
 
   const res = await fetch(
@@ -111,6 +129,24 @@ export async function putDeliveryAction(
       },
     }
   );
+  return await res.json();
+}
+
+// 기본 배송지 수정하기
+export async function putBaseDeliveryAction(deliveryId: string, token: string) {
+  'use server';
+
+  const res = await fetch(
+    `${process.env.API_BASE_URL}/api/v1/shipping/base/${deliveryId}/set-default`,
+    {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`,
+      },
+    }
+  );
+  revalidateTag('putBaseDelivery');
   return await res.json();
 }
 

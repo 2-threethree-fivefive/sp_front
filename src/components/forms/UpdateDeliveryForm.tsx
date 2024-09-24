@@ -4,8 +4,7 @@ import { deliveryDataType } from '@/types/ResponseTypes';
 import { Button } from '../ui/button';
 import { Layout } from '../ui/layout';
 import DeliveryField from './DeliveryField';
-import { getServerSession, Session } from 'next-auth';
-import { options } from '@/app/api/auth/[...nextauth]/options';
+import { Session } from 'next-auth';
 import { getDeliveryData } from '@/actions/mypage/deleveryAction';
 import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
@@ -37,7 +36,6 @@ function UpdateDeliveryForm({
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
-    console.log(console.log(Object.fromEntries(formData)));
     handlePutDelivery(formData, deliveryId);
   };
   return (

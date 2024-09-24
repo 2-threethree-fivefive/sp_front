@@ -4,6 +4,7 @@ import UpdateDeliveryForm from '@/components/forms/UpdateDeliveryForm';
 import CloseHeader from '@/components/layouts/CloseHeader';
 import MyPageHeader from '@/components/layouts/MyPageHeader';
 import { getServerSession } from 'next-auth';
+import { redirect } from 'next/navigation';
 
 async function Page() {
   const session = await getServerSession(options);
@@ -15,7 +16,9 @@ async function Page() {
       deliveryId,
       session?.user?.accessToken
     );
-    console.log(res);
+    if (res.status === 'OK') {
+      redirect('/mypage/delivery');
+    }
   };
 
   return (

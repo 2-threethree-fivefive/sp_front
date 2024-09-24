@@ -32,7 +32,6 @@ export const options: NextAuthOptions = {
             }
           );
           const user = (await res.json()) as commonResType<userDataType>;
-          console.log(user);
           return user.result;
         } catch (error) {
           console.error('error', error);
@@ -65,7 +64,6 @@ export const options: NextAuthOptions = {
             }
           );
           const data = (await res.json()) as commonResType<userDataType>;
-          console.log('여기', account);
           if (data.result?.registered === true) {
             user.name = data.result?.name;
             user.uuid = data.result?.uuid;

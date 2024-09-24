@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import SignInInput from '../pages/auth/sign-in/SignInInput';
 import { Button } from '../ui/button';
 import { Address } from 'react-daum-postcode';
@@ -22,23 +22,40 @@ function DeliveryField({ delivery }: { delivery: deliveryDataType | null }) {
   ];
 
   const [inputValues, setInputValues] = useState<DeliveryFormType>({
-    nickname: delivery?.nickname || '',
-    name: delivery?.name || '',
-    postNumber: delivery?.postNumber || '',
-    basicAddress: delivery?.basicAddress || '',
-    detailAddress: delivery?.detailAddress || '',
-    phone1: delivery?.phone1 || '',
-    phone2: delivery?.phone2 || '',
-    message: selectMessage.includes(delivery?.message || '')
-      ? delivery?.message || ''
-      : '직접 입력',
-    customMessage:
-      !selectMessage.includes(delivery?.message || '') &&
-      delivery?.message !== '직접 입력'
-        ? delivery?.message || ''
-        : '',
-    isBase: delivery?.isBase || false,
+    nickname: '',
+    receiver: '',
+    postNumber: '',
+    address: '',
+    detailAddress: '',
+    phone1: '',
+    phone2: '',
+    message: '직접 입력',
+    customMessage: '',
+    baseAddress: false,
   });
+
+  useEffect(() => {
+    if (delivery) {
+      setInputValues({
+        nickname: delivery.nickname || '',
+        receiver: delivery.receiver || '',
+        postNumber: delivery.postNumber || '',
+        address: delivery.address || '',
+        detailAddress: delivery.detailAddress || '',
+        phone1: delivery.phone1 || '',
+        phone2: delivery.phone2 || '',
+        message: selectMessage.includes(delivery.message || '')
+          ? delivery.message || ''
+          : '직접 입력',
+        customMessage:
+          !selectMessage.includes(delivery.message || '') &&
+          delivery.message !== '직접 입력'
+            ? delivery.message || ''
+            : '',
+        baseAddress: delivery.baseAddress || false,
+      });
+    }
+  }, [delivery]);
 
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -60,7 +77,6 @@ function DeliveryField({ delivery }: { delivery: deliveryDataType | null }) {
   };
 
   const handleComplete = (data: Address) => {
-    console.log(data);
     setInputValues((prev) => ({
       ...prev,
       postNumber: data.zonecode,
@@ -89,10 +105,10 @@ function DeliveryField({ delivery }: { delivery: deliveryDataType | null }) {
               받는 분 <span className="text-green-500 font-bold">*</span>
             </>
           ),
-          value: inputValues.name,
-          name: 'name',
-          setValue: (value) => handleChange('name')(value),
-          clearValue: () => handleClear('name'),
+          value: inputValues.receiver,
+          name: 'receiver',
+          setValue: (value) => handleChange('receiver')(value),
+          clearValue: () => handleClear('receiver'),
         }}
       />
       <div className="grid grid-cols-4">
@@ -125,9 +141,9 @@ function DeliveryField({ delivery }: { delivery: deliveryDataType | null }) {
               기본주소 <span className="text-green-500 font-bold">*</span>
             </>
           ),
-          value: inputValues.basicAddress,
-          name: 'basicAddress',
-          setValue: (value) => handleChange('basicAddress')(value),
+          value: inputValues.address,
+          name: 'address',
+          setValue: (value) => handleChange('address')(value),
           clearValue: () => null,
         }}
       />
@@ -175,12 +191,12 @@ function DeliveryField({ delivery }: { delivery: deliveryDataType | null }) {
       <div className={'flex items-center space-x-2 p-1 gap-1'}>
         <Checkbox
           variant="medium"
-          id="isBase"
-          name="isBase"
-          checked={inputValues.isBase}
-          onCheckedChange={(checked) => handleChange('isBase')(checked)}
+          id="baseAddress"
+          name="baseAddress"
+          checked={inputValues.baseAddress}
+          onCheckedChange={(checked) => handleChange('baseAddress')(checked)}
         />
-        <Label htmlFor="isBase" className="text-md">
+        <Label htmlFor="baseAddress" className="text-md">
           기본 배송지로 저장합니다.
         </Label>
       </div>

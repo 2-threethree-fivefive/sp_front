@@ -12,23 +12,26 @@ function CartDeliveryNav({
         <>
           <p className="flex justify-between font-extrabold">
             <span>
-              {delivery.name}
+              {delivery.receiver}
               {delivery.nickname && <>{`(${delivery.nickname})`}</>}
               <span className="text-xs text-green-500 bg-green-100 p-1 ml-2">
                 기본
               </span>
             </span>
-            <span className="flex gap-x-5 text-sm mr-3 text-amber-700">
+            <Link
+              href="/cart/delivery"
+              className="flex gap-x-5 text-sm mr-3 text-amber-700 cursor-pointer"
+            >
               배송지 변경
-            </span>
+            </Link>
           </p>
           <p className="font-normal">
-            {`(${delivery.postNumber}) ${delivery.basicAddress}`} <br />
+            {`(${delivery.postNumber}) ${delivery.address}`} <br />
             {delivery.detailAddress}
           </p>
         </>
       ) : (
-        <Link href="/mypage/delivery/add">배송지 설정하기</Link>
+        <Link href="/mypage/delivery">배송지 설정하러 가기</Link>
       )}
     </div>
   );
