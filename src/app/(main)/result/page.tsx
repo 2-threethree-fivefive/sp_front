@@ -1,11 +1,10 @@
 import { getSearchResults } from '@/actions/search/searchActions';
 import MainHeaderNav from '@/components/layouts/MainHeaderNav';
 import SearchResultSection from '@/components/pages/main/result/SearchResultSection';
-import { productUuidDataType } from '@/types/ResponseTypes';
 import React from 'react';
 
 async function Page({ searchParams }: { searchParams: { query: string } }) {
-  const productUuidList: productUuidDataType[] = await getSearchResults({
+  const productUuidList: string[] = await getSearchResults({
     searchValue: searchParams.query,
   });
   return (

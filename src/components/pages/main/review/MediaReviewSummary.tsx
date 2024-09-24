@@ -1,6 +1,6 @@
 import StarRating from '@/components/ui/StarRating';
 import {
-  productReviewSummaryType,
+  productReviewSummaryDataType,
   reviewDataType,
 } from '@/types/ResponseTypes';
 import { ChevronRight } from 'lucide-react';
@@ -13,7 +13,7 @@ function MediaReviewSummary({
   mediaReviewList,
 }: {
   productUuid: string;
-  reviewSummary: productReviewSummaryType;
+  reviewSummary: productReviewSummaryDataType;
   mediaReviewList: reviewDataType[];
 }) {
   return (
@@ -49,7 +49,7 @@ function MediaReviewSummary({
                   key={media.reviewUuid}
                   className="w-24 min-w-24 h-24 bg-gray-500"
                 >
-                  상품사진
+                  {media.images && media.images[0].s3url}
                 </div>
               );
             })}

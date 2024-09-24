@@ -1,5 +1,6 @@
 'use server';
 import { cartItemType } from '@/types/RequestTypes';
+import { commonResType } from '@/types/ResponseTypes';
 import { revalidateTag } from 'next/cache';
 
 // 장바구니 품목 확인
@@ -116,3 +117,21 @@ export const addCartItem = async (productUuid: string, quantity: number) => {
   );
   revalidateTag('addCart');
 };
+
+// 장바구니 품목 조회
+export async function getCartCount(): Promise<number> {
+  'use server';
+  const res = await fetch(
+    `${process.env.API_BASE_URL}/api/v1/wishList/itemCount`,
+    {
+      method: 'GET',
+      next: { tags: ['checkCart, addCart, cartCount, deleteCart'] },
+      cache: 'no-cache',
+    }
+  );
+  if (!res.ok) {
+    throw new Error('Failed to fetch cart item count');
+  }
+  const data = (await res.json()) as commonResType<number>;
+  return data.result as number;
+}

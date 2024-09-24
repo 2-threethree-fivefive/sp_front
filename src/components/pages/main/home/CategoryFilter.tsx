@@ -1,6 +1,6 @@
 'use client';
 import { topCategoryDataType } from '@/types/ResponseTypes';
-import React, { useState } from 'react';
+import React, { Dispatch, SetStateAction, useState } from 'react';
 import CategoryFilterButton from './CategoryFilterButton';
 import { Drawer } from '@/components/ui/drawer';
 import { ChevronDown } from 'lucide-react';
@@ -8,10 +8,13 @@ import CategoryDrawer from './CategoryDrawer';
 
 function CategoryFilter({
   categoryList,
+  selected,
+  setSelected,
 }: {
   categoryList: topCategoryDataType[];
+  selected: string;
+  setSelected: Dispatch<SetStateAction<string>>;
 }) {
-  const [selected, setSelected] = useState<number>(0);
   const [isDrawerOpen, setIsDrawerOpen] = useState<boolean>(false);
   const handleDrawerToggle = () => {
     setIsDrawerOpen(!isDrawerOpen);
@@ -25,7 +28,7 @@ function CategoryFilter({
               key={category.id}
               category={category}
               idx={index}
-              isSelected={selected === index}
+              isSelected={selected === category.topCategoryName}
               setSelected={setSelected}
             />
           );

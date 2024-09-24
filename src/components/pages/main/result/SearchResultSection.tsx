@@ -1,4 +1,7 @@
-import { getProductInfoList } from '@/actions/product/productActions';
+import {
+  getProductInfoList,
+  getProductInfoListByUuid,
+} from '@/actions/product/productActions';
 import SearchInput from '@/components/ui/SearchInput';
 import {
   productInfoDataType,
@@ -12,10 +15,10 @@ async function SearchResultSection({
   productUuidList,
 }: {
   searchValue: string;
-  productUuidList: productUuidDataType[];
+  productUuidList: string[];
 }) {
   const productInfoList: productInfoDataType[] =
-    await getProductInfoList(productUuidList);
+    await getProductInfoListByUuid(productUuidList);
   return (
     <section className="mt-14 py-4 space-y-2">
       <SearchInput />

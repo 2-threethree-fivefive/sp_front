@@ -1,11 +1,16 @@
 import React from 'react';
 import SimpleHeader from '@/components/layouts/SimpleHeader';
-import { bestDatas } from '@/datas/main/bestDatas';
 import ProductHorizontalList from '@/components/pages/main/recent/ProductHorizontalList';
+import {
+  getProductInfoListByUuid,
+  getRecentProductList,
+} from '@/actions/product/productActions';
+import { productInfoDataType } from '@/types/ResponseTypes';
 
-function Page() {
-  // 회원별 최근 본 상품 조회 (token?)
-  const productList = bestDatas.productList;
+async function Page() {
+  const productUuidList: string[] = await getRecentProductList();
+  const productList: productInfoDataType[] =
+    await getProductInfoListByUuid(productUuidList);
   return (
     <div className="w-full h-full min-h-screen bg-starbucks-lightgray">
       <SimpleHeader title="최근 본 상품" />

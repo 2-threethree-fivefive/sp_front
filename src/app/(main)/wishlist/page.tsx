@@ -1,11 +1,13 @@
 import React from 'react';
 import SimpleHeader from '@/components/layouts/SimpleHeader';
-import { bestDatas } from '@/datas/main/bestDatas';
 import ProductHorizontalList from '@/components/pages/main/recent/ProductHorizontalList';
+import { getWishList } from '@/actions/like/likeActions';
+import { getProductInfoListByUuid } from '@/actions/product/productActions';
+import { productInfoDataType } from '@/types/ResponseTypes';
 
-function Page() {
-  // todo: 좋아요 목록 조회 (회원만 가능)
-  const productList = bestDatas.productList;
+async function Page() {
+  const uuids = await getWishList();
+  const productList = await getProductInfoListByUuid(uuids);
   return (
     <div className="w-full h-full min-h-screen bg-starbucks-lightgray">
       <SimpleHeader title="좋아요" />

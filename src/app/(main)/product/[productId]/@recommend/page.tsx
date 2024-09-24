@@ -1,13 +1,14 @@
+import { getProductUuidListBySameEvent } from '@/actions/event/eventActions';
+import { getProductInfoList } from '@/actions/product/productActions';
 import ProductRecommend from '@/components/pages/main/product/ProductRecommend';
-import { productsByEventDatas } from '@/datas/main/productDatas';
-import { productInfoType } from '@/types/main/productType';
+import { productUuidDataType } from '@/types/ResponseTypes';
 import React from 'react';
 
-async function Page() {
-  // fetch (params - productId 활용) => actions에 넣기
-  const recommendData: productInfoType[] =
-    await productsByEventDatas[0].productList;
-  return <ProductRecommend data={recommendData} />;
+async function Page({ params }: { params: { productId: string } }) {
+  const productUuidList: productUuidDataType[] =
+    await getProductUuidListBySameEvent(params.productId);
+  const productList = await getProductInfoList(productUuidList);
+  return <ProductRecommend data={productList} />;
 }
 
 export default Page;

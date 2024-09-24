@@ -1,5 +1,5 @@
 'use client';
-import CartIcon from '@/components/ui/CartIcon';
+import CartStaticIcon from '@/components/ui/CartStaticIcon';
 import { ChevronLeft } from 'lucide-react';
 import { usePathname, useRouter } from 'next/navigation';
 import React, { ChangeEvent, useEffect, useState } from 'react';
@@ -31,7 +31,7 @@ function Page() {
               onChange={handleChange}
               onKeyDown={handleKeyPress}
             />
-            <CartIcon count={0} />
+            <CartStaticIcon count={0} />
           </div>
         </div>
       )}

@@ -1,5 +1,5 @@
 'use client';
-import CartIcon from '@/components/ui/CartIcon';
+import CartStaticIcon from '@/components/ui/CartStaticIcon';
 import { ChevronLeft } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import React from 'react';
@@ -15,7 +15,7 @@ function Page() {
           className="w-3/4 h-10 px-4 text-sm rounded-full bg-[#F5F5F5]"
           placeholder="원하시는 상품을 검색해보세요."
         />
-        <CartIcon count={0} />
+        <CartStaticIcon count={0} />
       </div>
     </div>
   );

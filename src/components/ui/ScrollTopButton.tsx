@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useEffect } from 'react';
-import TopIcon from '/public/assets/images/icons/topIcon.svg';
+import { ChevronUp } from 'lucide-react';
 
 function ScrollTopButton() {
   const [isTop, setIsTop] = React.useState(true);
@@ -23,16 +23,16 @@ function ScrollTopButton() {
   }, []);
 
   return (
-    <>
-      {isTop ? null : (
-        <div
-          className="bg-white bg-opacity-90 fixed bottom-20 right-4 z-20 p-4 rounded-full"
-          onClick={handleClick}
-        >
-          <TopIcon />
-        </div>
-      )}
-    </>
+    <div
+      className={`bg-white bg-opacity-90 fixed bottom-[75px] right-4 z-20 p-3 rounded-full ${isTop && 'hidden'}`}
+      onClick={handleClick}
+    >
+      <ChevronUp
+        size={24}
+        strokeWidth={1}
+        className={`${isTop ? ' rotate-180' : ' rotate-0'} transition-all`}
+      />
+    </div>
   );
 }
 
