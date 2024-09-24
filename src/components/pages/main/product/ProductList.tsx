@@ -1,5 +1,4 @@
 import Product from '@/components/cards/Product';
-import { productInfoType } from '@/types/main/productType';
 import { productInfoDataType } from '@/types/ResponseTypes';
 import React from 'react';
 

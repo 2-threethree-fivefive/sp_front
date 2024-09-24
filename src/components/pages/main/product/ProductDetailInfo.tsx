@@ -4,17 +4,18 @@ import ReportIcon from '/public/assets/images/icons/reportIcon.svg';
 import Link from 'next/link';
 import Image from 'next/image';
 import ProductDetailImageList from './ProductDetailImageList';
+import { productInfoDataType } from '@/types/ResponseTypes';
 
 function ProductDetailInfo({
   productInfo,
 }: {
-  productInfo: productDetailDataType;
+  productInfo: productInfoDataType;
 }) {
   return (
     <section id="info" className="flex flex-col gap-4 bg-white mt-5 px-4 py-8">
       <h1 className="text-lg font-bold">상세 정보</h1>
       <p className="text-sm text-[#666666]">
-        상품번호 : {productInfo.productId}
+        상품번호 : {productInfo.productUuid}
       </p>
       <div className="flex justify-between text-sm">
         <div className="flex items-center gap-2">
@@ -32,7 +33,7 @@ function ProductDetailInfo({
           href={{
             pathname: 'https://m.ssg.com/comm/reportError.ssg',
             query: {
-              productId: productInfo.productId,
+              productId: productInfo.productUuid,
             },
           }}
         >
