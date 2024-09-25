@@ -29,6 +29,7 @@ export interface userDataType {
   accessToken: string;
   name: string;
   uuid: string;
+  userId: string;
   registered?: boolean;
   email?: string;
 }
