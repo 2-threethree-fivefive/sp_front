@@ -2,6 +2,7 @@ import { commonResType, myReviewDataType } from '@/types/ResponseTypes';
 
 export const myReviewListData: commonResType<myReviewDataType[]> = {
   HttpStatus: 'ok',
+  isSuccess: true,
   code: 200,
   message: 'success',
   data: [

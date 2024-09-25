@@ -1,6 +1,6 @@
 import Image from 'next/image';
 
-const FindIdAuth = () => {
+const FindIdAuth = ({ name }: { name: string }) => {
   return (
     <div className="font-bold flex flex-col items-center mb-48">
       <Image
@@ -13,7 +13,7 @@ const FindIdAuth = () => {
       />
       <div className="text-xl mt-2 mb-3">
         <p>고객님의 아이디는</p>
-        <p>{} 입니다.</p>
+        <p>{name} 입니다.</p>
       </div>
     </div>
   );

@@ -1,13 +1,12 @@
 import { SignUpErrorMessageType } from '@/types/RequestTypes';
 import { useState } from 'react';
 import SignInInput from '../pages/auth/sign-in/SignInInput';
-import { signUpSchema } from '../schemas/signUpSchema';
 import { Layout } from '../ui/layout';
 import { Button } from '../ui/button';
-import { verifyEmail } from '@/actions/auth/signUpAction';
-import { findIdSchema } from '../schemas/findIdSchema';
+import { verifyEmail, verifyId } from '@/actions/auth/signUpAction';
+import { signUpIdSchema } from '../schemas/signUpIdSchema';
 
-function SignUpEmailField({
+function SignUpIdField({
   onNext,
   formData,
 }: {
@@ -17,22 +16,22 @@ function SignUpEmailField({
   const [errorMessages, setErrorMessages] = useState<
     Partial<SignUpErrorMessageType>
   >({});
-  const [inputValues, setInputValues] = useState<{ email: string }>({
-    email: '',
+  const [inputValues, setInputValues] = useState<{ id: string }>({
+    id: '',
   });
   const [isFormValid, setIsFormValid] = useState(false);
   const [isDuplicateChecked, setIsDuplicateChecked] = useState(false);
 
   const clearInput = () => {
-    setInputValues({ email: '' });
+    setInputValues({ id: '' });
     setIsDuplicateChecked(false);
   };
 
   const handleChange = (value: string) => {
-    const updatedValues = { email: value };
+    const updatedValues = { id: value };
     setInputValues(updatedValues);
 
-    const res = findIdSchema.safeParse(updatedValues);
+    const res = signUpIdSchema.safeParse(updatedValues);
 
     if (!res.success) {
       const fieldErrors: Partial<SignUpErrorMessageType> = {};
@@ -40,45 +39,44 @@ function SignUpEmailField({
         const fieldName = error.path[0] as keyof SignUpErrorMessageType;
         fieldErrors[fieldName] = error.message;
       });
-      setErrorMessages({ email: fieldErrors.email });
+      setErrorMessages({ id: fieldErrors.id });
       setIsFormValid(false);
     } else {
-      setErrorMessages({ email: undefined });
+      setErrorMessages({ id: undefined });
       setIsFormValid(true);
     }
   };
 
   const handleDuplicateCheck = async () => {
-    const result = await verifyEmail(inputValues.email);
+    const result = await verifyId(inputValues.id);
 
     if (result) {
-      console.log(result);
       if (result.duplicated) {
-        alert('이미 사용 중인 이메일입니다.');
+        alert('이미 사용 중인 아이디입니다.');
         setIsDuplicateChecked(false);
       } else {
         setIsDuplicateChecked(true);
-        alert('사용가능한 이메일입니다.');
+        alert('사용가능한 아이디입니다.');
       }
     } else {
       alert('중복 확인 요청에 실패했습니다.');
     }
-    formData.set('email', inputValues.email);
+    formData.set('id', inputValues.id);
   };
 
   return (
     <>
       <SignInInput
         signInInput={{
-          text: '이메일 주소',
-          value: inputValues.email,
-          name: 'email',
+          text: '아이디',
+          value: inputValues.id,
+          name: 'id',
           setValue: handleChange,
           clearValue: clearInput,
         }}
       />
-      {errorMessages.email && (
-        <p className="text-xs text-red-500">{errorMessages.email}</p>
+      {errorMessages.id && (
+        <p className="text-xs text-red-500">{errorMessages.id}</p>
       )}
       <Button
         size={'submit'}
@@ -102,4 +100,4 @@ function SignUpEmailField({
   );
 }
 
-export default SignUpEmailField;
+export default SignUpIdField;

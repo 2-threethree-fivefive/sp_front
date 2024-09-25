@@ -4,10 +4,10 @@ import { Layout } from '@/components/ui/layout';
 import Link from 'next/link';
 import React from 'react';
 
-export default function Page() {
+function FindIdLayout({ name }: { name: string }) {
   return (
     <Layout variant="findId">
-      <FindIdAuth />
+      <FindIdAuth name={name} />
       <Layout variant="submitDiv">
         <Link href="/sign-in">
           <Button size={'submit'}>확인</Button>
@@ -16,3 +16,5 @@ export default function Page() {
     </Layout>
   );
 }
+
+export default FindIdLayout;

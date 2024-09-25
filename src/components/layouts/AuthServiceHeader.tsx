@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { usePathname } from 'next/navigation';
+import { ArrowLeftIcon, X } from 'lucide-react';
 
 export default function AuthServiceHeader() {
   const router = useRouter();
@@ -24,25 +25,11 @@ export default function AuthServiceHeader() {
         <ul className="flex">
           {state === 'back' ? (
             <li onClick={() => router.back()}>
-              <Image
-                alt="arrow-back-button"
-                src="/assets/images/icons/arrowLeftIcon.svg"
-                width={40}
-                height={40}
-                className="px-2"
-                priority
-              />
+              <ArrowLeftIcon className="ml-2" />
             </li>
           ) : (
             <li onClick={() => router.push('/sign-in')}>
-              <Image
-                alt="close-button"
-                src="/assets/images/icons/closeIcon.svg"
-                width={40}
-                height={40}
-                className="px-2"
-                priority
-              />
+              <X className="ml-2" />
             </li>
           )}
         </ul>

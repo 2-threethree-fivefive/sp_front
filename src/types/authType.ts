@@ -12,14 +12,13 @@ export interface SignInLinkType {
 }
 
 export enum AuthenticationMethodType {
-  SignUp = 'sign-up',
-  SignIn = 'sign-in',
   FindId = 'find-id',
   FindPw = 'find-pw',
+  FoundId = 'found-id',
+  FoundPw = 'found-pw',
 }
 
 export interface SignUpFieldType {
-  id: string;
   name: string;
   nickname: string;
   password: string;

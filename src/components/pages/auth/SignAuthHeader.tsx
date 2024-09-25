@@ -1,6 +1,7 @@
+import { AuthenticationMethodType } from '@/types/authType';
 import Image from 'next/image';
 
-const SignAuthHeader = () => {
+const SignAuthHeader = ({ method }: { method: AuthenticationMethodType }) => {
   return (
     <div className="font-bold flex flex-col items-start mb-6">
       <Image
@@ -11,7 +12,11 @@ const SignAuthHeader = () => {
         className="mb-4"
         priority
       />
-      <h2 className="text-2xl mt-2 mb-3">카카오 인증하기</h2>
+      <h2 className="text-2xl mt-2 mb-3">
+        {method === 'find-id'
+          ? '이메일을 입력해주세요.'
+          : '아이디와 이메일을 입력해주세요.'}
+      </h2>
     </div>
   );
 };

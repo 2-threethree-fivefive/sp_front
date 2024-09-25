@@ -11,7 +11,6 @@ function SignUpField({ formData }: { formData: FormData }) {
     Partial<SignUpErrorMessageType>
   >({});
   const [inputValues, setInputValues] = useState<SignUpFieldType>({
-    id: '',
     name: '',
     nickname: '',
     password: '',
@@ -47,18 +46,6 @@ function SignUpField({ formData }: { formData: FormData }) {
 
   return (
     <>
-      <SignInInput
-        signInInput={{
-          text: '아이디 (8~20자리 이내)',
-          value: inputValues.id,
-          name: 'id',
-          setValue: (value) => handleChange('id')(value),
-          clearValue: () => clearInput('id'),
-        }}
-      />
-      {errorMessages.id && (
-        <p className="text-xs text-red-500">{errorMessages.id}</p>
-      )}
       <SignInInput
         signInInput={{
           text: '이름',

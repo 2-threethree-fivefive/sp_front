@@ -1,8 +1,6 @@
 import Link from 'next/link';
 import React from 'react';
 import FitImage from '@/components/ui/FitImage';
-import { productDetailData } from '@/datas/main/productDetailDatas';
-import { productDetailDataType } from '@/types/main/productDetailType';
 import { Minus, Plus, X } from 'lucide-react';
 import { cartItemType } from '@/types/RequestTypes';
 

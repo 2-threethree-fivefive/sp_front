@@ -7,8 +7,9 @@ import { useState } from 'react';
 import SignUpHeader from '../pages/auth/sign-up/SignUpHeader';
 import SignUpEmailField from './SignUpEmailField';
 import { useRouter } from 'next/navigation';
+import SignUpIdField from './SignUpIdField';
 
-const steps = ['TermsAgree', 'InputId', 'SignUpInfo'];
+const steps = ['TermsAgree', 'InputEmail', 'InputId', 'SignUpInfo'];
 
 function SignUpForm({
   items,
@@ -45,8 +46,11 @@ function SignUpForm({
         {steps[stepLevel] === 'TermsAgree' && (
           <SignUpIntroField items={items} onNext={onNext} />
         )}
-        {steps[stepLevel] === 'InputId' && (
+        {steps[stepLevel] === 'InputEmail' && (
           <SignUpEmailField onNext={onNext} formData={formData} />
+        )}
+        {steps[stepLevel] === 'InputId' && (
+          <SignUpIdField onNext={onNext} formData={formData} />
         )}
         {steps[stepLevel] === 'SignUpInfo' && (
           <SignUpField formData={formData} />

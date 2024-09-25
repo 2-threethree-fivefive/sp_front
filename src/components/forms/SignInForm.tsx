@@ -30,7 +30,7 @@ function SignInForm() {
 
       <Layout variant="submitDiv">
         <Button size={'submit'} type="submit">
-          로그인하기
+          로그인
         </Button>
         <SignAuthWithKakao />
       </Layout>
