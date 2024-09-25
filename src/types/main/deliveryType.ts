@@ -1,12 +1,12 @@
 export interface DeliveryFormType {
   nickname: string;
-  name: string;
+  receiver: string;
   postNumber: string;
-  basicAddress: string;
+  address: string;
   detailAddress: string;
   phone1: string;
   phone2: string;
   message: string;
   customMessage: string;
-  isBase: boolean;
+  baseAddress: boolean;
 }

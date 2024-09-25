@@ -10,7 +10,7 @@ import { Button } from '@/components/ui/button';
 export default function CartListContainer({
   cartItemList,
 }: {
-  cartItemList: cartItemType[];
+  cartItemList: cartItemType[] | [];
 }) {
   const handleCheckAll = (e: React.ChangeEvent<HTMLInputElement>) => {
     cartItemList.map((item) => cartCheckUpdate(item, e.target.checked));
@@ -23,12 +23,11 @@ export default function CartListContainer({
   ) => {
     cartCheckUpdate(item, checked);
   };
-
   const totalPrice = cartItemList.reduce((acc, item) => {
-    return item.isChecked ? acc + item.price * item.quantity : acc;
+    return item.checked ? acc + item.limitQuantity * item.currentQuantity : acc;
   }, 0);
 
-  const checkedItemCount = cartItemList.filter((item) => item.isChecked).length;
+  const checkedItemCount = cartItemList.filter((item) => item.checked).length;
 
   return (
     <form className="w-full">
@@ -37,17 +36,17 @@ export default function CartListContainer({
           type="checkbox"
           name="전체선택"
           id="all"
-          className="hidden" // 기본 체크박스 숨기기
-          checked={cartItemList.every((item) => item.isChecked)}
+          className="hidden"
+          checked={cartItemList.every((item) => item.checked)}
           onChange={handleCheckAll}
         />
         <label htmlFor="all" className="flex items-center cursor-pointer">
           <span className="relative flex items-center font-bold">
             <span
-              className={`w-7 h-7 border-starbucks-green b-2 rounded-sm flex items-center justify-center mr-2 ${cartItemList.every((item) => item.isChecked) ? 'bg-starbucks-green' : 'bg-white'}`}
+              className={`w-7 h-7 border-starbucks-green b-2 rounded-sm flex items-center justify-center mr-2 ${cartItemList.every((item) => item.checked) ? 'bg-starbucks-green' : 'bg-white'}`}
             >
               <span
-                className={`w-5 h-5 text-white ml-[6px] mb-[4px] text-lg ${cartItemList.every((item) => item.isChecked) ? 'block' : 'hidden'}`}
+                className={`w-5 h-5 text-white ml-[6px] mb-[4px] text-lg ${cartItemList.every((item) => item.checked) ? 'block' : 'hidden'}`}
               >
                 {'✓'}
               </span>
@@ -67,22 +66,22 @@ export default function CartListContainer({
           <fieldset className="flex items-start gap-4 px-6 pt-6 pb-4 border-b-2 border-slate-200">
             <input
               type="checkbox"
-              name={item.id.toString()}
-              id={item.id.toString()}
+              name={item.productUuid.toString()}
+              id={item.productUuid.toString()}
               className="hidden"
-              checked={item.isChecked}
+              checked={item.checked}
               onChange={(e) => handleItemCheck(e, item, e.target.checked)}
             />
             <label
-              htmlFor={item.id.toString()}
+              htmlFor={item.productUuid.toString()}
               className="flex items-center cursor-pointer font-bold"
             >
               <span className="relative flex items-center">
                 <span
-                  className={`w-7 h-7 border-starbucks-green b-2 rounded-sm flex items-center justify-center mr-2 ${cartItemList.every((item) => item.isChecked) ? 'bg-starbucks-green' : 'bg-white'}`}
+                  className={`w-7 h-7 border-starbucks-green b-2 rounded-sm flex items-center justify-center mr-2 ${cartItemList.every((item) => item.checked) ? 'bg-starbucks-green' : 'bg-white'}`}
                 >
                   <span
-                    className={`w-5 h-5 text-white ml-[6px] mb-[4px] text-lg ${cartItemList.every((item) => item.isChecked) ? 'block' : 'hidden'}`}
+                    className={`w-5 h-5 text-white ml-[6px] mb-[4px] text-lg ${cartItemList.every((item) => item.checked) ? 'block' : 'hidden'}`}
                   >
                     {'✓'}
                   </span>

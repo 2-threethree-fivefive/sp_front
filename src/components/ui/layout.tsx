@@ -14,7 +14,7 @@ const divVariants = cva('', {
       findId: 'flex flex-col h-screen justify-center items-center',
       findPw: 'flex flex-col p-6 mt-10',
       submitDiv:
-        'fixed bottom-0 left-0 right-0 px-4 py-4 disabled:bg-slate-300 border-t-2 bg-white',
+        'fixed bottom-0 left-0 right-0 px-4 py-4 max-w-md mx-auto disabled:bg-slate-300 border-t-2 bg-white',
       main: 'w-full',
       mypage: 'px-4 py-8 bg-slate-100 w-full mb-6',
     },

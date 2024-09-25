@@ -1,20 +1,24 @@
-import {
-  getDeliveryData,
-  putDeliveryAction,
-} from '@/actions/mypage/deleveryAction';
+import { putDeliveryAction } from '@/actions/mypage/deleveryAction';
+import { options } from '@/app/api/auth/[...nextauth]/options';
 import UpdateDeliveryForm from '@/components/forms/UpdateDeliveryForm';
 import CloseHeader from '@/components/layouts/CloseHeader';
 import MyPageHeader from '@/components/layouts/MyPageHeader';
-import { deliveryDataType } from '@/types/ResponseTypes';
+import { getServerSession } from 'next-auth';
+import { redirect } from 'next/navigation';
 
 async function Page() {
-  const delivery: deliveryDataType =
-    (await getDeliveryData()) as deliveryDataType;
+  const session = await getServerSession(options);
 
-  const handlePutDelivery = async (formData: FormData) => {
+  const handlePutDelivery = async (formData: FormData, deliveryId: string) => {
     'use server';
-    const res = await putDeliveryAction(formData);
-    console.log(res);
+    const res = await putDeliveryAction(
+      formData,
+      deliveryId,
+      session?.user?.accessToken
+    );
+    if (res.status === 'OK') {
+      redirect('/mypage/delivery');
+    }
   };
 
   return (
@@ -22,8 +26,8 @@ async function Page() {
       <CloseHeader />
       <MyPageHeader text="배송지 정보" />
       <UpdateDeliveryForm
+        session={session}
         handlePutDelivery={handlePutDelivery}
-        delivery={delivery}
       />
     </>
   );

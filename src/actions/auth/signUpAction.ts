@@ -4,7 +4,6 @@ import { commonResType } from '@/types/ResponseTypes';
 
 export async function createAuth(formData: FormData) {
   'use server';
-  console.log('FormData before submission:', Array.from(formData.entries()));
   const payload = {
     userId: formData.get('id'),
     name: formData.get('name'),
@@ -41,7 +40,6 @@ export async function verifyEmail(email: string) {
       },
     }
   );
-  console.log(res);
 
   if (res.ok) {
     return await res.json();

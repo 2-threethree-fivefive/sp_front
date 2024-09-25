@@ -4,19 +4,39 @@ import { deliveryDataType } from '@/types/ResponseTypes';
 import { Button } from '../ui/button';
 import { Layout } from '../ui/layout';
 import DeliveryField from './DeliveryField';
+import { Session } from 'next-auth';
+import { getDeliveryData } from '@/actions/mypage/deleveryAction';
+import { usePathname } from 'next/navigation';
+import { useEffect, useState } from 'react';
 
 function UpdateDeliveryForm({
-  delivery,
   handlePutDelivery,
+  session,
 }: {
-  delivery: deliveryDataType;
-  handlePutDelivery: (formData: FormData) => void;
+  session: Session | null;
+  handlePutDelivery: (formData: FormData, deliveryId: string) => void;
 }) {
+  const path = usePathname();
+  const deliveryId = path.split('/mypage/delivery/')[1];
+  const [delivery, setDelivery] = useState<deliveryDataType | null>(null);
+
+  useEffect(() => {
+    const fetchDeliveryData = async () => {
+      if (session?.user?.accessToken && deliveryId) {
+        const data = await getDeliveryData(
+          deliveryId,
+          session.user.accessToken
+        );
+        setDelivery(data);
+      }
+    };
+    fetchDeliveryData();
+  }, [deliveryId, session]);
+
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
-    console.log(console.log(Object.fromEntries(formData)));
-    handlePutDelivery(formData);
+    handlePutDelivery(formData, deliveryId);
   };
   return (
     <form
