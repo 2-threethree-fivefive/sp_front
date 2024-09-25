@@ -1,5 +1,3 @@
-import { mainCategoryDataType } from './categoryType';
-
 export interface productByEventType {
   eventId: number;
   eventName: string;
@@ -13,12 +11,4 @@ export interface productInfoType {
   productThumbnailImage: string;
   reviewScore: number;
   reviewCount: number;
-}
-
-export interface productBestDataTpe {
-  page: number;
-  isLast: boolean;
-  pageSize: number;
-  categoryInfo: mainCategoryDataType;
-  productList: productInfoType[];
 }

@@ -1,6 +1,6 @@
 import { imageData } from '@/datas/image/imageData';
 import {
-  commonResultType,
+  commonResType,
   imageDataType,
   imageResType,
 } from '@/types/ResponseTypes';
@@ -24,7 +24,7 @@ export async function getMainImageData(uuid: string): Promise<imageDataType> {
   if (!res.ok) {
     throw new Error('Failed to fetch');
   }
-  const data = (await res.json()) as commonResultType<imageDataType>;
+  const data = (await res.json()) as commonResType<imageDataType>;
   return data.result as imageDataType;
 }
 
@@ -37,6 +37,6 @@ export async function getAllImageData(uuid: string): Promise<imageDataType[]> {
   if (!res.ok) {
     throw new Error('Failed to fetch');
   }
-  const data = (await res.json()) as commonResultType<imageDataType[]>;
+  const data = (await res.json()) as commonResType<imageDataType[]>;
   return data.result as imageDataType[];
 }

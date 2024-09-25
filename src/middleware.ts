@@ -46,9 +46,18 @@ export default async function middleware(request: NextRequest) {
   const isWithAuth = withAuthList.includes(pathname);
   const isWithOutAuth = withOutAuthList.includes(pathname);
 
+  // server component에서 pathname 가져오기 위함
+  const requestHeaders = new Headers(request.headers);
+  requestHeaders.set('x-pathname', request.nextUrl.pathname);
+
   if (isWithAuth) return withAuth(request, !!accessToken);
   else if (isWithOutAuth)
     return withOutAuth(request, !!accessToken, callbackUrl);
+  return NextResponse.next({
+    request: {
+      headers: requestHeaders,
+    },
+  });
 }
 
 export const config = {

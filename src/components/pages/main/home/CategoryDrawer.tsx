@@ -20,12 +20,12 @@ function CategoryDrawer({
   handleDrawerToggle,
 }: {
   categoryList: topCategoryDataType[];
-  selected: number;
-  setSelected: Dispatch<SetStateAction<number>>;
+  selected: string;
+  setSelected: Dispatch<SetStateAction<string>>;
   handleDrawerToggle: () => void;
 }) {
-  const handleSelected = (idx: number) => {
-    setSelected(idx);
+  const handleSelected = (categoryName: string) => {
+    setSelected(categoryName);
   };
   return (
     <DrawerContent className="pb-8">
@@ -43,22 +43,26 @@ function CategoryDrawer({
               key={category.id}
               className="space-x-4 mb-[10px] text-sm text-start"
               onClick={() => {
-                handleSelected(index);
+                handleSelected(category.topCategoryName);
                 handleDrawerToggle();
               }}
             >
               <RadioGroupItem
-                value={index.toString()}
+                value={category.topCategoryName}
                 className={
-                  selected === index
+                  selected === category.topCategoryName
                     ? 'border-red-400 text-red-500'
                     : 'border-gray-400'
                 }
-                id={index.toString()}
+                id={category.topCategoryName}
               />
               <label
-                className={selected === index ? 'font-bold' : 'text-[#666666]'}
-                htmlFor={index.toString()}
+                className={
+                  selected === category.topCategoryName
+                    ? 'font-bold'
+                    : 'text-[#666666]'
+                }
+                htmlFor={category.topCategoryName}
               >
                 {category.topCategoryName}
               </label>

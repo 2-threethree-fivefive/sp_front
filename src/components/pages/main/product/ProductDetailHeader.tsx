@@ -2,8 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import BackIcon from '/public/assets/images/icons/backIcon.svg';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
-import Link from 'next/link';
-import CartIcon from '@/components/ui/CartIcon';
+import CartStaticIcon from '@/components/ui/CartStaticIcon';
 
 function ProductDetailHeader() {
   const router = useRouter();
@@ -24,7 +23,7 @@ function ProductDetailHeader() {
         <li onClick={() => handleRouter('review')}>리뷰</li>
         <li onClick={() => handleRouter('recommend')}>상품추천</li>
       </ul>
-      <CartIcon count={10} />
+      <CartStaticIcon count={10} />
     </header>
   );
 }

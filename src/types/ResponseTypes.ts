@@ -7,10 +7,12 @@ export interface commonResType<T> {
   result?: T;
 }
 
-export interface commonResultType<T> {
-  status: string;
-  message: string;
-  result: T;
+export interface infiniteResultType<T> {
+  content: T;
+  nextCursor: number | null;
+  hasNext: boolean;
+  pageSize: number;
+  page: number;
 }
 
 export interface infiniteResType<T> {
@@ -105,7 +107,7 @@ export interface productDiscountDataType {
 }
 
 // 상품 UUID에 대한 전체 리뷰 Score, Count:
-export interface productReviewSummaryType {
+export interface productReviewSummaryDataType {
   reviewscoreAvg: number;
   reviewcount: number;
 }
@@ -147,8 +149,8 @@ export interface productInfoDataType {
   productDescription: string;
   productInfo: string;
   price: number;
-  // discountType: string;
-  // discountValue: number;
+  discountType: string;
+  discountValue: number;
   reviewscoreAvg: number;
   reviewcount: number;
   // productThumbnailImage: string;
@@ -171,4 +173,37 @@ export interface reviewItemDataType {
   authorName: string;
   regDate: string;
   modDate: string;
+}
+
+export interface productReviewUuidDataType {
+  reviewUuid: string;
+  productUuid: string;
+}
+
+// 찜하기 관련
+export interface wishListDataType {
+  id: number;
+  uuid: string;
+  productUuid: string;
+  liked: boolean;
+}
+
+export interface likedTFDataType {
+  liked: boolean;
+}
+
+// 이벤트 (기획전) 관련
+export interface eventUuidDataType {
+  promotionUuid: string;
+}
+
+export interface eventNameDataType {
+  promotionName: string;
+}
+
+export interface eventInfoDataType {
+  eventUuid: string;
+  eventName: string;
+  eventThumbnailPath: string;
+  eventThumbnailAlt: string;
 }

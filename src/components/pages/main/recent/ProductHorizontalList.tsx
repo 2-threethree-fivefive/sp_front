@@ -2,6 +2,7 @@
 import ProductHorizontalItem from '@/components/cards/ProductHorizontalItem';
 import { Checkbox } from '@/components/ui/checkbox';
 import { productInfoType } from '@/types/main/productType';
+import { productInfoDataType } from '@/types/ResponseTypes';
 import { CircleX, Settings } from 'lucide-react';
 import { usePathname } from 'next/navigation';
 import React, { useState } from 'react';
@@ -9,7 +10,7 @@ import React, { useState } from 'react';
 function ProductHorizontalList({
   productList,
 }: {
-  productList: productInfoType[];
+  productList: productInfoDataType[];
 }) {
   const pathName = usePathname();
   const [isSetting, setIsSetting] = useState<boolean>(false);
@@ -21,9 +22,7 @@ function ProductHorizontalList({
 
   const handleSelectAll = (checked: boolean | string) => {
     if (checked) {
-      setCheckedItems(
-        productList.map((product) => product.productId.toString())
-      );
+      setCheckedItems(productList.map((product) => product.productUuid));
     } else {
       setCheckedItems([]);
     }
@@ -89,10 +88,10 @@ function ProductHorizontalList({
         {productList.map((product) => {
           return (
             <ProductHorizontalItem
-              key={product.productId}
+              key={product.productUuid}
               product={product}
               isSetting={isSetting}
-              isSelected={checkedItems.includes(product.productId.toString())}
+              isSelected={checkedItems.includes(product.productUuid)}
               handleItemCheck={handleItemCheck}
             />
           );

@@ -5,7 +5,7 @@ import BackIcon from '/public/assets/images/icons/backIcon.svg';
 import SearchIcon from '/public/assets/images/icons/searchIcon.svg';
 import Link from 'next/link';
 import Image from 'next/image';
-import CartIcon from '../ui/CartIcon';
+import CartStaticIcon from '../ui/CartStaticIcon';
 
 function BasicHeader() {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
@@ -29,7 +29,7 @@ function BasicHeader() {
         </div>
         <div className="flex gap-3">
           <SearchIcon onClick={toggleSearch} fill="black" />
-          <CartIcon count={10} />
+          <CartStaticIcon count={10} />
         </div>
       </header>
     </div>

@@ -1,28 +1,30 @@
 import React from 'react';
-import { eventThumbnailData } from '@/datas/main/eventDatas';
-import { productsByEventDatas } from '@/datas/main/productDatas';
 import MainBanner from '@/components/pages/main/home/MainBanner';
 import TrendTags from '@/components/pages/main/home/TrendTags';
 import ReviewBest from '@/components/pages/main/home/ReviewBest';
 import StarbucksBest from '@/components/pages/main/home/StarbucksBest';
 import ProductsByEventList from '@/components/pages/main/home/ProductsByEventList';
 import { getTopCategories } from '@/actions/category/categoryActions';
-import { topCategoryDataType } from '@/types/ResponseTypes';
+import {
+  eventInfoDataType,
+  eventUuidDataType,
+  topCategoryDataType,
+} from '@/types/ResponseTypes';
+import {
+  getEventInfoList,
+  getEventUuidList,
+} from '@/actions/event/eventActions';
 
 export default async function Page() {
-  // 메인 카테고리 리스트 데이터 fetch
   const topCategories: topCategoryDataType[] = await getTopCategories();
 
-  // const eventBanner = await fetch
-  const eventBanner = await eventThumbnailData;
-
-  // fetch
-  // const res = await fetch('/api/products_by_event')
-  const eventList = await productsByEventDatas;
+  const eventUuidList: eventUuidDataType[] = await getEventUuidList();
+  const eventInfoList: eventInfoDataType[] =
+    await getEventInfoList(eventUuidList);
 
   return (
     <main className="bg-white">
-      <MainBanner eventBanner={eventBanner} />
+      <MainBanner eventInfoList={eventInfoList} />
       <TrendTags />
       <ProductsByEventList />
       <ReviewBest />

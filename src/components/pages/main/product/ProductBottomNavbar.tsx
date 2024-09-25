@@ -35,7 +35,7 @@ function ProductBottomNavbar() {
   return (
     <ul className="w-full flex items-center text-center h-14 fixed bottom-0 left-0 z-10 bg-white font-semibold">
       <li className="w-[15%] h-full border flex justify-center items-center">
-        <LikeButton w={30} h={30} />
+        <LikeButton w={30} h={30} productUuid={productUuid} />
       </li>
       <Drawer>
         <DrawerTrigger asChild>

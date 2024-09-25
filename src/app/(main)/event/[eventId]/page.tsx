@@ -1,35 +1,40 @@
-import Product from '@/components/cards/Product';
+import {
+  getEventName,
+  getProductUuidListByEvent,
+} from '@/actions/event/eventActions';
+import { getAllImageData } from '@/actions/image/imageActions';
+import { getProductInfoList } from '@/actions/product/productActions';
 import SimpleHeader from '@/components/layouts/SimpleHeader';
 import ProductList from '@/components/pages/main/product/ProductList';
 import FitImage from '@/components/ui/FitImage';
-import { eventThumbnailData } from '@/datas/main/eventDatas';
-import { productsByEventDatas } from '@/datas/main/productDatas';
+import {
+  eventNameDataType,
+  imageDataType,
+  productInfoDataType,
+  productUuidDataType,
+} from '@/types/ResponseTypes';
 import React from 'react';
 
-async function Page({ params }: { params: { eventId: number } }) {
-  // todo: eventId에 따른 상품 목록 조회, event 정보(이미지, 이름 등) 조회
-  const eventImageList = await eventThumbnailData.eventThumbnailList;
-  const eventData = await productsByEventDatas[0];
+async function Page({ params }: { params: { eventId: string } }) {
+  const eventName: eventNameDataType = await getEventName(params.eventId);
+  const eventImageList: imageDataType[] = await getAllImageData(params.eventId);
+  const productUuidList: productUuidDataType[] =
+    await getProductUuidListByEvent(params.eventId);
+  const productList: productInfoDataType[] =
+    await getProductInfoList(productUuidList);
   return (
     <>
-      <SimpleHeader title={eventData.eventName} />
+      <SimpleHeader title={eventName.promotionName} />
       {eventImageList.map((eventImage) => {
         return (
           <FitImage
-            key={eventImage.id}
-            src={eventImage.imageUrl}
-            alt={eventImage.eventName}
+            key={eventImage.imageUuid}
+            src={eventImage.s3url}
+            alt={eventImage.imageName}
           />
         );
       })}
-      <ProductList productList={eventData.productList} />
-      {/* <div className="flex flex-wrap p-4 justify-between">
-        {eventData.productList.map((product) => {
-          return (
-            <Product key={product.productId} product={product} size="lg" />
-          );
-        })}
-      </div> */}
+      <ProductList productList={productList} />
     </>
   );
 }

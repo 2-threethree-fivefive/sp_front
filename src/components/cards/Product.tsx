@@ -28,7 +28,7 @@ function Product({
         <div className="flex justify-between items-center text-xs">
           <span>스타벅스</span>
           <div className="flex gap-2">
-            <LikeButton w={20} h={20} />
+            <LikeButton w={20} h={20} productUuid={product.productUuid} />
             <CartBlackIcon width="20" height="20" />
           </div>
         </div>

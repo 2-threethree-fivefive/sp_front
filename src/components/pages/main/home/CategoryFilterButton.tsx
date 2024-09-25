@@ -10,12 +10,12 @@ function CategoryFilterButton({
   category: topCategoryDataType;
   idx: number;
   isSelected: boolean;
-  setSelected: Dispatch<SetStateAction<number>>;
+  setSelected: Dispatch<SetStateAction<string>>;
 }) {
   return (
     <li
       className={`text-nowrap px-3 py-2 border tracking-tighter ${isSelected && 'bg-black text-white'}`}
-      onClick={() => setSelected(idx)}
+      onClick={() => setSelected(category.topCategoryName)}
     >
       <button>{category.topCategoryName}</button>
     </li>

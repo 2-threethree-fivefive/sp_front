@@ -2,7 +2,7 @@ import Link from 'next/link';
 import React from 'react';
 import CartBlackIcon from '/public/assets/images/icons/cartBlackIcon.svg';
 
-function CartIcon({ count }: { count: number }) {
+function CartStaticIcon({ count }: { count: number }) {
   return (
     <Link href="/cart">
       <div className="relative">
@@ -17,4 +17,4 @@ function CartIcon({ count }: { count: number }) {
   );
 }
 
-export default CartIcon;
+export default CartStaticIcon;

@@ -20,11 +20,9 @@ function Page({ params }: { params: { productId: string } }) {
   const [mediaReviewList, setMediaReviewList] = useState<reviewDataType[]>([]);
   useEffect(() => {
     const getData = async () => {
-      const reviewsExcludeImage = await getReviewList(params.productId, 0, 20);
+      const reviewsExcludeImage = await getReviewList(params.productId);
       const reviewsIncludeImage =
         await getReviewIncludeImageList(reviewsExcludeImage);
-
-      console.log(reviewsIncludeImage);
       setReviewList(reviewsIncludeImage);
     };
     getData();
