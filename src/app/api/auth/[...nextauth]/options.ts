@@ -65,9 +65,10 @@ export const options: NextAuthOptions = {
           );
           const data = (await res.json()) as commonResType<userDataType>;
           if (data.result?.registered === true) {
-            user.name = data.result?.name;
+            user.name = data.result?.userId;
             user.uuid = data.result?.uuid;
             user.accessToken = data.result?.accessToken;
+            console.log(data.result);
           } else {
             return '/sign-up';
           }
@@ -81,7 +82,10 @@ export const options: NextAuthOptions = {
     },
 
     async jwt({ token, user }) {
-      return { ...token, ...user };
+      if (user) {
+        return { ...token, ...user };
+      }
+      return {};
     },
 
     async session({ session, token }) {

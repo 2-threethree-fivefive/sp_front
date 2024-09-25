@@ -77,7 +77,6 @@ export async function getEventInfoList(eventUuidList: eventUuidDataType[]) {
         eventThumbnailAlt: eventThumbnailImage.imageName,
       } as eventInfoDataType;
     });
-
     const eventInfoList = await Promise.all(eventInfoPromises);
     return eventInfoList;
   } catch (error) {

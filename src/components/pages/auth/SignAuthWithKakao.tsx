@@ -1,6 +1,6 @@
 'use client';
 
-import Image from 'next/image';
+import KakaoIcon from '/public/assets/images/icons/kakaoIcon.svg';
 import { Button } from '../../ui/button';
 import { signIn } from 'next-auth/react';
 
@@ -10,18 +10,12 @@ const SignAuthWithKakao = () => {
   };
 
   return (
-    <Button
-      className="mt-2"
-      size="kakao"
-      type="button"
-      onClick={handleKakaoAuth}
-    >
-      <Image
-        src="/assets/images/kakaos/kakao.png"
-        alt="kakao-login button"
-        fill
-        style={{ objectFit: 'cover', borderRadius: '8px' }}
-      />
+    <Button size="kakao" type="button" onClick={handleKakaoAuth}>
+      <span className="ml-2">
+        <KakaoIcon />
+      </span>
+      <span className="col-span-8">카카오 로그인</span>
+      <span></span>
     </Button>
   );
 };

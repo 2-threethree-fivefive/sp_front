@@ -1,6 +1,7 @@
 import { getMyReviewListData } from '@/actions/mypage/myReviewAction';
 import { myReviewDataType } from '@/types/ResponseTypes';
 import MyReviewCard from './MyReviewCard';
+import React from 'react';
 
 async function MyReviewContent() {
   const myReviewList: myReviewDataType[] =
@@ -9,12 +10,12 @@ async function MyReviewContent() {
   return (
     <ul className="px-6">
       {myReviewList.map((myReview, index) => (
-        <>
-          <li key={myReview.reviewUuid}>
+        <React.Fragment key={myReview.reviewUuid}>
+          <li>
             <MyReviewCard myReview={myReview} />
           </li>
           {index < myReviewList.length - 1 && <hr />}
-        </>
+        </React.Fragment>
       ))}
     </ul>
   );

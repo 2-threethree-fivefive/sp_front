@@ -4,7 +4,7 @@ export interface commonResType<T> {
   code: number;
   message: string;
   data?: T;
-  result?: T;
+  result: T;
 }
 
 export interface infiniteResultType<T> {
@@ -29,6 +29,7 @@ export interface userDataType {
   accessToken: string;
   name: string;
   uuid: string;
+  userId: string;
   registered?: boolean;
   email?: string;
 }
@@ -206,4 +207,9 @@ export interface eventInfoDataType {
   eventName: string;
   eventThumbnailPath: string;
   eventThumbnailAlt: string;
+}
+
+export interface findIdDataType {
+  userId: string;
+  message: string;
 }

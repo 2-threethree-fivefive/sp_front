@@ -36,6 +36,17 @@ const SignUpHeader = ({
       headerText = (
         <>
           <h2 className="text-2xl">
+            아이디를
+            <br />
+            입력해주세요.
+          </h2>
+        </>
+      );
+      break;
+    case 3:
+      headerText = (
+        <>
+          <h2 className="text-2xl">
             개인 정보를
             <br />
             입력해주세요.

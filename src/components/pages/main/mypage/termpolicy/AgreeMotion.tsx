@@ -40,8 +40,8 @@ function AgreeMotion({ agree }: { agree: boolean }) {
           layout
           transition={{
             type: 'spring',
-            stiffness: 700,
-            damping: 300,
+            stiffness: 300,
+            damping: 100,
           }}
         />
       </div>

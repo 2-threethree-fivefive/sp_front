@@ -20,7 +20,8 @@ const buttonVariants = cva('font-bold', {
     size: {
       default: 'h-10 px-4 py-2',
       submit: 'h-10 px-4 py-2 w-full rounded-full disabled:bg-slate-300',
-      kakao: 'w-full h-10 bg-white relative rounded-full',
+      kakao:
+        'grid grid-cols-10 mt-2 items-center w-full h-10 bg-[#FAE300] text-black relative rounded-full',
       clear: '',
     },
   },
