@@ -3,12 +3,14 @@ import React from 'react';
 import FitImage from '@/components/ui/FitImage';
 import { Minus, Plus, X } from 'lucide-react';
 import { cartItemType } from '@/types/RequestTypes';
+import { productDetailDataType } from '@/types/main/productDetailType';
+import { productDetailData } from '@/datas/main/productDetailDatas';
 
 function CartCard({ item }: { item: cartItemType }) {
   const product: productDetailDataType = productDetailData;
   return (
     <div className={'grid grid-cols-4 h-auto pb-4 gap-2 w-full'}>
-      <Link href={`/product/${item.id}`}>
+      <Link href={`/product/${item.productUuid}`}>
         <FitImage
           src={product.productThumbnailImageList[0]}
           alt={product.productName}
@@ -26,10 +28,10 @@ function CartCard({ item }: { item: cartItemType }) {
           <div className="flex justify-between mt-2 text-base font-bold text-black">
             <div className="flex justify-start items-center gap-x-3">
               <Minus
-                className={` border  rounded-full p-[2px] ${item.quantity === 1 && 'text-gray-300 border-gray-300'}`}
+                className={` border  rounded-full p-[2px] ${item.currentQuantity === 1 && 'text-gray-300 border-gray-300'}`}
                 size={20}
               />
-              <p>{item.quantity}</p>
+              <p>{item.currentQuantity}</p>
               <Plus className=" border  rounded-full p-[2px]" size={20} />
             </div>
             <p>{product.productPrice.toLocaleString()}원</p>

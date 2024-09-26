@@ -2,9 +2,10 @@ import { commonResType, orderDeliveryDataType } from '@/types/ResponseTypes';
 
 export const orderDeliveryData: commonResType<orderDeliveryDataType[]> = {
   HttpStatus: 'ok',
+  isSuccess: true,
   code: 200,
   message: 'success',
-  data: [
+  result: [
     {
       id: 'paid',
       value: 4,

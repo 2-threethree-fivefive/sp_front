@@ -5,6 +5,9 @@ import React from 'react';
 
 export default function Page() {
   return (
-    <Authentication method={AuthenticationMethodType.FindId} findId={findId} />
+    <Authentication
+      method={AuthenticationMethodType.FindId}
+      findAuth={findId}
+    />
   );
 }

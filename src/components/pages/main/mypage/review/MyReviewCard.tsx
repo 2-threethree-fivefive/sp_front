@@ -1,12 +1,13 @@
-import { getImageData } from '@/actions/image/imageActions';
-import StarRating from '@/components/ui/StarRating';
+import { getMainImageData } from '@/actions/image/imageActions';
 import StarRatingBlack from '@/components/ui/StarRatingBlack';
 import { imageDataType, myReviewDataType } from '@/types/ResponseTypes';
 import Image from 'next/image';
 import Link from 'next/link';
 
 async function MyReviewCard({ myReview }: { myReview: myReviewDataType }) {
-  const image: imageDataType = (await getImageData()) as imageDataType;
+  const image: imageDataType = (await getMainImageData(
+    myReview.reviewUuid
+  )) as imageDataType;
 
   return (
     <Link

@@ -29,7 +29,7 @@ export default async function Page({
         <span className="text-black font-semibold">{30}</span>개의 상품이
         있습니다.
       </p>
-      <ProductList productList={productList} />
+      {/* <ProductList productList={productList} /> */}
     </main>
   );
 }

@@ -5,7 +5,7 @@ export async function getMyCouponData() {
   'use server';
   const res: commonResType<couponDataType[]> = couponData;
   if (res.HttpStatus === 'ok') {
-    return res.data;
+    return res.result;
   }
 
   return null;
@@ -15,7 +15,7 @@ export async function getCouponData() {
   'use server';
   const res: commonResType<couponDataType[]> = couponData;
   if (res.HttpStatus === 'ok') {
-    return res.data;
+    return res.result;
   }
 
   return null;

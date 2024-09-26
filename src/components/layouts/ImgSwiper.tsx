@@ -8,8 +8,6 @@ import 'swiper/css/navigation';
 
 import { Pagination, Navigation } from 'swiper/modules';
 import Image from 'next/image';
-import { productInfoType } from '@/types/main/productType';
-import { productDetailDataType } from '@/types/main/productDetailType';
 
 function ImgSwiper({ imgList }: { imgList: string[] }) {
   return (

@@ -5,7 +5,7 @@ export async function getOrderDeliveryData() {
   'use server';
   const res: commonResType<orderDeliveryDataType[]> = orderDeliveryData;
   if (res.HttpStatus === 'ok') {
-    return res.data;
+    return res.result;
   }
 
   return null;

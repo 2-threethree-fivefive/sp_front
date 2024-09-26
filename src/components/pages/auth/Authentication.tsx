@@ -13,10 +13,10 @@ const steps = ['findAuth', 'foundId', 'foundPw'];
 
 function Authentication({
   method,
-  findId,
+  findAuth,
 }: {
   method: AuthenticationMethodType;
-  findId: (formData: FormData) => Promise<findIdDataType>;
+  findAuth: (formData: FormData) => Promise<findIdDataType>;
 }) {
   const [stepLevel, setStepLevel] = useState(0);
   const [name, setName] = useState('');
@@ -26,7 +26,7 @@ function Authentication({
 
   const handleFindAuth = async (formData: FormData) => {
     if (method === 'find-id') {
-      const result = await findId(formData);
+      const result = await findAuth(formData);
       if (result.userId) {
         setName(result.userId);
         onNext(1);
