@@ -5,7 +5,7 @@ export async function getMyReviewListData() {
   'use server';
   const res: commonResType<myReviewDataType[]> = myReviewListData;
   if (res.HttpStatus === 'ok') {
-    return res.data;
+    return res.result;
   }
 
   return null;

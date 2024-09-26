@@ -5,7 +5,7 @@ export const myReviewListData: commonResType<myReviewDataType[]> = {
   isSuccess: true,
   code: 200,
   message: 'success',
-  data: [
+  result: [
     {
       content: '이거 굉장히 별로입니다.',
       reviewUuid: 'Rlkds038Dsakrj092424132',

@@ -26,7 +26,7 @@ export async function getProductBasicInfo(
   }
 
   const data = (await res.json()) as commonResType<productBasicDataType>;
-  return data.data as productBasicDataType;
+  return data.result as productBasicDataType;
 }
 
 // 가격만 조회

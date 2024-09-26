@@ -2,9 +2,10 @@ import { commonResType, couponDataType } from '@/types/ResponseTypes';
 
 export const couponData: commonResType<couponDataType[]> = {
   HttpStatus: 'ok',
+  isSuccess: true,
   code: 200,
   message: 'success',
-  data: [
+  result: [
     {
       couponId: '1',
       discount: 5,

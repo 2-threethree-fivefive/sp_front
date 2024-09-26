@@ -2,9 +2,10 @@ import { commonResType, signUpIntroDataType } from '@/types/ResponseTypes';
 
 export const signUpIntroData: commonResType<signUpIntroDataType[]> = {
   HttpStatus: 'ok',
+  isSuccess: true,
   code: 200,
   message: 'success',
-  data: [
+  result: [
     {
       id: '1',
       label: '[필수] 이용약관 동의',

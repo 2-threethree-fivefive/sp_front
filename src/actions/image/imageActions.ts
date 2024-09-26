@@ -1,19 +1,4 @@
-import { imageData } from '@/datas/image/imageData';
-import {
-  commonResType,
-  imageDataType,
-  imageResType,
-} from '@/types/ResponseTypes';
-
-export async function getImageData() {
-  'use server';
-  const res: imageResType = imageData;
-  if (res.HttpStatus === 'ok') {
-    return res.data;
-  }
-
-  return null;
-}
+import { commonResType, imageDataType } from '@/types/ResponseTypes';
 
 // 메인(썸네일) 이미지 조회
 export async function getMainImageData(uuid: string): Promise<imageDataType> {

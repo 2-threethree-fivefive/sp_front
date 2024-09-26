@@ -5,7 +5,7 @@ export async function getSignUpInroData() {
   'use server';
   const res: commonResType<signUpIntroDataType[]> = signUpIntroData;
   if (res.HttpStatus === 'ok') {
-    return res.data;
+    return res.result;
   }
 
   return null;
