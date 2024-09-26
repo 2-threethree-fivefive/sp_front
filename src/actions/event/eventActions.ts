@@ -67,18 +67,20 @@ export async function getEventInfoList(eventUuidList: eventUuidDataType[]) {
       const eventName: eventNameDataType = await getEventName(
         eventUuid.promotionUuid
       );
-      const eventThumbnailImage: imageDataType = await getMainImageData(
-        eventUuid.promotionUuid
-      );
+      // const eventThumbnailImage: imageDataType = await getMainImageData(
+      //   eventUuid.promotionUuid
+      // );
+      // console.log(eventThumbnailImage);
       return {
         eventUuid: eventUuid.promotionUuid,
         eventName: eventName.promotionName,
-        eventThumbnailPath: eventThumbnailImage.thumbnailPath,
-        eventThumbnailAlt: eventThumbnailImage.imageName,
+        // eventThumbnailPath: eventThumbnailImage.thumbnailPath,
+        // eventThumbnailAlt: eventThumbnailImage.imageName,
       } as eventInfoDataType;
     });
     const eventInfoList = await Promise.all(eventInfoPromises);
-    return eventInfoList;
+    console.log('***************', eventInfoList);
+    return eventInfoList as eventInfoDataType[];
   } catch (error) {
     throw new Error('Failed to fetch event info list');
   }

@@ -15,15 +15,6 @@ export interface infiniteResultType<T> {
   page: number;
 }
 
-export interface infiniteResType<T> {
-  status: string;
-  message: string;
-  result: T;
-  avg: number;
-  cnt: number;
-  hasNext: boolean;
-}
-
 // user
 export interface userDataType {
   accessToken: string;
@@ -205,8 +196,8 @@ export interface eventNameDataType {
 export interface eventInfoDataType {
   eventUuid: string;
   eventName: string;
-  eventThumbnailPath: string;
-  eventThumbnailAlt: string;
+  eventThumbnailPath?: string;
+  eventThumbnailAlt?: string;
 }
 
 export interface findIdDataType {

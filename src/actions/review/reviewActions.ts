@@ -3,7 +3,6 @@
 import {
   commonResType,
   imageDataType,
-  infiniteResType,
   infiniteResultType,
   productReviewUuidDataType,
   reviewDataType,

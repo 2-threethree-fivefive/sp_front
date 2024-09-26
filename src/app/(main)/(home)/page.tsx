@@ -16,15 +16,13 @@ import {
 } from '@/actions/event/eventActions';
 
 export default async function Page() {
-  const topCategories: topCategoryDataType[] = await getTopCategories();
+  const topCategories = await getTopCategories();
 
-  const eventUuidList: eventUuidDataType[] = await getEventUuidList();
-  const eventInfoList: eventInfoDataType[] =
-    await getEventInfoList(eventUuidList);
+  const eventUuidList = await getEventUuidList();
 
   return (
     <main className="bg-white">
-      <MainBanner eventInfoList={eventInfoList} />
+      <MainBanner eventUuidList={eventUuidList} />
       <TrendTags />
       <ProductsByEventList />
       <ReviewBest />
