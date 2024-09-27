@@ -6,40 +6,28 @@ import 'swiper/css/navigation';
 
 import { Autoplay } from 'swiper/modules';
 
-import Link from 'next/link';
-import React, { useEffect, useRef, useState } from 'react';
+import React, { Suspense, useRef, useState } from 'react';
 import ArrowRightIcon from '/public/assets/images/icons/arrowRightIcon.svg';
 import ShowAllEventList from './ShowAllEventList';
 import PlayIcon from '/public/assets/images/icons/playIcon.svg';
 import PauseIcon from '/public/assets/images/icons/pauseIcon.svg';
 import SwiperCore from 'swiper';
-import FitImage from '@/components/ui/FitImage';
-import { eventInfoDataType, eventUuidDataType } from '@/types/ResponseTypes';
-import { getEventInfoList } from '@/actions/event/eventActions';
+import { eventUuidDataType } from '@/types/ResponseTypes';
+import EventSwiperItem from './EventSwiperItem';
+import { Skeleton } from '@/components/ui/skeleton';
 
 function MainBanner({ eventUuidList }: { eventUuidList: eventUuidDataType[] }) {
-  // 전체보기 클릭 시 전체 이벤트 리스트 노출
-  const [eventInfoList, setEventInfoList] = useState<eventInfoDataType[]>([]);
   const [showAll, setShowAll] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
   const swiperRef = useRef<SwiperCore | null>(null);
   const [isAutoplay, setIsAutoplay] = useState(true);
-
-  useEffect(() => {
-    const getData = async () => {
-      const data: eventInfoDataType[] = await getEventInfoList(eventUuidList);
-      console.log('========================', data);
-      setEventInfoList(data);
-    };
-    getData();
-  }, []);
 
   const handleShowAll = () => {
     setShowAll(!showAll);
   };
 
   const handleSlideChange = (swiper: SwiperCore) => {
-    setCurrentIndex(swiper.realIndex); // loop 상태에서 제대로 된 index 가져올 수 있음
+    setCurrentIndex(swiper.realIndex);
   };
 
   const toggleAutoplay = () => {
@@ -67,18 +55,13 @@ function MainBanner({ eventUuidList }: { eventUuidList: eventUuidDataType[] }) {
         modules={[Autoplay]}
         slidesPerView={'auto'}
       >
-        {eventInfoList.map((eventInfo: eventInfoDataType) => {
-          return (
-            <SwiperSlide key={eventInfo.eventUuid}>
-              <Link href={`/event/${eventInfo.eventUuid}`}>
-                <FitImage
-                  src={eventInfo.eventThumbnailPath}
-                  alt={eventInfo.eventThumbnailAlt}
-                />
-              </Link>
-            </SwiperSlide>
-          );
-        })}
+        {eventUuidList.map((eventUuid: eventUuidDataType) => (
+          <SwiperSlide key={eventUuid.promotionUuid}>
+            <Suspense fallback={<Skeleton />}>
+              <EventSwiperItem eventUuid={eventUuid} />
+            </Suspense>
+          </SwiperSlide>
+        ))}
       </Swiper>
       <div className="flex gap-[2px] text-white font-bold text-xs absolute z-10 right-0 bottom-0">
         <div className="flex items-center gap-2 bg-gray-800 bg-opacity-60 px-2">
@@ -89,7 +72,7 @@ function MainBanner({ eventUuidList }: { eventUuidList: eventUuidDataType[] }) {
           )}
           <div className="tracking-widest">
             <span>{currentIndex + 1}</span>
-            <span className="text-gray-400">/{eventInfoList.length}</span>
+            <span className="text-gray-400">/{eventUuidList.length}</span>
           </div>
         </div>
         <button
@@ -102,9 +85,8 @@ function MainBanner({ eventUuidList }: { eventUuidList: eventUuidDataType[] }) {
       </div>
       {showAll && (
         <ShowAllEventList
-          eventInfoList={eventInfoList}
+          eventUuidList={eventUuidList}
           handleShowAll={handleShowAll}
-          currentIndex={currentIndex}
         />
       )}
     </div>

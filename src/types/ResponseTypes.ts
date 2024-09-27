@@ -83,6 +83,12 @@ export interface myReviewResType {
 // 상품 기본 정보 타입
 export interface productBasicDataType {
   productName: string;
+  productDescription: string[];
+  productInfo: string;
+}
+
+export interface productBasicDataResType {
+  productName: string;
   productDescription: string;
   productInfo: string;
 }
@@ -108,9 +114,9 @@ export interface productReviewSummaryDataType {
 export interface imageDataType {
   s3url: string;
   imageName: string;
-  thumbnailPath: string;
+  thumbnailPath: string | null;
   imageUuid: string;
-  otherUuid: string;
+  otherUuid: string | null;
 }
 
 // 카테고리 데이터 타입
@@ -138,14 +144,14 @@ export interface productUuidDataType {
 export interface productInfoDataType {
   productUuid: string;
   productName: string;
-  productDescription: string;
+  productDescription: string[];
   productInfo: string;
   price: number;
-  discountType: string;
-  discountValue: number;
+  discountType?: string;
+  discountValue?: number;
   reviewscoreAvg: number;
   reviewcount: number;
-  // productThumbnailImage: string;
+  image: imageDataType;
 }
 
 export interface reviewDataType {
@@ -193,14 +199,17 @@ export interface eventNameDataType {
   promotionName: string;
 }
 
-export interface eventInfoDataType {
-  eventUuid: string;
+export interface eventItemDataType {
   eventName: string;
-  eventThumbnailPath?: string;
-  eventThumbnailAlt?: string;
+  image: imageDataType;
 }
 
 export interface findIdDataType {
   userId: string;
   message: string;
+}
+
+// trend tag 리스트
+export interface trendTagDataType {
+  tagName: string;
 }
