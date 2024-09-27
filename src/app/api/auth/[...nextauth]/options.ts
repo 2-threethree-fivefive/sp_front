@@ -65,14 +65,14 @@ export const options: NextAuthOptions = {
           );
           const data = (await res.json()) as commonResType<userDataType>;
           if (data.result?.registered === true) {
+            user.accessToken = data.result?.accessToken;
             user.name = data.result?.userId;
             user.uuid = data.result?.uuid;
-            user.accessToken = data.result?.accessToken;
             console.log(data.result);
           } else {
             return '/sign-up';
           }
-          return '/';
+          return true;
         } catch (error) {
           console.error('error입니다.', error);
           return '/sign-up';
