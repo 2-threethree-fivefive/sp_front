@@ -12,7 +12,6 @@ async function Page() {
   const handlePostDelivery = async (formData: FormData) => {
     'use server';
     const res = await postDeliveryAction(formData, session?.user?.accessToken);
-    console.log('========', res);
     if (res.httpStatus === 'OK') {
       redirect('/mypage/delivery', RedirectType.replace);
     }

@@ -11,11 +11,9 @@ async function TermPolicyHeader() {
   const agree: boolean = await getDeliveryTermStatusData(
     session?.user?.accessToken
   );
-  console.log('00000', agree);
   const handleToggle = async () => {
     'use server';
     const res = await toggleDeliveryTermData(session?.user?.accessToken);
-    console.log(res);
   };
   return (
     <header className="flex justify-between m-4 pb-4 border-b-2">
